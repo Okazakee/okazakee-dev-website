@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.19bdb6f1.css",
+    "main.js": "/static/js/main.69308ff6.js",
+    "static/js/787.3df16e54.chunk.js": "/static/js/787.3df16e54.chunk.js",
+    "static/media/WHITRABT.woff": "/static/media/WHITRABT.d4818b7b027a14a0ebc6.woff",
+    "index.html": "/index.html",
+    "main.19bdb6f1.css.map": "/static/css/main.19bdb6f1.css.map",
+    "main.69308ff6.js.map": "/static/js/main.69308ff6.js.map",
+    "787.3df16e54.chunk.js.map": "/static/js/787.3df16e54.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.19bdb6f1.css",
+    "static/js/main.69308ff6.js"
+  ]
+}
