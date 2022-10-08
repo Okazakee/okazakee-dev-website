@@ -18,7 +18,7 @@ export default function Bio({bio, propic}) {
       transition={{ duration: 0.2 }}
       className='flex items-center justify-center'>
         <div className='mt-16 lg:mt-32 md:mt-20'>
-          <motion.div className='h-48 w-48 relative mx-auto' whileHover={{scale: 1.1}}>
+          <motion.div className='h-48 w-48 relative mx-auto' whileHover={{scale: 1.1}} whileTap={{ scale: 0.9 }}>
               <Image className='rounded-full' src={propic} alt='propic' layout='fill' objectFit='cover' priority='true' quality={100} />
           </motion.div>
           <div className='flex justify-center items-center my-5'>

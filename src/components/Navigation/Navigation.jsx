@@ -7,7 +7,7 @@ export default function Navigation({SetPageName, PageName}) {
 
   const defaultBtnStyle = 'nav mx-3 hover:underline hover:underline-offset-1 hover:text-[#8c54fb]';
   const selectedBtnStyle = 'nav mx-3 underline underline-offset-1 text-[#8c54fb]';
-  const searchBoxStyle = `min-w-fit w-full transition-all ease-in-out duration-200 ${PageName === 'bio' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
+  const searchBoxStyle = `min-w-fit w-full transition-all ease-in-out duration-300 ${PageName === 'bio' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
 
   const SetBtnFocus = (e, page) => { //thanks to Jack Rendor for this solution.
     const buttons = Array.from(document.getElementsByClassName('nav'));
@@ -48,7 +48,7 @@ export default function Navigation({SetPageName, PageName}) {
           <Searchbox></Searchbox>
         </div>
         <motion.div
-        className='flex items-center justify-end hover:ml-8 ml-3 h-fit'
+        className='flex justify-end hover:ml-4 ml-3'
         /* whileHover={{ scale: 1.1 }}
         transition={{ duration: 0.2 }}*/ >
           <SocialLink link='www.linkedin.com/in/okazakee/' icon='Linkedin'></SocialLink>
