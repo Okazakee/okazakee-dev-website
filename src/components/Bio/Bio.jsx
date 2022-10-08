@@ -8,7 +8,7 @@ export default function Bio({bio, propic}) {
   return (
     <>
       <Head>
-        <title>Okazakee.dev - Biography</title>
+        <title>Biography - Okazakee.dev</title>
       </Head>
       <div className='flex items-center justify-center'>
         <div className='mt-16 lg:mt-32 md:mt-20'>

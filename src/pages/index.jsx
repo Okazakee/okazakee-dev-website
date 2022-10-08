@@ -6,24 +6,24 @@ import Portfolio from '../components/Portfolio/Portfolio';
 import Blog from '../components/Blog/Blog';
 import { MongoClient } from "mongodb";
 
-export default function Home({bio, propic, description}) {
+export default function Home({bio, propic, portfolio_desc, blog_desc, portfolio_post_fields}) {
   const [PageName, SetPageName] = useState('bio');
 
   return (
-    <div>
+    <>
       <Head>
         <link rel="icon" href="/favicon.svg"/>
       </Head>
-      <div className="bg-[#090909] text-[#e8e8e8] min-h-screen font-['White_Rabbit_Regular']">
-        <Navigation SetPageName={SetPageName}></Navigation>
+      <div className="bg-[#090909] text-[#e8e8e8] min-h-screen font-['White_Rabbit_Regular'] transition-all duration-200">
+        <Navigation SetPageName={SetPageName} PageName={PageName}></Navigation>
         {PageName === 'bio'
         ? <Bio bio={bio} propic={propic}></Bio> : null}
         {PageName === 'portfolio'
-        ? <Portfolio description={description}></Portfolio> : null}
+        ? <Portfolio portfolio_desc={portfolio_desc} portfolio_post_fields={portfolio_post_fields}></Portfolio> : null}
         {PageName === 'blog'
-        ? <Blog></Blog> : null}
+        ? <Blog blog_desc={blog_desc}></Blog> : null}
       </div>
-    </div>
+    </>
   )
 }
 
@@ -45,10 +45,16 @@ export async function getServerSideProps() {
           .project({_id: 0})
           .sort({})
           .toArray();
-          console.log(JSON.parse(JSON.stringify(...portfolio)));
+
+          const portfolio_posts = await db
+          .collection("Portfolio")
+          .find({})
+          .project({Post_Id: 0})
+          .sort({})
+          .toArray();
 
           const blog = await db
-          .collection("Biography")
+          .collection("Blog")
           .find({})
           .project({_id: 0})
           .sort({})
@@ -58,7 +64,9 @@ export async function getServerSideProps() {
 
             bio: JSON.parse(JSON.stringify(...biography)).text,
             propic: JSON.parse(JSON.stringify(...biography)).img,
-            description: JSON.parse(JSON.stringify(...portfolio))
+            portfolio_desc: JSON.parse(JSON.stringify(...portfolio)).description,
+            blog_desc: JSON.parse(JSON.stringify(...blog)).description,
+            portfolio_post_fields: JSON.parse(JSON.stringify(portfolio_posts))[1]
           }
       };
   } catch (e) {
