@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Searchbox } from '../Portfolio/Searchbox';
+import { Searchbox } from './Searchbox';
 import { motion } from 'framer-motion';
 import { SocialLink } from './SocialLink';
 
@@ -7,7 +7,7 @@ export default function Navigation({SetPageName, PageName}) {
 
   const defaultBtnStyle = 'nav mx-3 hover:underline hover:underline-offset-1 hover:text-[#8c54fb]';
   const selectedBtnStyle = 'nav mx-3 underline underline-offset-1 text-[#8c54fb]';
-  const searchBoxStyle = `ml-3 transition-opacity ease-in-out duration-200 ${PageName === 'bio' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
+  const searchBoxStyle = `min-w-fit w-full transition-all ease-in-out duration-200 ${PageName === 'bio' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
 
   const SetBtnFocus = (e, page) => { //thanks to Jack Rendor for this solution.
     const buttons = Array.from(document.getElementsByClassName('nav'));
@@ -20,8 +20,8 @@ export default function Navigation({SetPageName, PageName}) {
   }
 
     return (
-      <div className='flex justify-between px-0 lg:mx-auto md:px-8 sm:px-8 max-w-7xl pt-4'>
-        <div className='flex text-2xl'>
+      <div className='flex items-center justify-between px-0 lg:mx-auto md:px-8 sm:px-8 max-w-7xl pt-4'>
+        <div className='flex text-2xl mr-1'>
           <motion.button
             onClick={(e) => SetBtnFocus(e, 'bio')}
             className={selectedBtnStyle}
@@ -43,18 +43,21 @@ export default function Navigation({SetPageName, PageName}) {
             whileHover={{ scale: 1.1 }}
             > Blog
           </motion.button>
-          <div className={searchBoxStyle}>
-            <Searchbox></Searchbox>
           </div>
-          </div>
-        <div className='flex h-full'>
-          <SocialLink link='www.linkedin.com/in/okazakee/' icon='FaLinkedin'></SocialLink>
-          <SocialLink link='github.com/Okazakee/' icon='FaGithub'></SocialLink>
-          <SocialLink link='t.me/Okazakee' icon='FaTelegram'></SocialLink>
-          <SocialLink link='twitter.com/Okazakee_DEV' icon='FaTwitter'></SocialLink>
-          <SocialLink link='www.instagram.com/okazakee.dev' icon='FaInstagram'></SocialLink>
-          <SocialLink link='www.youtube.com/channel/UCUogIMOIHwCt3dlL-_CtMg' icon='FaYoutube'></SocialLink>
+        <div className={searchBoxStyle}>
+          <Searchbox></Searchbox>
         </div>
+        <motion.div
+        className='flex items-center justify-end hover:ml-8 ml-3 h-fit'
+        /* whileHover={{ scale: 1.1 }}
+        transition={{ duration: 0.2 }}*/ >
+          <SocialLink link='www.linkedin.com/in/okazakee/' icon='Linkedin'></SocialLink>
+          <SocialLink link='github.com/Okazakee/' icon='Github'></SocialLink>
+          <SocialLink link='t.me/Okazakee' icon='Telegram'></SocialLink>
+          <SocialLink link='twitter.com/Okazakee_DEV' icon='Twitter'></SocialLink>
+          <SocialLink link='www.instagram.com/okazakee.dev' icon='Instagram'></SocialLink>
+          <SocialLink link='www.youtube.com/channel/UCUogIMOIHwCt3dlL-_CtMg' icon='Youtube'></SocialLink>
+        </motion.div>
       </div>
     );
 }

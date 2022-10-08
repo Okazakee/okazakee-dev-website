@@ -5,7 +5,7 @@ export const Searchbox = ({searchChagne}) => {
     return (
     <div>
         <motion.input
-            className="px-1 text-[#653bba] hover:transition-all duration-200 ease-in-out opacity-90 focus:opacity-100 hover:opacity-100 placeholder:text-center w-[12rem] hover:w-[20rem] focus:w-[20rem] rounded-xl"
+            className="text-[#653bba] bg-[#e8e8e8] px-2 text-xl focus:my-0 focus:outline-none hover:transition-all duration-200 ease-in-out opacity-90 focus:opacity-100 hover:opacity-100 placeholder:text-center placeholder:text-[#5b39a0] w-[12rem] focus:w-full rounded-xl"
             type='search'
             placeholder="Search Posts"
             onChange={searchChagne}

@@ -14,7 +14,7 @@ export default function Home({bio, propic, portfolio_desc, blog_desc, portfolio_
       <Head>
         <link rel="icon" href="/favicon.svg"/>
       </Head>
-      <div className="bg-[#090909] text-[#e8e8e8] min-h-screen font-['White_Rabbit_Regular'] transition-all duration-200">
+      <div className="bg-[#090909] text-[#e8e8e8] min-h-screen font-['White_Rabbit_Regular']">
         <Navigation SetPageName={SetPageName} PageName={PageName}></Navigation>
         {PageName === 'bio'
         ? <Bio bio={bio} propic={propic}></Bio> : null}
@@ -59,14 +59,23 @@ export async function getServerSideProps() {
           .project({_id: 0})
           .sort({})
           .toArray();
-      return {
-          props: {
+
+          const blog_posts = await db
+          .collection("Blog")
+          .find({})
+          .project({Post_Id: 0})
+          .sort({})
+          .toArray();
+
+          return {
+            props: {
 
             bio: JSON.parse(JSON.stringify(...biography)).text,
             propic: JSON.parse(JSON.stringify(...biography)).img,
             portfolio_desc: JSON.parse(JSON.stringify(...portfolio)).description,
             blog_desc: JSON.parse(JSON.stringify(...blog)).description,
-            portfolio_post_fields: JSON.parse(JSON.stringify(portfolio_posts))[1]
+            portfolio_post_fields: JSON.parse(JSON.stringify(portfolio_posts))[1],
+            blog_post_fields: JSON.parse(JSON.stringify(blog_posts))[1]
           }
       };
   } catch (e) {
