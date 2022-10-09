@@ -48,9 +48,7 @@ export default function Navigation({SetPageName, PageName}) {
           <Searchbox></Searchbox>
         </div>
         <motion.div
-        className='flex justify-end hover:ml-4 ml-3'
-        /* whileHover={{ scale: 1.1 }}
-        transition={{ duration: 0.2 }}*/ >
+        className='flex justify-end hover:ml-4 ml-3'>
           <SocialLink link='www.linkedin.com/in/okazakee/' icon='Linkedin'></SocialLink>
           <SocialLink link='github.com/Okazakee/' icon='Github'></SocialLink>
           <SocialLink link='t.me/Okazakee' icon='Telegram'></SocialLink>

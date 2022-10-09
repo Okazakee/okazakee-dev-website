@@ -14,7 +14,7 @@ export default function Home({bio, propic, portfolio_desc, blog_desc, portfolio_
       <Head>
         <link rel="icon" href="/favicon.svg"/>
       </Head>
-      <div className="bg-[#090909] text-[#e8e8e8] min-h-screen font-['White_Rabbit_Regular']">
+      <div className="font-['White_Rabbit_Regular'] bg-[#090909] text-[#e8e8e8] min-h-screen min-w-screen scroll-smooth">
         <Navigation SetPageName={SetPageName} PageName={PageName}></Navigation>
         {PageName === 'bio'
         ? <Bio bio={bio} propic={propic}></Bio> : null}

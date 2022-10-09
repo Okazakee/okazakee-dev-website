@@ -31,11 +31,9 @@ export default function Bio({bio, propic}) {
                 OKAZAKEE
               </motion.h1>
           </div>
-          <div className='flex justify-center mx-6 lg:mx-24 md:mx-12 sm:mx-10 max-w-7xl pb-10'>
-            <p className='text-justify sm:text-xl md:text-xl lg:text-[1.40rem] text-md'>
+            <p className='flex justify-center mx-6 lg:mx-24 md:mx-12 sm:mx-10 max-w-6xl text-justify sm:text-xl md:text-xl lg:text-[1.50rem] text-md'>
               { bio }
             </p>
-          </div>
         </div>
       </motion.div>
     </>

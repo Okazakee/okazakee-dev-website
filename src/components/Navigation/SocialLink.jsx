@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import * as Icons from 'react-icons/fa';
-//TODO FIX SOCIAL LABEL RIGHT DISAPPEARING
+
 export const SocialLink = ({icon, link}) => {
   const [isHover, SetIsHover] = useState(false);
   const Icon = Icons['Fa' + icon];

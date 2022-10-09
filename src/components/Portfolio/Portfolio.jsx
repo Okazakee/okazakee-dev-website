@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import { Card } from '../Common/Card';
 import { motion } from 'framer-motion';
 
 export default function Portfolio({portfolio_desc, portfolio_post_fields}) {
+  const cardListStyle = `flex justify-center flex-wrap lg:mx-24 md:mx-12 sm:mx-10 max-w-7xl mx-auto`;
+
   return (
     <>
       <Head>
         <title>Portfolio - Okazakee.dev</title>
       </Head>
       <motion.div
-      className='max-w-7xl'
+      className='px-0 lg:mx-auto md:px-8 sm:px-8 max-w-7xl'
       initial={{ opacity: 0}}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}>
-        <div className="bg-[#090909] text-[#e8e8e8] text-3xl py-4 flex items-center justify-items-center">
-            <h1 className='py-12'>{portfolio_desc}</h1>
-        </div>
-        <div className='flex items-center justify-center'>
+        <h1 className='mx-6 lg:mx-24 md:mx-12 sm:mx-10 max-w-7xl py-10 text-center sm:text-2xl md:text-2xl lg:text-[1.75rem] text-2xl'>{portfolio_desc}</h1>
+        <div className={cardListStyle}>
+          <Card fields={portfolio_post_fields}></Card>
+          <Card fields={portfolio_post_fields}></Card>
+          <Card fields={portfolio_post_fields}></Card>
+          <Card fields={portfolio_post_fields}></Card>
+          <Card fields={portfolio_post_fields}></Card>
+          <Card fields={portfolio_post_fields}></Card>
           <Card fields={portfolio_post_fields}></Card>
           <Card fields={portfolio_post_fields}></Card>
           <Card fields={portfolio_post_fields}></Card>

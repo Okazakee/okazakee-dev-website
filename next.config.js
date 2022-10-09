@@ -5,6 +5,6 @@ const nextConfig = {
 
 module.exports = {
   images: {
-    domains: ['github.com'],
+    domains: ['github.com', 'external-content.duckduckgo.com'],
   },
 }
