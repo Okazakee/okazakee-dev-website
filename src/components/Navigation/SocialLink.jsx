@@ -5,7 +5,7 @@ import * as Icons from 'react-icons/fa';
 export const SocialLink = ({icon, link}) => {
   const [isHover, SetIsHover] = useState(false);
   const Icon = Icons['Fa' + icon];
-  const LinkStyle = `flex items-center transition-all ease-in-out duration-[400ms] ${isHover ? 'min-w-fit opacity-100' : 'opacity-0 pointer-events-none -mr-16 w-20'}`
+  const LinkStyle = `flex items-center justify-center transition-all ease-in-out duration-[400ms] ${isHover ? 'w-28 pr-1 opacity-100' : 'opacity-0 pointer-events-none -mr-16 w-20'}`
 
   return (
     <motion.a
