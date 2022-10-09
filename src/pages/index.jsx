@@ -16,12 +16,13 @@ export default function Home({bio, propic, portfolio_desc, blog_desc, portfolio_
       </Head>
       <div className="font-['White_Rabbit_Regular'] bg-[#090909] text-[#e8e8e8] min-h-screen min-w-screen scroll-smooth">
         <Navigation SetPageName={SetPageName} PageName={PageName}></Navigation>
-        {PageName === 'bio'
-        ? <Bio bio={bio} propic={propic}></Bio> : null}
-        {PageName === 'portfolio'
-        ? <Portfolio portfolio_desc={portfolio_desc} portfolio_post_fields={portfolio_post_fields}></Portfolio> : null}
-        {PageName === 'blog'
-        ? <Blog blog_desc={blog_desc}></Blog> : null}
+          <div className=''>
+          {PageName === 'bio'
+          ? <Bio bio={bio} propic={propic}></Bio> : null}
+          {PageName === 'portfolio'
+          ? <Portfolio portfolio_desc={portfolio_desc} portfolio_post_fields={portfolio_post_fields}></Portfolio> : null}
+          {PageName === 'blog'
+          ? <Blog blog_desc={blog_desc}></Blog> : null}</div>
       </div>
     </>
   )
@@ -49,7 +50,7 @@ export async function getServerSideProps() {
           const portfolio_posts = await db
           .collection("Portfolio")
           .find({})
-          .project({Post_Id: 0})
+          .project({_id: 0})
           .sort({})
           .toArray();
 
@@ -63,7 +64,7 @@ export async function getServerSideProps() {
           const blog_posts = await db
           .collection("Blog")
           .find({})
-          .project({Post_Id: 0})
+          .project({_id: 0})
           .sort({})
           .toArray();
 

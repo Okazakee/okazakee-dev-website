@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 export const Card = ({fields}) => {
   const cover = fields.img;
   const [reverse, SetReverse] = useState(false);
-  const cardStyle = 'card bg-[#653bba] rounded-xl text-[#e8e8e8] mx-4 mb-4 text-center text-xl min-h-fit min-w-fit overflow-hidden'
+  const cardStyle = 'card z-auto bg-[#653bba] rounded-xl text-[#e8e8e8] text-center text-xl min-h-fit min-w-fit overflow-hidden sm:mx-4 sm:mb-4 mx-10 mb-8'
 
   const SetPostFocus = (e) => {
     const cards = Array.from(document.getElementsByClassName('card'));
@@ -16,7 +16,7 @@ export const Card = ({fields}) => {
   }
 
   return (
-    <motion.div //TODO blur background on hover
+    <motion.div
     className={cardStyle}
     onHoverStart={(e) => SetPostFocus(e)}
     onHoverEnd={(e) => SetPostFocus(e)}
