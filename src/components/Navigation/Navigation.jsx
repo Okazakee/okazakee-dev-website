@@ -20,7 +20,7 @@ export default function Navigation({SetPageName, PageName}) {
   }
 
     return (
-      <div className='sticky top-0 z-50 flex items-center justify-between mx-auto px-2 max-w-7xl py-4 backdrop-blur-md rounded-b-xl'>
+      <div className='sticky top-0 z-50 flex items-center justify-between mx-auto px-2 max-w-7xl py-4 backdrop-blur-[2px] rounded-b-xl'>
         <div className='flex text-2xl mr-1'>
           <motion.button
             onClick={(e) => SetBtnFocus(e, 'bio')}

@@ -4,7 +4,7 @@ import { Card } from '../Common/Card';
 import { motion } from 'framer-motion';
 
 export default function Portfolio({portfolio_desc, portfolio_post_fields}) {
-  const cardListStyle = ` items-center justify-start px-0  md:px-8 sm:px-8 pt-4 overflow-x-scroll min-h-full`;
+  const cardListStyle = 'md:flex items-center justify-start pt-4 overflow-x-scroll bg-[#672222] h-screen';
 
   return (
     <>
