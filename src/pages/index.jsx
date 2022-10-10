@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import Navigation from '../components/Navigation/Navigation';
+import Navigation from '../components/Navbar/Navbar';
 import Bio from '../components/Bio/Bio';
 import Portfolio from '../components/Portfolio/Portfolio';
 import Blog from '../components/Blog/Blog';
@@ -8,6 +8,7 @@ import { MongoClient } from "mongodb";
 
 export default function Home({bio, propic, portfolio_desc, blog_desc, portfolio_post_fields}) {
   const [PageName, SetPageName] = useState('bio');
+  const [isMobile, SetIsMobile] = useState(false);
 
   return (
     <>
@@ -15,14 +16,17 @@ export default function Home({bio, propic, portfolio_desc, blog_desc, portfolio_
         <link rel="icon" href="/favicon.svg"/>
       </Head>
       <div className="font-['White_Rabbit_Regular'] bg-[#090909] text-[#e8e8e8] min-h-screen min-w-screen scroll-smooth">
-        <Navigation SetPageName={SetPageName} PageName={PageName}></Navigation>
-          <div className=''>
+        {isMobile
+        ? null
+        : <Navigation SetPageName={SetPageName} PageName={PageName}></Navigation>}
+        <div className=''>
           {PageName === 'bio'
           ? <Bio bio={bio} propic={propic}></Bio> : null}
           {PageName === 'portfolio'
           ? <Portfolio portfolio_desc={portfolio_desc} portfolio_post_fields={portfolio_post_fields}></Portfolio> : null}
           {PageName === 'blog'
-          ? <Blog blog_desc={blog_desc}></Blog> : null}</div>
+          ? <Blog blog_desc={blog_desc}></Blog> : null}
+        </div>
       </div>
     </>
   )

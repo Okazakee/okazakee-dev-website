@@ -20,7 +20,7 @@ export const Card = ({fields}) => {
     className={cardStyle}
     onHoverStart={(e) => SetPostFocus(e)}
     onHoverEnd={(e) => SetPostFocus(e)}
-    whileHover={{ scale: 1.2,  }}>
+    /* whileHover={{ scale: 1.2,  }} */>
       <div className=''>
         <Image className='' src={cover} alt='card cover' width={300} height={150} layout='responsive' objectFit='cover' priority='true' quality={100} />
           <div className='pb-2'>

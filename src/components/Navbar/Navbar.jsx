@@ -3,7 +3,7 @@ import { Searchbox } from './Searchbox';
 import { motion } from 'framer-motion';
 import { SocialLink } from './SocialLink';
 
-export default function Navigation({SetPageName, PageName}) {
+export default function Navbar({SetPageName, PageName}) {
 
   const defaultBtnStyle = 'nav mx-3 hover:underline hover:underline-offset-1 hover:text-[#8c54fb]';
   const selectedBtnStyle = 'nav mx-3 underline underline-offset-1 text-[#8c54fb]';
@@ -48,13 +48,13 @@ export default function Navigation({SetPageName, PageName}) {
           <Searchbox></Searchbox>
         </div>
         <motion.div
-        className='flex justify-end hover:ml-4 ml-3'>
-          <SocialLink link='www.linkedin.com/in/okazakee/' icon='Linkedin'></SocialLink>
-          <SocialLink link='github.com/Okazakee/' icon='Github'></SocialLink>
-          <SocialLink link='t.me/Okazakee' icon='Telegram'></SocialLink>
-          <SocialLink link='twitter.com/Okazakee_DEV' icon='Twitter'></SocialLink>
-          <SocialLink link='www.instagram.com/okazakee.dev' icon='Instagram'></SocialLink>
-          <SocialLink link='www.youtube.com/channel/UCUogIMOIHwCt3dlL-_CtMg' icon='Youtube'></SocialLink>
+        className='flex justify-end hover:ml-4 ml-3 mr-1'>
+          <SocialLink link='www.linkedin.com/in/okazakee/' social='Linkedin'></SocialLink>
+          <SocialLink link='github.com/Okazakee/' social='Github'></SocialLink>
+          <SocialLink link='t.me/Okazakee' social='Telegram'></SocialLink>
+          <SocialLink link='twitter.com/Okazakee_DEV' social='Twitter'></SocialLink>
+          <SocialLink link='www.instagram.com/okazakee.dev' social='Instagram'></SocialLink>
+          <SocialLink link='www.youtube.com/channel/UCUogIMOIHwCt3dlL-_CtMg' social='Youtube'></SocialLink>
         </motion.div>
       </div>
     );
