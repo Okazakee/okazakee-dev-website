@@ -11,7 +11,7 @@ export default function Portfolio({portfolio_desc, portfolio_post_fields}) {
       <Head>
         <title>Portfolio - Okazakee.dev</title>
       </Head>
-      <h1 className='mx-4 mb-8 mt-4 text-center sm:text-2xl md:text-2xl lg:text-[1.75rem] text-2xl'>{portfolio_desc}</h1>
+      <h1 className='mx-4 mb-8 pt-4 text-center sm:text-2xl md:text-2xl lg:text-[1.75rem] text-2xl'>{portfolio_desc}</h1>
       <motion.div
       className='px-0 lg:mx-auto md:px-8 sm:px-8 max-w-7xl h-full'
       initial={{ opacity: 0}}

@@ -1,22 +1,69 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Image from 'next/image';
+import { Searchbox } from './Searchbox';
 
-export const MobileNavbar = ({SetPageName, PageName}) => {
-    const defaultBtnStyle = 'nav mx-3 hover:underline hover:underline-offset-1 hover:text-[#8c54fb]';
-    const selectedBtnStyle = 'nav mx-3 underline underline-offset-1 text-[#8c54fb]';
-    const searchBoxStyle = `min-w-fit w-full transition-all ease-in-out duration-300 ${PageName === 'bio' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
+export const MobileNavbar = ({SetPageName, isMobile}) => {
 
-    const SetBtnFocus = (e, page) => { //thanks to Jack Rendor for this solution.
-    const buttons = Array.from(document.getElementsByClassName('nav'));
-    const button = e.target;
+    const [ShowSearchbar, SetShowSearchbar] = useState(false);
 
-    SetPageName(page);
+    const NavbarStyle = `bg-[#8c54fb] fixed bottom-6 left-0 right-0 z-50 py-4 rounded-3xl text-lg text-center w-[90vw] mx-auto`;
+    const defaultBtnStyle = 'nav hover:underline hover:underline-offset-1 hover:text-black';
+    const selectedBtnStyle = 'nav underline underline-offset-1 text-black';
 
-    buttons.map(button => button.className=defaultBtnStyle);
-    button.className = selectedBtnStyle;
-  }
+    const SetBtnFocus = (e, page) => {
+        const buttons = Array.from(document.getElementsByClassName('nav'));
+        const button = e.target;
+
+        SetPageName(page);
+
+        buttons.map(button => button.className=defaultBtnStyle);
+        button.className = selectedBtnStyle;
+      }
+
     return (
-        <div className='sticky bottom-0 z-50 flex items-center justify-between mx-auto py-4 rounded-xl bg-[#8c54fb]'>
-            null
-        </div>
+        <>
+        {ShowSearchbar
+        ?
+        <Searchbox isMobile={isMobile}></Searchbox>
+        :
+        <div className={NavbarStyle}>
+            <div className='flex items-center justify-between mx-6'>
+                <button
+                onClick={(e) => SetBtnFocus(e, 'bio')}
+                className={selectedBtnStyle}>
+                    <div className='h-10 w-10 relative mx-auto'>
+                        <Image src='/images/bio.svg' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
+                    </div>
+                    Bio
+                </button>
+                <button
+                onClick={(e) => SetBtnFocus(e, 'bio')}
+                className={defaultBtnStyle}>
+                    <div className='h-10 w-10 relative mx-auto'>
+                        <Image src='/images/bio.svg' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
+                    </div>
+                    Bio
+                </button>
+                <button
+                onClick={(e) => SetBtnFocus(e, 'bio')}
+                className={defaultBtnStyle}>
+                    <div className='h-10 w-10 relative mx-auto'>
+                        <Image src='/images/bio.svg' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
+                    </div>
+                    Bio
+                </button>
+                {/* <button
+                onClick={() => SetShowSearchbar(!ShowSearchbar)}
+                className={defaultBtnStyle}>
+                    <div className='-my-2'>
+                        <Image
+                        className=''
+                        src='/images/bio.svg' alt='bioBtn' width={40} height={40} layout='fixed' objectFit='cover' priority='true' quality={100} />
+                    </div>
+                    <label>Search</label>
+                </button> */}
+            </div>
+        </div>}
+            </>
     )
 }

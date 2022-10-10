@@ -5,6 +5,7 @@ import Bio from '../components/Bio/Bio';
 import Portfolio from '../components/Portfolio/Portfolio';
 import Blog from '../components/Blog/Blog';
 import { MongoClient } from "mongodb";
+import { MobileNavbar } from '../components/Navbar/MobileNavbar';
 
 export default function Home({bio, propic, portfolio_desc, blog_desc, portfolio_post_fields}) {
   const [PageName, SetPageName] = useState('bio');
@@ -16,9 +17,12 @@ export default function Home({bio, propic, portfolio_desc, blog_desc, portfolio_
         <link rel="icon" href="/favicon.svg"/>
       </Head>
       <div className="font-['White_Rabbit_Regular'] bg-[#090909] text-[#e8e8e8] min-h-screen min-w-screen scroll-smooth">
-        {isMobile
-        ? null
-        : <Navigation SetPageName={SetPageName} PageName={PageName}></Navigation>}
+        <div className='md:hidden' onClick={() => SetIsMobile(true)}>
+          <MobileNavbar SetPageName={SetPageName} isMobile={isMobile}></MobileNavbar>
+        </div>
+        <div className='hidden md:block md:max-w-7xl md:mx-auto'>
+          <Navigation SetPageName={SetPageName} PageName={PageName}></Navigation>
+        </div>
         <div className=''>
           {PageName === 'bio'
           ? <Bio bio={bio} propic={propic}></Bio> : null}
