@@ -37,31 +37,37 @@ export const MobileNavbar = ({SetPageName, isMobile}) => {
                     Bio
                 </button>
                 <button
-                onClick={(e) => SetBtnFocus(e, 'bio')}
+                onClick={(e) => SetBtnFocus(e, 'portfolio')}
                 className={defaultBtnStyle}>
                     <div className='h-10 w-10 relative mx-auto'>
                         <Image src='/images/bio.svg' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
-                    Bio
+                    Portfolio
                 </button>
                 <button
-                onClick={(e) => SetBtnFocus(e, 'bio')}
+                onClick={(e) => SetBtnFocus(e, 'blog')}
                 className={defaultBtnStyle}>
                     <div className='h-10 w-10 relative mx-auto'>
                         <Image src='/images/bio.svg' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
-                    Bio
+                    Blog
                 </button>
-                {/* <button
+                <button
                 onClick={() => SetShowSearchbar(!ShowSearchbar)}
                 className={defaultBtnStyle}>
-                    <div className='-my-2'>
-                        <Image
-                        className=''
-                        src='/images/bio.svg' alt='bioBtn' width={40} height={40} layout='fixed' objectFit='cover' priority='true' quality={100} />
+                    <div className='h-10 w-10 relative mx-auto'>
+                        <Image src='/images/bio.svg' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
-                    <label>Search</label>
-                </button> */}
+                    Search
+                </button>
+                <button
+                onClick={(e) => SetBtnFocus(e, 'blog')}
+                className={defaultBtnStyle}>
+                    <div className='h-10 w-10 relative mx-auto'>
+                        <Image src='/images/bio.svg' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
+                    </div>
+                    Socials
+                </button>
             </div>
         </div>}
             </>
