@@ -6,9 +6,10 @@ export const MobileNavbar = ({SetPageName, isMobile}) => {
 
     const [ShowSearchbar, SetShowSearchbar] = useState(false);
 
-    const NavbarStyle = `bg-[#8c54fb] fixed bottom-6 left-0 right-0 z-50 py-4 rounded-3xl text-lg text-center w-[90vw] mx-auto`;
-    const defaultBtnStyle = 'nav hover:underline hover:underline-offset-1 hover:text-black';
-    const selectedBtnStyle = 'nav underline underline-offset-1 text-black';
+    const NavbarStyle = `bg-[#8c54fb] fixed bottom-6 left-0 right-0 z-50 py-4 rounded-3xl text-sm text-center w-[90vw] h-[9vh] mx-auto`;
+    const defaultBtnStyle = 'nav hover:underline hover:underline-offset-1 hover:text-black h-fit';
+    const selectedBtnStyle = 'nav underline underline-offset-1 text-black h-fit';
+    const iconStyle = 'h-6 w-6 relative mx-auto';
 
     const SetBtnFocus = (e, page) => {
         const buttons = Array.from(document.getElementsByClassName('nav'));
@@ -27,11 +28,11 @@ export const MobileNavbar = ({SetPageName, isMobile}) => {
         <Searchbox isMobile={isMobile}></Searchbox>
         :
         <div className={NavbarStyle}>
-            <div className='flex items-center justify-between mx-6'>
+            <div className='flex justify-between mx-5'>
                 <button
                 onClick={(e) => SetBtnFocus(e, 'bio')}
                 className={selectedBtnStyle}>
-                    <div className='h-10 w-10 relative mx-auto'>
+                    <div className={iconStyle}>
                         <Image src='/images/bio.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                     Bio
@@ -39,7 +40,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => {
                 <button
                 onClick={(e) => SetBtnFocus(e, 'portfolio')}
                 className={defaultBtnStyle}>
-                    <div className='h-10 w-10 relative mx-auto'>
+                    <div className={iconStyle}>
                         <Image src='/images/portfolio.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                     Portfolio
@@ -47,7 +48,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => {
                 <button
                 onClick={(e) => SetBtnFocus(e, 'blog')}
                 className={defaultBtnStyle}>
-                    <div className='h-10 w-10 relative mx-auto'>
+                    <div className={iconStyle}>
                         <Image src='/images/blog.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                     Blog
@@ -55,7 +56,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => {
                 <button
                 onClick={() => SetShowSearchbar(!ShowSearchbar)}
                 className={defaultBtnStyle}>
-                    <div className='h-10 w-10 relative mx-auto'>
+                    <div className={iconStyle}>
                         <Image src='/images/search.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                     Search
@@ -63,7 +64,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => {
                 <button
                 onClick={(e) => SetBtnFocus(e, 'blog')}
                 className={defaultBtnStyle}>
-                    <div className='h-10 w-10 relative mx-auto'>
+                    <div className={iconStyle}>
                         <Image src='/images/social.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                     Socials
