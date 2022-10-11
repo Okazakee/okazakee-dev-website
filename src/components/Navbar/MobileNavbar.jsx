@@ -32,7 +32,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => {
                 onClick={(e) => SetBtnFocus(e, 'bio')}
                 className={selectedBtnStyle}>
                     <div className='h-10 w-10 relative mx-auto'>
-                        <Image src='/images/bio.svg' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
+                        <Image src='/images/bio.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                     Bio
                 </button>
@@ -40,7 +40,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => {
                 onClick={(e) => SetBtnFocus(e, 'portfolio')}
                 className={defaultBtnStyle}>
                     <div className='h-10 w-10 relative mx-auto'>
-                        <Image src='/images/bio.svg' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
+                        <Image src='/images/portfolio.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                     Portfolio
                 </button>
@@ -48,7 +48,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => {
                 onClick={(e) => SetBtnFocus(e, 'blog')}
                 className={defaultBtnStyle}>
                     <div className='h-10 w-10 relative mx-auto'>
-                        <Image src='/images/bio.svg' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
+                        <Image src='/images/blog.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                     Blog
                 </button>
@@ -56,7 +56,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => {
                 onClick={() => SetShowSearchbar(!ShowSearchbar)}
                 className={defaultBtnStyle}>
                     <div className='h-10 w-10 relative mx-auto'>
-                        <Image src='/images/bio.svg' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
+                        <Image src='/images/search.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                     Search
                 </button>
@@ -64,7 +64,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => {
                 onClick={(e) => SetBtnFocus(e, 'blog')}
                 className={defaultBtnStyle}>
                     <div className='h-10 w-10 relative mx-auto'>
-                        <Image src='/images/bio.svg' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
+                        <Image src='/images/social.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                     Socials
                 </button>
