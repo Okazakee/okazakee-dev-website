@@ -31,7 +31,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => { /* //TODO ADD SWIPE G
         <div className={NavbarStyle}> {/* //TODO HIDE nav WHEN DOWNSCROLLING */}
             <div className='flex justify-between mx-4'>
                 <motion.button
-                whileTap={{ scale: 0.6 }}
+                whileTap={{ scale: 0.8 }}
                 onClick={(e) => SetBtnFocus(e, 'bio')}
                 className={selectedBtnStyle}>
                     <div className={iconStyle}>
@@ -40,7 +40,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => { /* //TODO ADD SWIPE G
                     Bio
                 </motion.button>
                 <motion.button
-                whileTap={{ scale: 0.6 }}
+                whileTap={{ scale: 0.8 }}
                 onClick={(e) => SetBtnFocus(e, 'portfolio')}
                 className={defaultBtnStyle}>
                     <div className={iconStyle}>
@@ -49,7 +49,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => { /* //TODO ADD SWIPE G
                     Portfolio
                 </motion.button>
                 <motion.button
-                whileTap={{ scale: 0.6 }}
+                whileTap={{ scale: 0.8 }}
                 onClick={(e) => SetBtnFocus(e, 'blog')}
                 className={defaultBtnStyle}>
                     <div className={iconStyle}>
@@ -58,7 +58,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => { /* //TODO ADD SWIPE G
                   Blog
                 </motion.button>
                 <motion.button
-                whileTap={{ scale: 0.6 }}
+                whileTap={{ scale: 0.8 }}
                 onClick={() => SetShowSearchbar(!ShowSearchbar)}
                 className={defaultBtnStyle}>
                     <div className={iconStyle}>
@@ -67,7 +67,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => { /* //TODO ADD SWIPE G
                     Search
                 </motion.button>
                 <motion.button
-                whileTap={{ scale: 0.6 }}
+                whileTap={{ scale: 0.8 }}
                 onClick={(e) => SetBtnFocus(e, 'blog')}
                 className={defaultBtnStyle}>
                     <div className={iconStyle}>
