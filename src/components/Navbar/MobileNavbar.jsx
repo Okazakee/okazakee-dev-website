@@ -7,15 +7,14 @@ export const MobileNavbar = ({SetPageName, isMobile}) => { /* //TODO ADD SWIPE G
 
     const [ShowSearchbar, SetShowSearchbar] = useState(false);
 
-    const NavbarStyle = `bg-[#8c54fb] fixed bottom-6 left-0 right-0 z-50 rounded-2xl text-sm text-center w-[90vw] h-[4rem] mx-auto pt-2.5`;
-    const defaultBtnStyle = 'nav h-fit text-[#e8e8e8]';
-    const selectedBtnStyle = 'nav underline underline-offset-1 h-fit text-[#090909]';
+    const NavbarStyle = `fixed bottom-6 left-0 right-0 z-50 rounded-2xl text-sm text-center w-[90vw] h-[4rem] mx-auto pt-2.5 backdrop-blur-3xl outline outline-1 outline-[#8c54fb]`;
+    const defaultBtnStyle = 'nav h-fit text-[#b4b4b4]';
+    const selectedBtnStyle = 'nav underline underline-offset-1 h-fit text-[#e8e8e8]';
     const iconStyle = 'h-8 w-8 relative mx-auto pointer-events-none';
 
     const SetBtnFocus = (e, page) => {
         const buttons = Array.from(document.getElementsByClassName('nav'));
         const button = e.target;
-        console.log(button);
 
         SetPageName(page);
 
@@ -36,7 +35,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => { /* //TODO ADD SWIPE G
                 onClick={(e) => SetBtnFocus(e, 'bio')}
                 className={selectedBtnStyle}>
                     <div className={iconStyle}>
-                        <Image className='pointer-events-none' src='/images/bio.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='false' quality={100} />
+                        <Image src='/images/bio.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='false' quality={100} />
                     </div>
                     Bio
                 </motion.button>
@@ -45,7 +44,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => { /* //TODO ADD SWIPE G
                 onClick={(e) => SetBtnFocus(e, 'portfolio')}
                 className={defaultBtnStyle}>
                     <div className={iconStyle}>
-                        <Image className='pointer-events-none' src='/images/portfolio.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
+                        <Image src='/images/portfolio.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                     Portfolio
                 </motion.button>
@@ -54,7 +53,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => { /* //TODO ADD SWIPE G
                 onClick={(e) => SetBtnFocus(e, 'blog')}
                 className={defaultBtnStyle}>
                     <div className={iconStyle}>
-                        <Image className='pointer-events-none' src='/images/blog.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
+                        <Image src='/images/blog.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                   Blog
                 </motion.button>
@@ -63,7 +62,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => { /* //TODO ADD SWIPE G
                 onClick={() => SetShowSearchbar(!ShowSearchbar)}
                 className={defaultBtnStyle}>
                     <div className={iconStyle}>
-                        <Image className='pointer-events-none' src='/images/search.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
+                        <Image src='/images/search.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                     Search
                 </motion.button>
@@ -72,7 +71,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => { /* //TODO ADD SWIPE G
                 onClick={(e) => SetBtnFocus(e, 'blog')}
                 className={defaultBtnStyle}>
                     <div className={iconStyle}>
-                        <Image className='pointer-events-none' src='/images/social.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
+                        <Image src='/images/social.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                     Socials
                 </motion.button>
