@@ -6,7 +6,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => {
 
     const [ShowSearchbar, SetShowSearchbar] = useState(false);
 
-    const NavbarStyle = `bg-[#8c54fb] fixed bottom-6 left-0 right-0 z-50 py-4 rounded-3xl text-sm text-center w-[90vw] h-[9vh] mx-auto`;
+    const NavbarStyle = `bg-[#8c54fb] fixed bottom-6 left-0 right-0 z-50 rounded-2xl text-sm text-center w-[90vw] h-[7vh] mx-auto pt-2`;
     const defaultBtnStyle = 'nav hover:underline hover:underline-offset-1 hover:text-black h-fit';
     const selectedBtnStyle = 'nav underline underline-offset-1 text-black h-fit';
     const iconStyle = 'h-6 w-6 relative mx-auto';
