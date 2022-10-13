@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Searchbox } from './Searchbox';
-import { motion } from 'framer-motion';
+import NavBtn from './MobileNavBtn';
+import Searchbox from './Searchbox';
 
-export const MobileNavbar = ({isMobile}) => { /* //TODO ADD SWIPE GESTURES TO CHAGNE PAGE */
-
-    const [ShowSearchbar, SetShowSearchbar] = useState(false);
+export default function MobileNavbar({SetHideSearchbox, HideSearchbox}) {
 
     const NavbarStyle = `fixed bottom-6 left-0 right-0 z-50 rounded-2xl text-sm text-center w-[90vw] h-[4rem] mx-auto pt-2.5 backdrop-blur-3xl outline outline-1 outline-[#8c54fb]`;
     const defaultBtnStyle = 'nav h-fit text-[#b4b4b4]';
@@ -23,65 +19,17 @@ export const MobileNavbar = ({isMobile}) => { /* //TODO ADD SWIPE GESTURES TO CH
 
     return (
         <>
-        {ShowSearchbar
-        ?
-        <Searchbox isMobile={isMobile}></Searchbox>
-        :
-        <div className={NavbarStyle}> {/* //TODO HIDE nav WHEN DOWNSCROLLING */}
+        {HideSearchbox ?
+        <div className={NavbarStyle}>
             <div className='flex justify-between mx-4'>
-            <Link href="/Bio">
-                <motion.button
-                whileTap={{ scale: 0.8 }}
-                onClick={(e) => SetBtnFocus(e)}
-                className={selectedBtnStyle}>
-                    <div className={iconStyle}>
-                        <Image src='/images/bio.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='false' quality={100} />
-                    </div>
-                    Bio
-                </motion.button>
-            </Link>
-            <Link href="/Portfolio">
-                <motion.button
-                whileTap={{ scale: 0.8 }}
-                onClick={(e) => SetBtnFocus(e)}
-                className={defaultBtnStyle}>
-                    <div className={iconStyle}>
-                        <Image src='/images/portfolio.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
-                    </div>
-                    Portfolio
-                </motion.button>
-            </Link>
-            <Link href="/Blog">
-                <motion.button
-                whileTap={{ scale: 0.8 }}
-                onClick={(e) => SetBtnFocus(e)}
-                className={defaultBtnStyle}>
-                    <div className={iconStyle}>
-                        <Image src='/images/blog.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
-                    </div>
-                  Blog
-                </motion.button>
-            </Link>
-                <motion.button
-                whileTap={{ scale: 0.8 }}
-                onClick={() => SetShowSearchbar(!ShowSearchbar)}
-                className={defaultBtnStyle}>
-                    <div className={iconStyle}>
-                        <Image src='/images/search.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
-                    </div>
-                    Search
-                </motion.button>
-                <motion.button
-                whileTap={{ scale: 0.8 }}
-                onClick={(e) => SetBtnFocus(e)}
-                className={defaultBtnStyle}>
-                    <div className={iconStyle}>
-                        <Image src='/images/social.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
-                    </div>
-                    Socials
-                </motion.button>
+                <NavBtn SetHideSearchbox={SetHideSearchbox} page='/Bio' defaultBtnStyle={defaultBtnStyle} iconStyle={iconStyle} btnimg='/images/bio.png' name='Bio' btnType='selected' SetBtnFocus={SetBtnFocus}></NavBtn>
+                <NavBtn SetHideSearchbox={SetHideSearchbox} page='/Portfolio' defaultBtnStyle={defaultBtnStyle} iconStyle={iconStyle} btnimg='/images/portfolio.png' name='Portfolio' btnType='' SetBtnFocus={SetBtnFocus}></NavBtn>
+                <NavBtn SetHideSearchbox={SetHideSearchbox} page='/Blog' defaultBtnStyle={defaultBtnStyle} iconStyle={iconStyle} btnimg='/images/blog.png' name='Blog' btnType='' SetBtnFocus={SetBtnFocus}></NavBtn>
+                <NavBtn SetHideSearchbox={SetHideSearchbox} page='' defaultBtnStyle={defaultBtnStyle} iconStyle={iconStyle} btnimg='/images/search.png' name='Search' btnType='search' SetBtnFocus={SetBtnFocus}></NavBtn>
+                <NavBtn SetHideSearchbox={SetHideSearchbox} page='' defaultBtnStyle={defaultBtnStyle} iconStyle={iconStyle} btnimg='/images/social.png' name='Socials' btnType='' SetBtnFocus={SetBtnFocus}></NavBtn>
             </div>
-        </div>}
-            </>
+        </div>
+        : <Searchbox isMobile={true}></Searchbox>}
+        </>
     )
 }

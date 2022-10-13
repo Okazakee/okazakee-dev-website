@@ -5,13 +5,11 @@ import { motion } from 'framer-motion';
 import { MongoClient } from "mongodb";
 
 function Bio({bio, propic}) {
-  const [isMobile, SetIsMobile] = useState(false);
 
   return (
     <>
       <Head>
         <title>Biography - Okazakee.dev</title>
-        <link rel="icon" href="/favicon.svg"/>
       </Head>
       <motion.div
       initial={{ opacity: 0}}

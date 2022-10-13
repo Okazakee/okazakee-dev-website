@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const Searchbox = ({searchQuery, isMobile}) => {
+export default function Searchbox({searchQuery, isMobile}) {
 
   const searchBoxStyle = `text-[#653bba] bg-[#e8e8e8] outline-none transition-all duration-500 ease-in-out px-2 placeholder:text-center placeholder:opacity-80 placeholder:text-[#5b39a0]
   ${isMobile

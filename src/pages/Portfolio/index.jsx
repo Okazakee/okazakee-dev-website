@@ -8,13 +8,11 @@ import { MongoClient } from "mongodb";
 
 function Portfolio({portfolio_desc, portfolio_post_fields}) {
   const cardListStyle = 'md:flex items-center justify-start h-full w-full overflow-auto';
-  const [isMobile, SetIsMobile] = useState(false);
 
   return (
     <>
       <Head>
         <title>Portfolio - Okazakee.dev</title>
-        <link rel="icon" href="/favicon.svg"/>
       </Head>
       <h1 className='mx-4 mb-8 pt-4 text-center sm:text-2xl md:text-2xl lg:text-[1.75rem] text-2xl'>{portfolio_desc}</h1>
       <motion.div
