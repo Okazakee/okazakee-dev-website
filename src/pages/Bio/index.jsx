@@ -1,14 +1,17 @@
-import React from 'react'
-import Image from 'next/image';
+import React, { useState } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { MongoClient } from "mongodb";
 
-export default function Bio({bio, propic}) {
+function Bio({bio, propic}) {
+  const [isMobile, SetIsMobile] = useState(false);
 
   return (
     <>
       <Head>
         <title>Biography - Okazakee.dev</title>
+        <link rel="icon" href="/favicon.svg"/>
       </Head>
       <motion.div
       initial={{ opacity: 0}}
@@ -38,3 +41,33 @@ export default function Bio({bio, propic}) {
     </>
   )
 }
+
+export async function getStaticProps() {
+  try {
+      const client = await MongoClient.connect(process.env.MONGODB_URI);
+      const db = client.db("Website");
+
+      const biography = await db
+        .collection("Biography")
+        .find({})
+        .project({_id: 0})
+        .sort({})
+        .toArray();
+        const bio = JSON.parse(JSON.stringify(...biography)).text;
+        const propic= JSON.parse(JSON.stringify(...biography)).img;
+
+        return {
+          props: {
+            bio,
+            propic,
+          },
+          // Next.js will attempt to re-generate the page:
+          // - When a request comes in at most once every 10 seconds
+          revalidate: 60, // In seconds, change to 12 hours after project is done
+        };
+  } catch (e) {
+      console.error(e);
+  }
+}
+
+export default Bio;

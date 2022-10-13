@@ -3,17 +3,15 @@ import { Searchbox } from './Searchbox';
 import { motion } from 'framer-motion';
 import { SocialLink } from './SocialLink';
 
-export default function Navbar({SetPageName, PageName}) {
+export default function Navbar() {
 
   const defaultBtnStyle = 'nav mx-3 hover:underline hover:underline-offset-1 hover:text-[#8c54fb]';
   const selectedBtnStyle = 'nav mx-3 underline underline-offset-1 text-[#8c54fb]';
-  const searchBoxStyle = `min-w-fit w-full transition-all ease-in-out duration-300 ${PageName === 'bio' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
+  const searchBoxStyle = `min-w-fit w-full transition-all ease-in-out duration-300 ${'bio' === 'bio' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
 
-  const SetBtnFocus = (e, page) => { //thanks to Jack Rendor for this solution.
+  const SetBtnFocus = (e) => { //thanks to Jack Rendor for this solution.
     const buttons = Array.from(document.getElementsByClassName('nav'));
     const button = e.target;
-
-    SetPageName(page);
 
     buttons.map(button => button.className=defaultBtnStyle);
     button.className = selectedBtnStyle;
@@ -23,21 +21,21 @@ export default function Navbar({SetPageName, PageName}) {
       <div className='sticky top-0 z-50 flex items-center justify-between mx-auto px-2 py-4 backdrop-blur-[2px] rounded-b-xl'>
         <div className='flex text-2xl mr-1'>
           <motion.button
-            onClick={(e) => SetBtnFocus(e, 'bio')}
+            onClick={(e) => SetBtnFocus(e)}
             className={selectedBtnStyle}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}
             > Bio
           </motion.button>
           <motion.button
-            onClick={(e) => SetBtnFocus(e, 'portfolio')}
+            onClick={(e) => SetBtnFocus(e)}
             className={defaultBtnStyle}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}
             > Portfolio
           </motion.button>
           <motion.button
-            onClick={(e) => SetBtnFocus(e, 'blog')}
+            onClick={(e) => SetBtnFocus(e)}
             className={defaultBtnStyle}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}

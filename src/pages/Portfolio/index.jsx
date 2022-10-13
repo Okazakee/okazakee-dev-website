@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import { Card } from '../Common/Card';
+import Link from 'next/link';
+import Image from 'next/image';
+import {Card} from '../../components/Common/Card';
 import { motion } from 'framer-motion';
+import { MongoClient } from "mongodb";
 
-export default function Portfolio({portfolio_desc, portfolio_post_fields}) {
+function Portfolio({portfolio_desc, portfolio_post_fields}) {
   const cardListStyle = 'md:flex items-center justify-start h-full w-full overflow-auto';
+  const [isMobile, SetIsMobile] = useState(false);
 
   return (
     <>
       <Head>
         <title>Portfolio - Okazakee.dev</title>
+        <link rel="icon" href="/favicon.svg"/>
       </Head>
       <h1 className='mx-4 mb-8 pt-4 text-center sm:text-2xl md:text-2xl lg:text-[1.75rem] text-2xl'>{portfolio_desc}</h1>
       <motion.div
@@ -33,3 +38,33 @@ export default function Portfolio({portfolio_desc, portfolio_post_fields}) {
     </>
   )
 }
+
+export async function getStaticProps() {
+  try {
+      const client = await MongoClient.connect(process.env.MONGODB_URI);
+      const db = client.db("Website");
+
+      const portfolio = await db
+        .collection("Portfolio")
+        .find({})
+        .project({_id: 0})
+        .sort({})
+        .toArray();
+        const portfolio_desc= JSON.parse(JSON.stringify(...portfolio)).description;
+        const portfolio_post_fields= JSON.parse(JSON.stringify(portfolio))[1];
+
+        return {
+          props: {
+            portfolio_desc,
+            portfolio_post_fields,
+          },
+          // Next.js will attempt to re-generate the page:
+          // - When a request comes in at most once every 10 seconds
+          revalidate: 60, // In seconds, change to 12 hours after project is done
+        };
+  } catch (e) {
+      console.error(e);
+  }
+}
+
+export default Portfolio;

@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { Searchbox } from './Searchbox';
 import { motion } from 'framer-motion';
 
-export const MobileNavbar = ({SetPageName, isMobile}) => { /* //TODO ADD SWIPE GESTURES TO CHAGNE PAGE */
+export const MobileNavbar = ({isMobile}) => { /* //TODO ADD SWIPE GESTURES TO CHAGNE PAGE */
 
     const [ShowSearchbar, SetShowSearchbar] = useState(false);
 
@@ -12,11 +13,9 @@ export const MobileNavbar = ({SetPageName, isMobile}) => { /* //TODO ADD SWIPE G
     const selectedBtnStyle = 'nav underline underline-offset-1 h-fit text-[#e8e8e8]';
     const iconStyle = 'h-8 w-8 relative mx-auto pointer-events-none';
 
-    const SetBtnFocus = (e, page) => {
+    const SetBtnFocus = (e) => {
         const buttons = Array.from(document.getElementsByClassName('nav'));
         const button = e.target;
-
-        SetPageName(page);
 
         buttons.map(button => button.className=defaultBtnStyle);
         button.className = selectedBtnStyle;
@@ -26,37 +25,43 @@ export const MobileNavbar = ({SetPageName, isMobile}) => { /* //TODO ADD SWIPE G
         <>
         {ShowSearchbar
         ?
-        <Searchbox isMobile={isMobile}></Searchbox> /* //TODO ADD ANIMATION ON SHOWING, ADD CLEAR BUTTON ON RIGHT, PLACE FIXED ON TOP WHEN FOCUS */
+        <Searchbox isMobile={isMobile}></Searchbox>
         :
         <div className={NavbarStyle}> {/* //TODO HIDE nav WHEN DOWNSCROLLING */}
             <div className='flex justify-between mx-4'>
+            <Link href="/Bio">
                 <motion.button
                 whileTap={{ scale: 0.8 }}
-                onClick={(e) => SetBtnFocus(e, 'bio')}
+                onClick={(e) => SetBtnFocus(e)}
                 className={selectedBtnStyle}>
                     <div className={iconStyle}>
                         <Image src='/images/bio.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='false' quality={100} />
                     </div>
                     Bio
                 </motion.button>
+            </Link>
+            <Link href="/Portfolio">
                 <motion.button
                 whileTap={{ scale: 0.8 }}
-                onClick={(e) => SetBtnFocus(e, 'portfolio')}
+                onClick={(e) => SetBtnFocus(e)}
                 className={defaultBtnStyle}>
                     <div className={iconStyle}>
                         <Image src='/images/portfolio.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                     Portfolio
                 </motion.button>
+            </Link>
+            <Link href="/Blog">
                 <motion.button
                 whileTap={{ scale: 0.8 }}
-                onClick={(e) => SetBtnFocus(e, 'blog')}
+                onClick={(e) => SetBtnFocus(e)}
                 className={defaultBtnStyle}>
                     <div className={iconStyle}>
                         <Image src='/images/blog.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
                     </div>
                   Blog
                 </motion.button>
+            </Link>
                 <motion.button
                 whileTap={{ scale: 0.8 }}
                 onClick={() => SetShowSearchbar(!ShowSearchbar)}
@@ -68,7 +73,7 @@ export const MobileNavbar = ({SetPageName, isMobile}) => { /* //TODO ADD SWIPE G
                 </motion.button>
                 <motion.button
                 whileTap={{ scale: 0.8 }}
-                onClick={(e) => SetBtnFocus(e, 'blog')}
+                onClick={(e) => SetBtnFocus(e)}
                 className={defaultBtnStyle}>
                     <div className={iconStyle}>
                         <Image src='/images/social.png' alt='bioBtn' layout='fill' objectFit='scale-down' priority='true' quality={100} />
