@@ -4,11 +4,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {Card} from '../../components/Common/Card';
 import { motion } from 'framer-motion';
-import { MongoClient } from "mongodb";
 
-function Portfolio({portfolio_desc, portfolio_post_fields}) {
+function Portfolio({posts}) {
   const cardListStyle = 'md:flex items-center justify-start h-full w-full overflow-auto';
-
+  const portfolio_desc = 'test';
   return (
     <>
       <Head>
@@ -21,16 +20,9 @@ function Portfolio({portfolio_desc, portfolio_post_fields}) {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}>
         <div className={cardListStyle}>
-          <Card fields={portfolio_post_fields}></Card>
-          <Card fields={portfolio_post_fields}></Card>
-          <Card fields={portfolio_post_fields}></Card>
-          <Card fields={portfolio_post_fields}></Card>
-          <Card fields={portfolio_post_fields}></Card>
-          <Card fields={portfolio_post_fields}></Card>
-          <Card fields={portfolio_post_fields}></Card>
-          <Card fields={portfolio_post_fields}></Card>
-          <Card fields={portfolio_post_fields}></Card>
-          <Card fields={portfolio_post_fields}></Card>
+        {posts.map((post) => (
+          <Card key={post.id} fields={post}>{post.title}</Card>
+          ))}
         </div>
       </motion.div>
     </>
@@ -38,6 +30,23 @@ function Portfolio({portfolio_desc, portfolio_post_fields}) {
 }
 
 export async function getStaticProps() {
+  try {
+    const res = await fetch('https://fakerapi.it/api/v1/books?_quantity=50')
+    const posts = await res.json()
+
+        return {
+          props: {
+            posts: posts.data
+          },
+          // Next.js will attempt to re-generate the page:
+          // - When a request comes in at most once every 10 seconds
+          revalidate: 60, // In seconds, change to 12 hours after project is done
+        };
+  } catch (e) {
+      console.error(e);
+  }
+}
+/* export async function getStaticProps() {
   try {
       const client = await MongoClient.connect(process.env.MONGODB_URI);
       const db = client.db("Website");
@@ -63,6 +72,6 @@ export async function getStaticProps() {
   } catch (e) {
       console.error(e);
   }
-}
+} */
 
 export default Portfolio;
