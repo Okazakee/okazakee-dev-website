@@ -19,7 +19,7 @@ export default function Navbar({SetHideSearchbox, HideSearchbox}) {
   }
 
     return (
-      <div className='sticky top-0 z-50 flex items-center justify-between mx-auto px-2 py-4 backdrop-blur-[2px] rounded-b-xl'>
+      <div className='sticky flex items-center justify-between mx-auto px-2 py-4 rounded-2xl backdrop-blur-3xl'>
         <div className='flex text-2xl mr-1'>
           <NavBtnWide HideSearch={true} SetHideSearchbox={SetHideSearchbox} page='/Bio' selectedBtnStyle={selectedBtnStyle} defaultBtnStyle={defaultBtnStyle} name='Bio' btnType='selected' SetBtnFocus={SetBtnFocus}></NavBtnWide>
           <NavBtnWide HideSearch={false} SetHideSearchbox={SetHideSearchbox} page='/Portfolio' selectedBtnStyle={selectedBtnStyle} defaultBtnStyle={defaultBtnStyle} name='Portfolio' btnType='search' SetBtnFocus={SetBtnFocus}></NavBtnWide>

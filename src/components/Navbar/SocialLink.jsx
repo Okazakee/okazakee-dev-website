@@ -10,7 +10,7 @@ export const SocialLink = ({social, link}) => {
 
   return (
     <motion.a
-      className='flex items-center transition-all ease-in-out text-xl hover:bg-[#653bba] overflow-hidden rounded-xl'
+      className='flex items-center transition-all ease-in-out text-xl hover:bg-[#653bba] overflow-hidden rounded-lg'
       whileTap={{ scale: 0.8 }}
       href={'https://' + link}
       target="_blank"

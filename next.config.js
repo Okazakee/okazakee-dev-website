@@ -14,6 +14,6 @@ module.exports = {
     ]
   },
   images: {
-    domains: ['github.com', 'external-content.duckduckgo.com'],
+    domains: ['github.com', 'external-content.duckduckgo.com', 'random.imagecdn.app', 'some-random-api.ml'],
   },
 }

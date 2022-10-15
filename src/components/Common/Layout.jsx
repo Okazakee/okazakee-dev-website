@@ -7,7 +7,7 @@ export default function Layout({ children }) {
   const [HideSearchbox, SetHideSearchbox] = useState(true);
 
   return (
-    <div className="font-['White_Rabbit_Regular'] bg-[#090909] text-[#e8e8e8] min-h-screen min-w-screen scroll-smooth">
+    <div className="font-['White_Rabbit_Regular'] bg-[#090909] text-[#e8e8e8] min-h-screen min-w-screen scroll-smooth mx-auto">
       <Head>
         <link rel="icon" href="/favicon.svg"/>
       </Head>
