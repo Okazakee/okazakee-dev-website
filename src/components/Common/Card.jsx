@@ -17,7 +17,7 @@ export const Card = ({post}) => {
   }
 
   return (
-    <Link href={`/portfolio/posts/${post.id}`}>
+    <Link href={`/portfolio/posts/${post._id}`} passHref>
       <motion.div
       className={cardStyle}
       onHoverStart={(e) => SetPostFocus(e)}

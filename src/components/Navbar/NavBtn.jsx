@@ -15,7 +15,7 @@ function BtnWide({page, selectedBtnStyle, defaultBtnStyle, name, btnType, SetBtn
     }
 
     return (
-        <Link href={page}>
+        <Link href={page} passHref>
             <motion.button
                 className={btnType === 'selected' ? selectedBtnStyle : defaultBtnStyle}
                 onClick={(e) => manageBtns(e)}

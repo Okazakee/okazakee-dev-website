@@ -22,7 +22,7 @@ function Portfolio({portfolio}) {
       transition={{ duration: 0.2 }}>
         <div className={cardListStyle}>
           {portfolio.map((post) => (
-            <Card key={post.id} post={post}>{post.title}</Card>
+            <Card key={post._id} post={post}>{post.title}</Card>
             ))}
         </div>
       </motion.div>

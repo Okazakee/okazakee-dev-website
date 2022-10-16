@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 function MobileNavBtn({page, selectedBtnStyle, defaultBtnStyle, iconStyle, btnimg, name, btnType, SetBtnFocus, SetHideSearchbox}) {
 
     return (
-        <Link href={page}>
+        <Link href={page} passHref>
             <motion.button
             whileTap={{ scale: 0.8 }}
             className={btnType === 'selected' ? selectedBtnStyle : defaultBtnStyle}
