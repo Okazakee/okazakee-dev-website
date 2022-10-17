@@ -15,13 +15,13 @@ export default function Portfolio({data}) {
         <title>Portfolio - Okazakee.dev</title>
       </Head>
       <motion.div
-      className='items-center justify-center flex min-h-full'
+      className=''
       initial={{ opacity: 0}}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}>
         <div>
-          <h1 className='text-center sm:text-2xl md:text-2xl lg:text-[1.75rem] text-2xl'>
-            Welcome to my portfolio! Here you can find my personal projects.
+          <h1 className='text-center sm:text-2xl md:text-2xl lg:text-[1.75rem] text-2xl py-4 sm:py-2 cursor-default'>
+            Welcome to my <label className='text-[#8c54fb]'>portfolio!</label> Here you can find my personal projects.
           </h1>
           <div className={cardListStyle} ref={scrollRef}>
             {data.map((post) => (
