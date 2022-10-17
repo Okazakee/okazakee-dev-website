@@ -35,11 +35,9 @@ export async function getStaticProps() {
     const client = await MongoClient.connect(process.env.MONGODB_URI);
     const db = client.db("Website");
     const res = await db
-      .collection("Portfolio")
-      .find({})
-      .project({})
-      .sort({})
-      .toArray();
+                    .collection("Portfolio")
+                    .find({})
+                    .toArray();
     const data = JSON.parse(JSON.stringify(res));
 
       return {

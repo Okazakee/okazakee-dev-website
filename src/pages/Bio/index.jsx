@@ -46,11 +46,10 @@ export async function getStaticProps() {
       const db = client.db("Website");
 
       const biography = await db
-        .collection("Biography")
-        .find({})
-        .project({_id: 0})
-        .sort({})
-        .toArray();
+                              .collection("Biography")
+                              .find({})
+                              .project({_id: 0})
+                              .toArray();
         const bio = JSON.parse(JSON.stringify(...biography)).text;
         const propic= JSON.parse(JSON.stringify(...biography)).img;
 

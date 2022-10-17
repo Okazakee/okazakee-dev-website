@@ -6,7 +6,7 @@ export const SocialLink = ({social, link}) => {
   const [isHover, SetIsHover] = useState(false);
   const Icon = Icons['Fa' + social];
   const LinkStyle = `flex items-center justify-center transition-all ease-in-out duration-[400ms] ${isHover ? 'w-28 pr-1 opacity-100' : 'opacity-0  -mr-16 w-16'}`
-  const iconStyle = `m-1 w-6 h-6 ml-2`;
+  const iconStyle = `m-1 w-6 h-6`;
 
   return (
     <motion.a
