@@ -5,12 +5,12 @@ import { MongoClient, ObjectId } from 'mongodb';
 
 const Post = ({post}) => {
     const router = useRouter();
-    const { _id } = router.query;
+    const { _id, title } = router.query;
 
     return (
       <>
         <Head>
-          <title>{post.title} - Okazakee.dev</title>
+          <title>{title} - Okazakee.dev</title>
         </Head>
         <p className='flex justify-center text-4xl mt-52'>Post ID: {_id}</p>
       </>
@@ -28,7 +28,8 @@ export const getStaticPaths = async () => {
   const paths = res.map(post => {
     return {
       params: {
-        _id: post._id.toString()
+        _id: post._id.toString(),
+        title: post.title.split(" ").join("-")
       }
     }
   });
@@ -42,7 +43,7 @@ export const getStaticPaths = async () => {
 export async function getStaticProps(context) {
   const client = await MongoClient.connect(process.env.MONGODB_URI);
   const db = client.db("Website");
-  const id = context.params._id
+  const id = context.params._id;
   const res = await db
                     .collection("Portfolio")
                     .find({_id: ObjectId(id)})

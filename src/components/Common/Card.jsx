@@ -18,11 +18,11 @@ export const Card = ({post}) => {
   }
 
   return (
-    <Link href={'/Portfolio/posts/' + post._id} passHref>
+    <Link href={'/Portfolio/posts/' + post._id + '/' + title} passHref>
       <motion.button
       className={cardStyle}
-      onHoverStart={(e) => SetPostFocus(e)}
-      onHoverEnd={(e) => SetPostFocus(e)}
+      /* onHoverStart={(e) => SetPostFocus(e)}
+      onHoverEnd={(e) => SetPostFocus(e)} */
       whileHover={{ scale: 1.2,  }}>
         <div className=''>
           <Image className='' src={cover} alt='card cover' width={300} height={150} layout='responsive' objectFit='cover' priority='true' quality={100} />
