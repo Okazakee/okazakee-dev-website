@@ -5,7 +5,8 @@ import { motion } from 'framer-motion';
 
 export const Card = ({post}) => {
   const cover = post.img;
-  const [reverse, SetReverse] = useState(false);
+  const title = post.title.split(" ").join("-");
+  /* const [reverse, SetReverse] = useState(false); */
   const cardStyle = 'card z-5 bg-[#653bba] rounded-b-lg text-[#e8e8e8] text-center text-xl min-h-fit min-w-fit overflow-hidden sm:mx-4 sm:mb-4 mx-10 mb-8'
 
   const SetPostFocus = (e) => {
@@ -17,8 +18,8 @@ export const Card = ({post}) => {
   }
 
   return (
-    <Link href={`/portfolio/posts/${post._id}`} passHref>
-      <motion.div
+    <Link href={'/Portfolio/posts/' + post._id} passHref>
+      <motion.button
       className={cardStyle}
       onHoverStart={(e) => SetPostFocus(e)}
       onHoverEnd={(e) => SetPostFocus(e)}
@@ -32,7 +33,7 @@ export const Card = ({post}) => {
             <p>{post.description}</p>
           </div>
         </div>
-      </motion.div>
+      </motion.button>
     </Link>
   )
 }

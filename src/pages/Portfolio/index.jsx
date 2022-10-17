@@ -4,7 +4,7 @@ import {Card} from '../../components/Common/Card';
 import { motion } from 'framer-motion';
 import { MongoClient } from 'mongodb';
 
-function Portfolio({portfolio}) {
+function Portfolio({data}) {
   const cardListStyle = 'items-center justify-start h-full w-full overflow-x-hidden';
 
   return (
@@ -21,7 +21,7 @@ function Portfolio({portfolio}) {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}>
         <div className={cardListStyle}>
-          {portfolio.map((post) => (
+          {data.map((post) => (
             <Card key={post._id} post={post}>{post.title}</Card>
             ))}
         </div>
@@ -32,24 +32,25 @@ function Portfolio({portfolio}) {
 
 export async function getStaticProps() {
   try {
-      const client = await MongoClient.connect(process.env.MONGODB_URI);
-      const db = client.db("Website");
+    const client = await MongoClient.connect(process.env.MONGODB_URI);
+    const db = client.db("Website");
+    const res = await db
+      .collection("Portfolio")
+      .find({})
+      .project({})
+      .sort({})
+      .toArray();
+    const data = JSON.parse(JSON.stringify(res));
 
-      const portfolio = await db
-        .collection("Portfolio")
-        .find({})
-        .project({})
-        .sort({})
-        .toArray();
+      return {
+        props: {
+          data,
+        },
+        // Next.js will attempt to re-generate the page:
+        // - When a request comes in at most once every 10 seconds
+        revalidate: 60, // In seconds, change to 12 hours after project is done
+      };
 
-        return {
-          props: {
-            portfolio: JSON.parse(JSON.stringify(portfolio)),
-          },
-          // Next.js will attempt to re-generate the page:
-          // - When a request comes in at most once every 10 seconds
-          revalidate: 60, // In seconds, change to 12 hours after project is done
-        };
   } catch (e) {
       console.error(e);
   }
