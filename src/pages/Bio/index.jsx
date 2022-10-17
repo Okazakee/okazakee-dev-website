@@ -15,8 +15,8 @@ export default function Bio({bio, propic}) {
       initial={{ opacity: 0}}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}
-      className='items-center justify-center flex h-full'>
-        <div className='mb-[10vh]'>
+      className='mb-[10vh]'>
+        <div className=''>
           <motion.div className='h-48 w-48 relative mx-auto' whileHover={{scale: 1.1}} whileTap={{ scale: 0.9 }}>
               <Image
               className='rounded-full'

@@ -11,11 +11,11 @@ export default function Layout({ children }) {
       <Head>
         <link rel="icon" href="/favicon.svg"/>
       </Head>
-      <main className="font-['White_Rabbit_Regular'] bg-[#090909] text-[#e8e8e8] scroll-smooth mx-auto h-screen">
+      <main className="font-['White_Rabbit_Regular'] bg-[#090909] text-[#e8e8e8] scroll-smooth mx-auto min-h-screen w-full flex items-center justify-center">
         <div className='md:hidden'>
           <MobileNavbar HideSearchbox={HideSearchbox} SetHideSearchbox={SetHideSearchbox}></MobileNavbar>
         </div>
-        <div className='hidden md:block md:max-w-7xl md:mx-auto'>
+        <div className='hidden md:block'>
           <Navbar HideSearchbox={HideSearchbox} SetHideSearchbox={SetHideSearchbox}></Navbar>
         </div>
         {children}
