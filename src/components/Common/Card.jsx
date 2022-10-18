@@ -7,7 +7,7 @@ export const Card = ({post}) => {
   const cover = post.img;
   const title = post.title.split(" ").join("-");
   /* const [reverse, SetReverse] = useState(false); */
-  const cardStyle = 'card z-5 bg-[#653bba] rounded-b-lg text-[#e8e8e8] text-center text-xl m-4'
+  const cardStyle = 'card z-5 bg-[#653bba] rounded-b-sm text-[#e8e8e8] text-center text-xl mb-5 mx-2'
 
   const SetPostFocus = (e) => {
     const cards = Array.from(document.getElementsByClassName('card'));
