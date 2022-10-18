@@ -7,7 +7,7 @@ import { MongoClient } from 'mongodb';
 
 export default function Portfolio({data}) {
   const scrollRef = useHorizontalScroll();
-  const cardListStyle = '';
+  const cardListStyle = 'mx-1';
 
   return (
     <>
@@ -20,7 +20,7 @@ export default function Portfolio({data}) {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}>
         <div>
-          <h1 className='text-center sm:text-2xl md:text-2xl lg:text-[1.75rem] text-2xl py-4 sm:py-2 cursor-default'>
+          <h1 className='text-center sm:text-2xl md:text-2xl lg:text-[1.75rem] text-2xl pb-4 sm:pb-2 cursor-default mx-2'>
             Welcome to my <label className='text-[#8c54fb]'>portfolio!</label> Here you can find my personal projects.
           </h1>
           <div className={cardListStyle} ref={scrollRef}>
@@ -41,8 +41,10 @@ export async function getStaticProps() {
     const res = await db
                     .collection("Portfolio")
                     .find({})
+                    .project({_id: 1, title: 1, img: 1})
                     .toArray();
-    const data = JSON.parse(JSON.stringify(res));
+
+                    const data = JSON.parse(JSON.stringify(res));
 
       return {
         props: {
