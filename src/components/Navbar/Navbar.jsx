@@ -26,7 +26,7 @@ export default function Navbar({SetHideSearchbox, HideSearchbox}) {
           <NavBtnWide HideSearch={false} SetHideSearchbox={SetHideSearchbox} page='/Blog' selectedBtnStyle={selectedBtnStyle} defaultBtnStyle={defaultBtnStyle} name='Blog' btnType='search' SetBtnFocus={SetBtnFocus}></NavBtnWide>
         </div>
         <div className={searchBoxStyle}>
-          <Searchbox isMobile={false}></Searchbox> {/* //TODO GET THIS TO HIDE ON BIO PAGE */}
+          <Searchbox isMobile={false}></Searchbox>
         </div>
         <motion.div
         className='flex justify-end hover:ml-4 ml-3 mr-1'>
