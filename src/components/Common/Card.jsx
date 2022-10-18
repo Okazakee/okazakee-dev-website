@@ -7,7 +7,7 @@ export const Card = ({post}) => {
   const cover = post.img;
   const title = post.title.split(" ").join("-");
   /* const [reverse, SetReverse] = useState(false); */
-  const cardStyle = 'card z-5 bg-[#653bba] rounded-b-sm text-[#e8e8e8] text-center text-xl mb-5 mx-2'
+  const cardStyle = 'card bg-[#653bba] rounded-xl text-[#e8e8e8] text-center text-xl m-5 w-[85vw] sm:w-[80vw] md:w-[45vw] lg:w-[30vw] md:shadow-2xl hover:shadow-[#5d29a4]'
 
   const SetPostFocus = (e) => {
     const cards = Array.from(document.getElementsByClassName('card'));
@@ -21,11 +21,14 @@ export const Card = ({post}) => {
     <Link href={'/Portfolio/posts/' + post._id + '/' + title} passHref>
       <motion.button
       className={cardStyle}
+      whileTap={{ scale: 0.8 }}
       /* onHoverStart={(e) => SetPostFocus(e)}
       onHoverEnd={(e) => SetPostFocus(e)} */
-      whileHover={{ scale: 1.2}}>
-          <Image className='' src={cover} alt='card cover' width={300} height={150} layout='intrinsic' priority='true' quality={100} />
-          <p className='py-5'>{post.title}</p>
+      whileHover={{ scale: 1.1}}>
+          <div className='relative h-[25vh] sm:h-[30vh] md:h-[30vh] lg:h-[30vh]'>
+            <Image className='rounded-t-xl' src={cover} alt='card cover' width={2000} height={2000} layout='fill' objectFit='cover' priority='true' quality={100} />
+          </div>
+          <div className='p-5'><p>{post.title}</p></div>
       </motion.button>
     </Link>
   )

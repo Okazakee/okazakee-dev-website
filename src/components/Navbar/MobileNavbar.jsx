@@ -4,7 +4,7 @@ import Searchbox from './Searchbox';
 
 export default function MobileNavbar({SetHideSearchbox, HideSearchbox}) {
 
-    const NavbarStyle = `fixed bottom-6 left-0 right-0 z-50 rounded-2xl text-sm text-center w-[90vw] h-[4rem] mx-auto pt-2.5 backdrop-blur-3xl outline outline-1 outline-[#8c54fb]`;
+    const NavbarStyle = `fixed bottom-6 left-0 right-0 z-50 rounded-2xl text-sm text-center w-[90vw] h-[4rem] mx-auto pt-2.5 backdrop-blur-md backdrop-brightness-[.3] outline outline-1 outline-[#8c54fb]`;
     const defaultBtnStyle = 'nav h-fit text-[#b4b4b4]';
     const selectedBtnStyle = 'nav underline underline-offset-1 h-fit text-[#e8e8e8]';
     const iconStyle = 'h-8 w-8 relative mx-auto pointer-events-none';
