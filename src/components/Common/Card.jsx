@@ -24,7 +24,7 @@ export const Card = ({post}) => {
       whileTap={{ scale: 0.8 }}
       /* onHoverStart={(e) => SetPostFocus(e)}
       onHoverEnd={(e) => SetPostFocus(e)} */
-      whileHover={{ scale: 1.1}}>
+      whileHover={{ scale: 1.01}}>
           <div className='relative h-[25vh] sm:h-[30vh] md:h-[30vh] lg:h-[30vh]'>
             <Image className='rounded-t-xl' src={cover} alt='card cover' width={2000} height={2000} layout='fill' objectFit='cover' priority='true' quality={100} />
           </div>
