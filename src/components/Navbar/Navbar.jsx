@@ -1,13 +1,13 @@
 import { useState, useContext } from 'react';
+import { MainContext } from '../context/MainContext';
 import Searchbox from './Searchbox';
 import { SocialLink } from './SocialLink';
 import NavBtnWide from './NavBtn';
 import { motion } from 'framer-motion';
-import { MainContext } from '../context/MainContext';
 
 export default function Navbar() {
 
-  const { HideSearchbox, SetHideSearchbox } = useContext(MainContext);
+  const { HideSearchbox } = useContext(MainContext);
 
   const styles = {
   defaultBtnStyle: 'nav mx-3 hover:underline hover:underline-offset-1 hover:text-[#8c54fb] transition-all',
@@ -31,9 +31,9 @@ export default function Navbar() {
       <div className={styles.navStyle}>
         <div className={styles.mainDiv}>
           <div className={styles.innerDiv}>
-            <NavBtnWide HideSearch={true} SetHideSearchbox={SetHideSearchbox} page='/Bio' selectedBtnStyle={styles.selectedBtnStyle} defaultBtnStyle={styles.defaultBtnStyle} name='Bio' btnType='selected' SetBtnFocus={SetBtnFocus}></NavBtnWide>
-            <NavBtnWide HideSearch={false} SetHideSearchbox={SetHideSearchbox} page='/Portfolio' selectedBtnStyle={styles.selectedBtnStyle} defaultBtnStyle={styles.defaultBtnStyle} name='Portfolio' btnType='search' SetBtnFocus={SetBtnFocus}></NavBtnWide>
-            <NavBtnWide HideSearch={false} SetHideSearchbox={SetHideSearchbox} page='/Blog' selectedBtnStyle={styles.selectedBtnStyle} defaultBtnStyle={styles.defaultBtnStyle} name='Blog' btnType='search' SetBtnFocus={SetBtnFocus}></NavBtnWide>
+            <NavBtnWide HideSearch={true} page='/Bio' selectedBtnStyle={styles.selectedBtnStyle} defaultBtnStyle={styles.defaultBtnStyle} name='Bio' btnType='selected' SetBtnFocus={SetBtnFocus}></NavBtnWide>
+            <NavBtnWide HideSearch={false} page='/Portfolio' selectedBtnStyle={styles.selectedBtnStyle} defaultBtnStyle={styles.defaultBtnStyle} name='Portfolio' btnType='search' SetBtnFocus={SetBtnFocus}></NavBtnWide>
+            <NavBtnWide HideSearch={false} page='/Blog' selectedBtnStyle={styles.selectedBtnStyle} defaultBtnStyle={styles.defaultBtnStyle} name='Blog' btnType='search' SetBtnFocus={SetBtnFocus}></NavBtnWide>
           </div>
           <div className={styles.searchBoxStyle}>
             <Searchbox isMobile={styles.false}></Searchbox>

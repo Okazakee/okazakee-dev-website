@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import { useState, useContext } from 'react';
+import { MainContext } from '../context/MainContext';
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
-function MobileNavBtn({page, selectedBtnStyle, defaultBtnStyle, iconStyle, btnimg, name, btnType, SetBtnFocus, SetHideSearchbox}) {
+function MobileNavBtn({page, selectedBtnStyle, defaultBtnStyle, iconStyle, btnimg, name, btnType, SetBtnFocus}) {
+
+    const { SetHideSearchbox } = useContext(MainContext);
 
     return (
         <Link href={page} passHref>
