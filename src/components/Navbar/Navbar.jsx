@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import { useState, useContext } from 'react';
 import Searchbox from './Searchbox';
 import { SocialLink } from './SocialLink';
 import NavBtnWide from './NavBtn';
 import { motion } from 'framer-motion';
+import { MainContext } from '../context/MainContext';
 
-export default function Navbar({SetHideSearchbox, HideSearchbox}) {
+export default function Navbar() {
+
+  const { HideSearchbox, SetHideSearchbox } = useContext(MainContext);
 
   const styles = {
   defaultBtnStyle: 'nav mx-3 hover:underline hover:underline-offset-1 hover:text-[#8c54fb] transition-all',
