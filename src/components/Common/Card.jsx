@@ -21,7 +21,7 @@ export const Card = ({post}) => {
     <Link href={'/Portfolio/posts/' + post._id + '/' + title} passHref>
       <motion.button
       className={cardStyle}
-      whileTap={{ scale: 0.8 }}
+      whileTap={{ scale: 0.9 }}
       /* onHoverStart={(e) => SetPostFocus(e)}
       onHoverEnd={(e) => SetPostFocus(e)} */
       whileHover={{ scale: 1.01}}>

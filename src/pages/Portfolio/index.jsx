@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import {useHorizontalScroll} from '../../components/Utils/useHorizontalScroll';
 import {Card} from '../../components/Common/Card';
 import { motion } from 'framer-motion';
 import { MongoClient } from 'mongodb';
 
 export default function Portfolio({data}) {
-  const scrollRef = useHorizontalScroll();
   const cardListStyle = 'mx-2 grid justify-items-center md:grid-cols-2 lg:grid-cols-3'; //TODO SET FIRST POST WIDER ON SCREEN, NO CHANGES ON MOBILE FOR NOW
 
   return (
@@ -23,7 +21,7 @@ export default function Portfolio({data}) {
           <h1 className='text-center sm:text-2xl md:text-2xl lg:text-[1.75rem] text-2xl pb-2 sm:pb-5 cursor-default mx-2'>
             Welcome to my <label className='text-[#8c54fb]'>portfolio!</label> Here you can find my personal projects.
           </h1>
-          <div className={cardListStyle} ref={scrollRef}>
+          <div className={cardListStyle}>
             {data.map((post) => (
               <Card key={post._id} post={post}>{post.title}</Card>
               ))}

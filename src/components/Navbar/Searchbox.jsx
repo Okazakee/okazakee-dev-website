@@ -12,7 +12,7 @@ export default function Searchbox({searchQuery, isMobile}) {
         <input
             className={searchBoxStyle}
             type='search'
-            placeholder="Search posts"
+            placeholder="Search posts..."
             onChange={searchQuery}
             />
     </div>
