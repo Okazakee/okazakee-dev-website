@@ -12,7 +12,7 @@ export default function Post({post}) {
         <Head>
           <title>{post.title} - Okazakee.dev</title>
         </Head>
-        <p className='flex justify-center text-4xl mt-52'>Post ID: {_id}</p>
+        <p className='flex justify-center text-2xl mt-52'>Post ID: {_id}</p>
       </>
     )
 }

@@ -1,11 +1,11 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../context/MainContext';
 import NavBtn from './MobileNavBtn';
 import Searchbox from './Searchbox';
 
 export default function MobileNavbar() {
 
-    const { HideSearchbox } = useContext(MainContext);
+    const { HideSearchbox, setSearchfield, searchfield } = useContext(MainContext);
 
     const styles = {
     NavbarStyle: `fixed bottom-6 left-0 right-0 z-50 rounded-2xl text-sm text-center w-[90vw] h-[4rem] mx-auto pt-2.5 backdrop-blur-md backdrop-brightness-[.3] outline outline-1 outline-[#8c54fb]`,
@@ -22,6 +22,14 @@ export default function MobileNavbar() {
         button.className = styles.selectedBtnStyle;
     }
 
+    const OnSearchChange = (text) => {
+        setSearchfield(text.target.value);
+    }
+
+    useEffect(() => {
+        console.log(searchfield);
+      }, [setSearchfield])
+
     return (
         <>
         {HideSearchbox ?
@@ -34,7 +42,7 @@ export default function MobileNavbar() {
                 <NavBtn page='' defaultBtnStyle={styles.defaultBtnStyle} iconStyle={styles.iconStyle} btnimg='/images/social.png' name='Socials' btnType='' SetBtnFocus={SetBtnFocus}></NavBtn>
             </div>
         </div>
-        : <Searchbox isMobile={true}></Searchbox>}
+        : <Searchbox isMobile={true} searchChange={OnSearchChange}></Searchbox>}
         </>
     )
 }
