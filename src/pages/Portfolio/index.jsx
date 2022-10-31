@@ -5,7 +5,11 @@ import { motion } from 'framer-motion';
 import { MongoClient } from 'mongodb';
 
 export default function Portfolio({data}) {
-  const cardListStyle = 'mx-2 grid justify-items-center md:grid-cols-2 lg:grid-cols-3'; //TODO SET FIRST POST WIDER ON SCREEN, NO CHANGES ON MOBILE FOR NOW
+
+  const styles = {
+    cardListStyle: 'mx-2 grid justify-items-center md:grid-cols-2 lg:grid-cols-3',
+    h1: 'text-center sm:text-2xl md:text-2xl lg:text-[1.75rem] text-2xl pb-2 sm:pb-5 cursor-default mx-2',
+  }
 
   return (
     <>
@@ -18,10 +22,10 @@ export default function Portfolio({data}) {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}>
         <div>
-          <h1 className='text-center sm:text-2xl md:text-2xl lg:text-[1.75rem] text-2xl pb-2 sm:pb-5 cursor-default mx-2'>
+          <h1 className={styles.h1}>
             Welcome to my <label className='text-[#8c54fb]'>portfolio!</label> Here you can find my personal projects.
           </h1>
-          <div className={cardListStyle}>
+          <div className={styles.cardListStyle}>
             {data.map((post) => (
               <Card key={post._id} post={post}>{post.title}</Card>
               ))}

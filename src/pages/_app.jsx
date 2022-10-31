@@ -4,12 +4,15 @@ config.autoAddCss = false
 import '../styles/globals.css'
 import '/Fonts/Fonts.css';
 import Layout from '../components/Common/Layout';
+import { MainProvider } from '../components/context/MainContext';
 
 function MyApp({ Component, pageProps }) {
   return (
-  <Layout>
-    <Component {...pageProps} />
-  </Layout>
+    <MainProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </MainProvider>
   )
 }
 
