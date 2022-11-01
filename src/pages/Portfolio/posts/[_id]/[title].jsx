@@ -2,8 +2,10 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router'
 import { MongoClient, ObjectId } from 'mongodb';
+import { remark } from 'remark';
+import html from 'remark-html';
 
-export default function Post({post}) {
+export default function Post({post, contentHtml}) {
     const router = useRouter();
     const { _id } = router.query;
 
@@ -13,6 +15,7 @@ export default function Post({post}) {
           <title>{post.title} - Okazakee.dev</title>
         </Head>
         <p className='flex justify-center text-2xl mt-52'>Post ID: {_id}</p>
+        <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
       </>
     )
 }
@@ -49,10 +52,17 @@ export async function getStaticProps(context) {
                     .find({_id: ObjectId(id)})
                     .toArray();
   const post = JSON.parse(JSON.stringify(...res));
+
+  const processedContent = await remark()
+    .use(html)
+    .process(post.data);
+  const contentHtml = processedContent.toString();
+
     return {
     // Passed to the page component as props
     props: {
-      post
+      post,
+      contentHtml
     },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in at most once every 10 seconds
