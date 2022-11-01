@@ -14,8 +14,10 @@ export default function Post({post, contentHtml}) {
         <Head>
           <title>{post.title} - Okazakee.dev</title>
         </Head>
-        <p className='flex justify-center text-2xl mt-52'>Post ID: {_id}</p>
-        <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+        <div className='max-w-7xl'>
+          <p className='flex justify-center text-2xl'>Post ID: {_id}</p>
+          <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+        </div>
       </>
     )
 }

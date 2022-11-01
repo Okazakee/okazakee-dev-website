@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { MainContext } from '../context/MainContext';
 import Searchbox from './Searchbox';
 import { SocialLink } from './SocialLink';
-import NavBtnWide from './NavBtn';
+import NavBtn from './NavBtn';
 import { motion } from 'framer-motion';
 
 export default function Navbar() {
@@ -19,21 +19,13 @@ export default function Navbar() {
   linksDiv: 'flex justify-end hover:ml-4 ml-3 mr-1'
   }
 
-  const SetBtnFocus = (e) => { //thanks to Jack Rendor for this solution.
-    const buttons = Array.from(document.getElementsByClassName('nav'));
-    const button = e.target;
-
-    buttons.map(button => button.className = styles.defaultBtnStyle);
-    button.className = styles.selectedBtnStyle;
-  }
-
     return (
       <div className={styles.navStyle}>
         <div className={styles.mainDiv}>
           <div className={styles.innerDiv}>
-            <NavBtnWide HideSearch={true} page='/Bio' selectedBtnStyle={styles.selectedBtnStyle} defaultBtnStyle={styles.defaultBtnStyle} name='Bio' btnType='selected' SetBtnFocus={SetBtnFocus}></NavBtnWide>
-            <NavBtnWide HideSearch={false} page='/Portfolio' selectedBtnStyle={styles.selectedBtnStyle} defaultBtnStyle={styles.defaultBtnStyle} name='Portfolio' btnType='search' SetBtnFocus={SetBtnFocus}></NavBtnWide>
-            <NavBtnWide HideSearch={false} page='/Blog' selectedBtnStyle={styles.selectedBtnStyle} defaultBtnStyle={styles.defaultBtnStyle} name='Blog' btnType='search' SetBtnFocus={SetBtnFocus}></NavBtnWide>
+            <NavBtn HideSearch={true} page='/Bio' selectedBtnStyle={styles.selectedBtnStyle} defaultBtnStyle={styles.defaultBtnStyle} name='Bio' btnType='selected'></NavBtn>
+            <NavBtn HideSearch={false} page='/Portfolio' selectedBtnStyle={styles.selectedBtnStyle} defaultBtnStyle={styles.defaultBtnStyle} name='Portfolio' btnType='search'></NavBtn>
+            <NavBtn HideSearch={false} page='/Blog' selectedBtnStyle={styles.selectedBtnStyle} defaultBtnStyle={styles.defaultBtnStyle} name='Blog' btnType='search'></NavBtn>
           </div>
           <div className={styles.searchBoxStyle}>
             <Searchbox isMobile={styles.false}></Searchbox>
