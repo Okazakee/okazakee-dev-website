@@ -25,11 +25,9 @@ export const Card = ({post}) => {
       <motion.button
       className={styles.cardStyle}
       whileTap={{ scale: 0.9 }}
-      /* onHoverStart={(e) => SetPostFocus(e)}
-      onHoverEnd={(e) => SetPostFocus(e)} */
       whileHover={{ scale: 1.01}}>
           <div className={styles.imgdiv}>
-            <Image className='rounded-t-xl' src={cover} alt='card cover' width={2000} height={2000} layout='fill' objectFit='cover' priority='true' quality={100} />
+            <Image className='rounded-t-xl' src={cover} alt='card cover' layout='fill' objectFit='cover' priority='true' quality={100} />
           </div>
           <div className='p-5'><p>{post.title}</p></div>
       </motion.button>
