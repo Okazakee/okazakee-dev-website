@@ -1,15 +1,15 @@
-<h3 align="center"><img src=".github/assets/logo.png"></h3>
+#
+# Fedora WSL Installer
 
----
-Hello everyone! I am proud to announce my new utility!
+Hello everyone! I am proud to announce my **new utility**!
 
-I often use WSL to do stuff since I can't install Linux directly for reasons, and I noticed that there is no easy way to get Fedora, only Ubuntu or Debian etc... So after days of searching and finding nothing, I decided to create my own solution, at least I avoid going crazy and maybe others need it too.
+I often use WSL to do stuff since I can't install Linux directly for *reasons*, and I noticed that there is no easy way to get vanilla Fedora, only Ubuntu or Debian etc... So after days of searching and finding nothing, I decided to create my own solution, at least I avoid going crazy and maybe others need it too.
+
 ### Usage
 
-- Run `iex ((New-Object System.Net.WebClient).DownloadString('https://www.okazakee.dev/wsl-installer'))` in your powershell.
+- Run `iex ((New-Object System.Net.WebClient).
+DownloadString('https://www.okazakee.dev/wsl-installer'))` in your powershell.
 - Choose an option from menu.
-
-<img src=".github/assets/wt.png" alt="img" align="right" width="650px">
 
 ### Requirements
 
@@ -26,3 +26,5 @@ I often use WSL to do stuff since I can't install Linux directly for reasons, an
 - Automatically set start menu shortcut for WSL.
 - Automatically check if Docker is running.
 - Store vars in tmp file, check if it exists before asking user.
+#
+*The project is completely open-source all details on the dedicated [GitHub page](https://github.com/Okazakee/Fedora-WSL-Installer).*

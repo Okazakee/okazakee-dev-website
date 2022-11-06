@@ -18,13 +18,13 @@ const MainProvider = ({ children }) =>  {
   const posts = [
     {
       _id: 1,
-      title: 'This Website!',
+      title: 'This Website',
       data: "",
       img: 'https://github.com/Okazakee/Global-Assets/blob/main/VSCodium_SwXGpHbElE.png?raw=true'
     },
     {
       _id: 2,
-      title: 'Calypso-Pi - Project',
+      title: 'Calypso-Pi Project',
       data: 'https://raw.githubusercontent.com/Okazakee/Fedora-WSL-Installer/main/README.md',
       img: 'https://github.com/Okazakee/Global-Assets/blob/main/logo-dev.png?raw=true'
     },
