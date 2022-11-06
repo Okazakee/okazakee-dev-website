@@ -16,7 +16,7 @@ export default function Bio() {
   }
 
   const data = {
-    bio: `My real name is Cristian, aka Okazakee on the web, I'm a 23 years old junior Web Developer from Italy. I grew up aside my nerdy stuff since young age, I'm an IT enthusiast and I love Open Source, I worked as video editor in post production for years and in late 2021 I decided to switch my path to Web Development. I am working in different personal projects and dream to become a Full Stack developer in some years. Feel free to check my portfolio and my social profiles!`,
+    bio: `My real name is Cristian, aka Okazakee on the web, I'm a 23 years old junior Web Developer from Italy. I grew up beside my nerdy stuff since young age, I'm an IT enthusiast and I love Open Source, I worked as video editor in post production for years and in late 2021 I decided to switch my path to Web Development. I am working in different personal projects and dream to become a Full Stack developer in some years. Feel free to check my portfolio and my social profiles!`,
     propic: 'https://github.com/Okazakee/Global-Assets/blob/main/propic%20jpg.jpg?raw=true'
   };
 
