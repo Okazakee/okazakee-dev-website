@@ -9,7 +9,6 @@ import { motion } from 'framer-motion';
 export default function Navbar({query}) {
 
   const { HideSearchbox } = useContext(MainContext);
-  const router = useRouter();
 
   const styles = {
     searchBoxStyle: `min-w-fit w-full transition-all ease-in-out duration-300 ${HideSearchbox ? 'opacity-0 pointer-events-none' : 'opacity-100'}`,
@@ -29,12 +28,10 @@ export default function Navbar({query}) {
           <div className={styles.innerDiv}>
             <NavBtn HideSearch={true} page='/Bio' name='Bio' btnType='selected'></NavBtn>
             <NavBtn HideSearch={false} page='/Portfolio' name='Portfolio' btnType='search'></NavBtn>
-            <NavBtn HideSearch={false} page='/Blog' name='Blog' btnType='search'></NavBtn>
-            <button onClick={() => console.log(query)}>a</button>
           </div>
-          <div className={styles.searchBoxStyle}>
+          {/* <div className={styles.searchBoxStyle}>
             <Searchbox isMobile={styles.false}></Searchbox>
-          </div>
+          </div> */}
           <motion.div
           className={styles.linksDiv}>
             <SocialLink link='www.linkedin.com/in/okazakee/' social='Linkedin'></SocialLink>
@@ -47,12 +44,4 @@ export default function Navbar({query}) {
         </div>
       </div>
     );
-}
-
-export async function getServerSideProps(context) {
-  return {
-    props: {
-      query: context.query
-    },
-  };
 }

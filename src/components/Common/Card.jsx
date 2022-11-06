@@ -21,7 +21,7 @@ export const Card = ({post}) => {
   }
 
   return (
-    <Link href={'/Portfolio/posts/' + post._id + '/' + title} passHref>
+    <Link href={'/Portfolio/posts/' + title} passHref>
       <motion.button
       className={styles.cardStyle}
       whileTap={{ scale: 0.9 }}

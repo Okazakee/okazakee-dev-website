@@ -18,7 +18,7 @@ function NavBtn({page, name, btnType, HideSearch}) {
   return (
     <Link href={page} passHref>
       <motion.button
-        className={navBtnStyles.defaultBtnStyle}
+        className={btnType === 'selected' ? navBtnStyles.selectedBtnStyle : navBtnStyles.defaultBtnStyle}
         onClick={(e) => btnHandler(e)}
         whileTap={{ scale: 0.9 }}
         > {name}
