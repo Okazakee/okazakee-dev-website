@@ -2,7 +2,7 @@
 # Calypso-Pi Project
 [www.calypso-pi.xyz](www.calypso-pi.xyz)
 
-This project is focused on creating a Minecraft Server connected to a Web Platform using aSingle Board Computer and Docker. At the end of the above, the idea is to create a system for **"Plug & Play"** installation.
+This project is focused on creating a Minecraft Server connected to a Web Platform using a Single Board Computer and Docker. At the end of the above, the idea is to create a system for **"Plug & Play"** installation.
 
 In the development of the Web Platform **NextJS** will be used as frontend framework and **MariaDB** will be used to store user data (**NestJS/ExpressJS** will be used as ackend framework if there will be need to).
 
