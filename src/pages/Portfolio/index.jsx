@@ -39,3 +39,29 @@ export default function Portfolio() {
     </>
   )
 }
+
+export async function getStaticProps() {
+  try {
+    const client = await MongoClient.connect(process.env.MONGODB_URI);
+    const db = client.db("Website");
+    const res = await db
+                    .collection("Portfolio")
+                    .find({})
+                    .project({_id: 1, title: 1, img: 1})
+                    .toArray();
+
+                    const data = JSON.parse(JSON.stringify(res));
+
+      return {
+        props: {
+          data,
+        },
+        // Next.js will attempt to re-generate the page:
+        // - When a request comes in at most once every 10 seconds
+        revalidate: 60, // In seconds, change to 12 hours after project is done
+      };
+
+  } catch (e) {
+      console.error(e);
+  }
+}
