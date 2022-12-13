@@ -3,8 +3,9 @@ import Head from 'next/head';
 import { MainContext } from '../../components/context/MainContext';
 import {Card} from '../../components/Common/Card';
 import { motion } from 'framer-motion';
+import { MongoClient } from 'mongodb';
 
-export default function Portfolio() {
+export default function Portfolio({posts}) {
 
   const styles = {
 
@@ -12,7 +13,7 @@ export default function Portfolio() {
     h1: 'text-center sm:text-2xl md:text-2xl lg:text-[1.75rem] text-2xl pb-2 sm:pb-5 cursor-default mx-2',
   }
 
-  const { SetCurrentPage, currentPage, posts } = useContext(MainContext);
+  const { SetCurrentPage, currentPage } = useContext(MainContext);
 
 
   return (
@@ -50,11 +51,11 @@ export async function getStaticProps() {
                     .project({_id: 1, title: 1, img: 1})
                     .toArray();
 
-                    const data = JSON.parse(JSON.stringify(res));
+                    const posts = JSON.parse(JSON.stringify(res));
 
       return {
         props: {
-          data,
+          posts,
         },
         // Next.js will attempt to re-generate the page:
         // - When a request comes in at most once every 10 seconds

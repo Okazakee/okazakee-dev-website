@@ -3,8 +3,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { MainContext } from '../../components/context/MainContext';
 import { motion } from 'framer-motion';
+import { MongoClient } from 'mongodb';
 
-export default function Bio() {
+export default function Bio({bio, propic}) {
 
   const styles = {
     mainDiv: 'flex items-center mb-[10vh] lg:mb-[20vh]',
@@ -14,11 +15,6 @@ export default function Bio() {
     innerText2: 'text-[#8c54fb] ml-4 text-4xl md:text-6xl',
     bio: 'mx-6 lg:mx-24 md:mx-12 sm:mx-10 max-w-6xl text-justify sm:text-xl md:text-xl lg:text-[1.50rem] text-md'
   }
-
-  const data = {
-    bio: `My real name is Cristian, aka Okazakee on the web, I'm a 23 years old junior Web Developer from Italy. I grew up beside my nerdy stuff since young age, I'm an IT enthusiast and I love Open Source, I worked as video editor in post production for years and in late 2021 I decided to switch my path to Web Development. I am working in different personal projects and dream to become a Full Stack developer in some years. Feel free to check my portfolio and my social profiles!`,
-    propic: 'https://github.com/Okazakee/Global-Assets/blob/main/propic%20jpg.jpg?raw=true'
-  };
 
   const { SetCurrentPage, currentPage } = useContext(MainContext);
 
@@ -40,7 +36,7 @@ export default function Bio() {
           <div className={styles.imgDiv}>
               <Image
               className='rounded-full'
-              src={data.propic} alt='propic' layout='fill' objectFit='cover' priority='true' quality={100} />
+              src={propic} alt='propic' layout='fill' objectFit='cover' priority='true' quality={100} />
           </div>
           <div className={styles.textDiv}>
               <h1 className={styles.innerText}>Hello, I&#39;m</h1>
@@ -50,10 +46,37 @@ export default function Bio() {
               </h1>
           </div>
             <p className={styles.bio}>
-              { data.bio }
+              { bio }
             </p>
         </div>
       </motion.div>
     </>
   )
+}
+
+export async function getStaticProps() {
+  try {
+      const client = await MongoClient.connect(process.env.MONGODB_URI);
+      const db = client.db("Website");
+
+      const biography = await db
+                              .collection("Biography")
+                              .find({})
+                              .project({_id: 0})
+                              .toArray();
+        const bio = JSON.parse(JSON.stringify(...biography)).text;
+        const propic= JSON.parse(JSON.stringify(...biography)).img;
+
+        return {
+          props: {
+            bio,
+            propic,
+          },
+          // Next.js will attempt to re-generate the page:
+          // - When a request comes in at most once every 10 seconds
+          revalidate: 60, // In seconds, change to 12 hours after project is done
+        };
+  } catch (e) {
+      console.error(e);
+  }
 }

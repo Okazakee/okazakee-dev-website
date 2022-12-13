@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export const Card = ({post}) => {
   const cover = post.img;
-  const title = post.title.split(" ").join("-");
+  const title = post.title.includes('-') ? post.title.split(' ').join('') : post.title.split(' ').join('-');
 
   const styles = {
     cardStyle: 'card bg-[#653bba] rounded-xl text-[#e8e8e8] text-center text-xl m-5 w-[85vw] sm:w-[80vw] md:w-[45vw] lg:w-[30vw] md:shadow-2xl hover:shadow-[#5d29a4]',
@@ -20,8 +20,10 @@ export const Card = ({post}) => {
     card.className = cardStyle + ' blur-none';
   }
 
+  const ShortId = post._id.substring(post._id.length-4)
+
   return (
-    <Link href={'/Portfolio/posts/' + title} passHref>
+    <Link id={post._id} href={'/Portfolio/posts/' + ShortId + '/' + title} passHref shallow>
       <motion.button
       className={styles.cardStyle}
       whileTap={{ scale: 0.9 }}
