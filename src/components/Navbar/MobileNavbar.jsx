@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../context/MainContext';
 import MobileNavBtn from './MobileNavBtn';
-import { SocialLink2 } from './SocialLink2';
+import { SocialLinkMobile } from './SocialLinkMobile';
 
 export default function MobileNavbar() {
 
@@ -38,14 +38,14 @@ export default function MobileNavbar() {
                 </div>
             :   <div className={`flex justify-between text-[0.7rem] mx-2 text-[#e8e8e8]`}>
                     <button onClick={() => SetSocialHide(!socialHide)}>
-                        <SocialLink2 back={true} link='#' social='ArrowAltCircleLeft'></SocialLink2>
+                        <SocialLinkMobile back={true} link='#' social='ArrowAltCircleLeft'></SocialLinkMobile>
                     </button>
-                    <SocialLink2 link='www.linkedin.com/in/okazakee/' social='Linkedin'></SocialLink2>
-                    <SocialLink2 link='github.com/Okazakee/' social='Github'></SocialLink2>
-                    <SocialLink2 link='t.me/Okazakee' social='Telegram'></SocialLink2>
-                    <SocialLink2 link='twitter.com/Okazakee_DEV' social='Twitter'></SocialLink2>
-                    <SocialLink2 link='www.instagram.com/okazakee.dev' social='Instagram'></SocialLink2>
-                    <SocialLink2 link='www.youtube.com/channel/UCUogIMOIHwCt3dlL-_CtMg' social='Youtube'></SocialLink2>
+                    <SocialLinkMobile link='www.linkedin.com/in/okazakee/' social='Linkedin'></SocialLinkMobile>
+                    <SocialLinkMobile link='github.com/Okazakee/' social='Github'></SocialLinkMobile>
+                    <SocialLinkMobile link='t.me/Okazakee' social='Telegram'></SocialLinkMobile>
+                    <SocialLinkMobile link='twitter.com/Okazakee_DEV' social='Twitter'></SocialLinkMobile>
+                    <SocialLinkMobile link='www.instagram.com/okazakee.dev' social='Instagram'></SocialLinkMobile>
+                    <SocialLinkMobile link='www.youtube.com/channel/UCUogIMOIHwCt3dlL-_CtMg' social='Youtube'></SocialLinkMobile>
                 </div>}
         </div>
     )

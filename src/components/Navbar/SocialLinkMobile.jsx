@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import * as Icons from 'react-icons/fa';
 
-export const SocialLink2 = ({social, link, back}) => {
+export const SocialLinkMobile = ({social, link, back}) => {
   const [isHover, SetIsHover] = useState(false);
   const Icon = Icons['Fa' + social];
 
