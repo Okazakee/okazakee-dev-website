@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { MainContext } from '../../components/context/MainContext';
 import { motion } from 'framer-motion';
-import { MongoClient } from "mongodb";
+import { MongoClient } from 'mongodb';
 
 export default function Bio({bio, propic}) {
 
@@ -39,9 +39,10 @@ export default function Bio({bio, propic}) {
               src={propic} alt='propic' layout='fill' objectFit='cover' priority='true' quality={100} />
           </div>
           <div className={styles.textDiv}>
-              <h1 className={styles.innerText}>Hello, I&#39;m</h1>
-              <h1
-              className={styles.innerText2}>
+              <h1 className={styles.innerText}>
+                Hello, I&#39;m
+              </h1>
+              <h1 className={styles.innerText2}>
                 OKAZAKEE
               </h1>
           </div>

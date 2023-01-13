@@ -5,7 +5,7 @@ import {Card} from '../../components/Common/Card';
 import { motion } from 'framer-motion';
 import { MongoClient } from 'mongodb';
 
-export default function Portfolio({data}) {
+export default function Portfolio({posts}) {
 
   const styles = {
 
@@ -15,9 +15,6 @@ export default function Portfolio({data}) {
 
   const { SetCurrentPage, currentPage } = useContext(MainContext);
 
-  /* useEffect(() => {
-    SetCurrentPage('Portfolio')
-  },); */
 
   return (
     <>
@@ -25,7 +22,7 @@ export default function Portfolio({data}) {
         <title>Portfolio - Okazakee.dev</title>
       </Head>
       <motion.div
-      className=''
+      className='pb-20'
       initial={{ opacity: 0}}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}>
@@ -34,7 +31,7 @@ export default function Portfolio({data}) {
             Welcome to my <label className='text-[#8c54fb]'>portfolio!</label> Here you can find my personal projects.
           </h1>
           <div className={styles.cardListStyle}>
-            {data.map((post) => (
+            {posts.map((post) => (
               <Card key={post._id} post={post}>{post.title}</Card>
               ))}
           </div>
@@ -54,11 +51,11 @@ export async function getStaticProps() {
                     .project({_id: 1, title: 1, img: 1})
                     .toArray();
 
-                    const data = JSON.parse(JSON.stringify(res));
+                    const posts = JSON.parse(JSON.stringify(res));
 
       return {
         props: {
-          data,
+          posts,
         },
         // Next.js will attempt to re-generate the page:
         // - When a request comes in at most once every 10 seconds

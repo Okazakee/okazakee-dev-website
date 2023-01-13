@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cdeac550.css",
+    "main.js": "/static/js/main.ddbb0c56.js",
+    "static/js/787.3df16e54.chunk.js": "/static/js/787.3df16e54.chunk.js",
+    "static/media/propic.jpg": "/static/media/propic.3d52a9d3fdd4ecbe1470.jpg",
+    "static/media/WHITRABT.woff": "/static/media/WHITRABT.d4818b7b027a14a0ebc6.woff",
+    "index.html": "/index.html",
+    "main.cdeac550.css.map": "/static/css/main.cdeac550.css.map",
+    "main.ddbb0c56.js.map": "/static/js/main.ddbb0c56.js.map",
+    "787.3df16e54.chunk.js.map": "/static/js/787.3df16e54.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cdeac550.css",
+    "static/js/main.ddbb0c56.js"
+  ]
+}
