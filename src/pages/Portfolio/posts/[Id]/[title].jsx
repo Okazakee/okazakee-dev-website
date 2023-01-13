@@ -7,20 +7,20 @@ import { MongoClient, ObjectId } from 'mongodb';
 
 export default function Post({post, content}) {
 
-    return (
-      <>
-        <Head>
-          <title>{post.title} - Okazakee.dev</title>
-        </Head>
-        <div className='prose prose-invert md:-mt-16 -mt-5 w-screen md:max-w-full mb-20 md:text-xl text-sm'>
-          <Image
-              className='rounded-b-xl'
-              src={post.img} width={2000} height={600} alt='coverimg' layout='responsive' objectFit='cover' priority='true' quality={100} />
-          <div className='mx-5 md:mx-auto md:max-w-5xl'
-            dangerouslySetInnerHTML={{ __html: content }} />
-        </div>
-      </>
-    )
+  return (
+    <>
+      <Head>
+        <title>{post.title} - Okazakee.dev</title>
+      </Head>
+      <div className='prose prose-invert md:-mt-16 -mt-5 w-screen md:max-w-full mb-20 md:text-xl text-md mx-4'>
+        <Image
+            className='rounded-b-xl md:max-h-5'
+            src={post.img} width={2000} height={600} alt='coverimg' layout='responsive' objectFit='cover' priority='true' quality={100} />
+        <div className='mx-5 md:mx-auto md:max-w-5xl'
+          dangerouslySetInnerHTML={{ __html: content }} />
+      </div>
+    </>
+  )
 }
 
 export const getStaticPaths = async () => {
@@ -34,8 +34,7 @@ export const getStaticPaths = async () => {
   const paths = res.map(post => {
     return {
       params: {
-        id: post.id, //TODO: GET THIS TO WORK, I GOT THE URL SHORTENED BUT NOW CANT QUERY CAUSE IT WANTS FULL OBJECTID
-        ShortId: post._id.toString(),
+        Id: post._id.toString(),
         title: post.title
       }
     }
@@ -50,16 +49,14 @@ export const getStaticPaths = async () => {
 export async function getStaticProps(context) {
     const client = await MongoClient.connect(process.env.MONGODB_URI);
     const db = client.db("Website");
-    const id = context.params.id;
-    console.log(context.params._id)
+    const id = context.params.Id;
     const res = await db
                       .collection("Portfolio")
                       .find({_id: ObjectId(id)})
                       .toArray();
     const post = JSON.parse(JSON.stringify(...res));
 
-    const content = remark().use(html).processSync(post.description).toString();
-    console.log(id)
+    const content = remark().use(html).processSync(post.markdown).toString();
       return {
       // Passed to the page component as props
       props: {

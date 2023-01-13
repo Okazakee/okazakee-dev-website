@@ -23,7 +23,7 @@ export const Card = ({post}) => {
   const ShortId = post._id.substring(post._id.length-4)
 
   return (
-    <Link id={post._id} href={'/Portfolio/posts/' + ShortId + '/' + title} passHref shallow>
+    <Link id={post._id} href={'/Portfolio/posts/' + post._id + '/' + title} passHref shallow>
       <motion.button
       className={styles.cardStyle}
       whileTap={{ scale: 0.9 }}
