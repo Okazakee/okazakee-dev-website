@@ -32,7 +32,7 @@ export default function Portfolio({posts}) {
           </h1>
           <div className={styles.cardListStyle}>
             {posts.map((post) => (
-              <Card key={post._id} post={post}>{post.title}</Card>
+              <Card key={post._id} type={"Portfolio"} post={post}>{post.title}</Card>
               ))}
           </div>
         </div>

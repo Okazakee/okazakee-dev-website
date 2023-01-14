@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-export const Card = ({post}) => {
+export const Card = ({post, type}) => {
   const cover = post.img;
   const title = post.title.includes('-') ? post.title.split(' ').join('') : post.title.split(' ').join('-');
 
@@ -23,7 +23,7 @@ export const Card = ({post}) => {
   const ShortId = post._id.substring(post._id.length-4)
 
   return (
-    <Link id={post._id} href={'/Portfolio/posts/' + post._id + '/' + title} passHref shallow>
+    <Link id={post._id} href={'/' + type + '/posts/' + post._id + '/' + title} passHref shallow>
       <motion.button
       className={styles.cardStyle}
       whileTap={{ scale: 0.9 }}
