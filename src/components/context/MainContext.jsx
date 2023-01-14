@@ -15,27 +15,6 @@ const MainProvider = ({ children }) =>  {
     selectedBtnStyle: 'nav mx-3 underline underline-offset-1 text-[#8c54fb]',
     }
 
-  const posts = [
-    {
-      _id: 1,
-      title: 'This Website',
-      data: "",
-      img: 'https://github.com/Okazakee/Global-Assets/blob/main/VSCodium_SwXGpHbElE.png?raw=true'
-    },
-    {
-      _id: 2,
-      title: 'Calypso-Pi Project',
-      data: 'https://raw.githubusercontent.com/Okazakee/Fedora-WSL-Installer/main/README.md',
-      img: 'https://github.com/Okazakee/Global-Assets/blob/main/logo-dev.png?raw=true'
-    },
-    {
-      _id: 3,
-      title: 'Fedora WSL Installer',
-      data: 'https://raw.githubusercontent.com/Okazakee/Fedora-WSL-Installer/main/README.md',
-      img: 'https://github.com/Okazakee/Global-Assets/blob/main/wt.png?raw=true'
-    },
-    ];
-
   const SelectionHandler = (e) => {
     const button = e.target;
     const buttons = Array.from(document.getElementsByClassName('nav'));
@@ -44,7 +23,7 @@ const MainProvider = ({ children }) =>  {
     }
 
     return (
-      <MainContext.Provider value={{ HideSearchbox, SetHideSearchbox, searchfield, SetSearchfield, currentPage, SetCurrentPage, SelectionHandler, navBtnStyles, posts }}>
+      <MainContext.Provider value={{ HideSearchbox, SetHideSearchbox, searchfield, SetSearchfield, currentPage, SetCurrentPage, SelectionHandler, navBtnStyles }}>
           {children}
       </MainContext.Provider>
   )
