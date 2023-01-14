@@ -44,7 +44,7 @@ export default function Portfolio({posts}) {
 export async function getStaticProps() {
   try {
     const client = await MongoClient.connect(process.env.MONGODB_URI);
-    const db = client.db("Website");
+    const db = client.db(process.env.COLLECTION_ENV);
     const res = await db
                     .collection("Portfolio")
                     .find({})

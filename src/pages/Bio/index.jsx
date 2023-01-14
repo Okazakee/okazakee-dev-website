@@ -58,7 +58,7 @@ export default function Bio({bio, propic}) {
 export async function getStaticProps() {
   try {
       const client = await MongoClient.connect(process.env.MONGODB_URI);
-      const db = client.db("Website");
+      const db = client.db(process.env.COLLECTION_ENV);
 
       const biography = await db
                               .collection("Biography")

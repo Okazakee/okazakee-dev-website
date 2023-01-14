@@ -4,7 +4,6 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import { MongoClient, ObjectId } from 'mongodb';
 
-
 export default function Post({post, content}) {
 
   return (
@@ -25,7 +24,7 @@ export default function Post({post, content}) {
 
 export const getStaticPaths = async () => {
   const client = await MongoClient.connect(process.env.MONGODB_URI);
-  const db = client.db("Website");
+  const db = client.db(process.env.COLLECTION_ENV);
   const res = await db
                     .collection("Portfolio")
                     .find({})
@@ -48,7 +47,7 @@ export const getStaticPaths = async () => {
 
 export async function getStaticProps(context) {
     const client = await MongoClient.connect(process.env.MONGODB_URI);
-    const db = client.db("Website");
+    const db = client.db(process.env.COLLECTION_ENV);
     const id = context.params.Id;
     const res = await db
                       .collection("Portfolio")
