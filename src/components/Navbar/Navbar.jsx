@@ -1,26 +1,20 @@
-import { useEffect, useContext } from 'react';
-import { useRouter } from 'next/router'
+import { useContext } from 'react';
 import { MainContext } from '../context/MainContext';
-import Searchbox from './Searchbox';
 import { SocialLink } from './SocialLink';
 import NavBtn from './NavBtn';
 import { motion } from 'framer-motion';
 
-export default function Navbar({query}) {
+export default function Navbar() {
 
-  const { HideSearchbox } = useContext(MainContext);
+  const { HideSearchBox } = useContext(MainContext);
 
   const styles = {
-    searchBoxStyle: `min-w-fit w-full transition-all ease-in-out duration-300 ${HideSearchbox ? 'opacity-0 pointer-events-none' : 'opacity-100'}`,
-    navStyle: 'transition-all ease-in-out duration-[200ms] fixed top-0 left-0 right-0 z-50 backdrop-blur-md',
+    SearchBoxStyle: `min-w-fit w-full transition-all ease-in-out duration-300 ${HideSearchBox ? 'opacity-0 pointer-events-none' : 'opacity-100'}`,
+    navStyle: 'transition-all ease-in-out duration-[200ms] fixed top-0 left-0 right-0 z-50 backdrop-blur-sm',
     mainDiv: 'flex items-center justify-between mx-auto px-2 py-4 rounded-2xl max-w-7xl',
     innerDiv: 'flex text-2xl mr-1',
     linksDiv: 'flex justify-end hover:ml-4 ml-3 mr-1'
   }
-  const navBtnStyles = {
-    defaultBtnStyle: 'nav mx-3 hover:underline hover:underline-offset-1 hover:text-[#8c54fb] transition-all',
-    selectedBtnStyle: 'nav mx-3 underline underline-offset-1 text-[#8c54fb]',
-    }
 
     return (
       <div className={styles.navStyle}>
@@ -28,10 +22,8 @@ export default function Navbar({query}) {
           <div className={styles.innerDiv}>
             <NavBtn HideSearch={true} page='/Bio' name='Bio' btnType='selected'></NavBtn>
             <NavBtn HideSearch={false} page='/Portfolio' name='Portfolio' btnType='search'></NavBtn>
+            {/* <NavBtn HideSearch={false} page='/Blog' name='Blog' btnType='search'></NavBtn> */}
           </div>
-          {/* <div className={styles.searchBoxStyle}>
-            <Searchbox isMobile={styles.false}></Searchbox>
-          </div> */}
           <motion.div
           className={styles.linksDiv}>
             <SocialLink link='www.linkedin.com/in/okazakee/' social='Linkedin'></SocialLink>

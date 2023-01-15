@@ -26,7 +26,7 @@ export const getStaticPaths = async () => {
   const client = await MongoClient.connect(process.env.MONGODB_URI);
   const db = client.db(process.env.COLLECTION_ENV);
   const res = await db
-                    .collection("Portfolio")
+                    .collection("Blog")
                     .find({})
                     .toArray();
 
@@ -50,7 +50,7 @@ export async function getStaticProps(context) {
     const db = client.db(process.env.COLLECTION_ENV);
     const id = context.params.Id;
     const res = await db
-                      .collection("Portfolio")
+                      .collection("Blog")
                       .find({_id: ObjectId(id)})
                       .toArray();
     const post = JSON.parse(JSON.stringify(...res));
