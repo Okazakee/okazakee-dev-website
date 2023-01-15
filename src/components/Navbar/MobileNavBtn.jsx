@@ -4,18 +4,20 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
-function MobileNavBtn({page, selectedBtnStyle, defaultBtnStyle, iconStyle, btnimg, name, btnType, socialHide, SetSocialHide, SetBtnFocus}) {
+function MobileNavBtn({page, selectedBtnStyle, defaultBtnStyle, iconStyle, btnimg, name, btnType, socialHide, SetSocialHide}) {
 
-    const handler = (e) => {
-        btnType === 'socialMenu' ? SetSocialHide(!socialHide) : SetBtnFocus(e);
+    const { pathname } = useContext(MainContext);
+
+    const handler = () => {
+        btnType === 'socialMenu' ? SetSocialHide(!socialHide) : null;
     }
 
     return (
         <Link href={page} passHref>
             <motion.button
             whileTap={{ scale: 0.8 }}
-            className={btnType === 'selected' ? selectedBtnStyle : defaultBtnStyle}
-            onClick={(e) => handler(e)}>
+            className={pathname.startsWith(page) ? selectedBtnStyle : defaultBtnStyle}
+            onClick={() => handler()}>
                 <div className={iconStyle}>
                     <Image src={btnimg} alt='navIcon' layout='fill' objectFit='scale-down' priority='false' quality={100} />
                 </div>
