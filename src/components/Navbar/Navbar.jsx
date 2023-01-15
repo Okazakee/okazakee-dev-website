@@ -1,7 +1,6 @@
-import { useEffect, useContext } from 'react';
-import { useRouter } from 'next/router'
+import { useContext } from 'react';
 import { MainContext } from '../context/MainContext';
-import SearchBox from './SearchBox';
+import { SearchBox } from './SearchBox';
 import { SocialLink } from './SocialLink';
 import NavBtn from './NavBtn';
 import { motion } from 'framer-motion';
@@ -26,9 +25,9 @@ export default function Navbar() {
             <NavBtn HideSearch={false} page='/Portfolio' name='Portfolio' btnType='search'></NavBtn>
             <NavBtn HideSearch={false} page='/Blog' name='Blog' btnType='search'></NavBtn>
           </div>
-          {/* <div className={styles.SearchBoxStyle}> //TODO dunno what this does
+          <div className={styles.SearchBoxStyle}>
             <SearchBox isMobile={styles.false}></SearchBox>
-          </div> */}
+          </div>
           <motion.div
           className={styles.linksDiv}>
             <SocialLink link='www.linkedin.com/in/okazakee/' social='Linkedin'></SocialLink>
