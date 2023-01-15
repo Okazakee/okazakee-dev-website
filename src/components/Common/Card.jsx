@@ -20,8 +20,6 @@ export const Card = ({post, type}) => {
     card.className = cardStyle + ' blur-none';
   }
 
-  const ShortId = post._id.substring(post._id.length-4)
-
   return (
     <Link id={post._id} href={'/' + type + '/posts/' + post._id + '/' + title} passHref shallow>
       <motion.button

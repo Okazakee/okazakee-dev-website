@@ -52,7 +52,6 @@ export async function getStaticProps() {
                     .toArray();
 
                     const posts = JSON.parse(JSON.stringify(res));
-
       return {
         props: {
           posts,
