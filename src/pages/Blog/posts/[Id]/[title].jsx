@@ -11,11 +11,11 @@ export default function Post({post, content}) {
       <Head>
         <title>{post.title} - Okazakee.dev</title>
       </Head>
-      <div className='prose prose-invert md:-mt-16 -mt-5 w-screen md:max-w-full mb-20 md:text-xl text-md mx-4'>
+      <div className='prose prose-invert w-screen md:max-w-full mb-20 md:text-xl text-md mx-4'>
         <Image
-            className='rounded-b-xl md:max-h-5'
+            className='rounded-xl md:max-h-5'
             src={post.img} width={2000} height={600} alt='coverimg' layout='responsive' objectFit='cover' priority='true' quality={100} />
-        <div className='mx-5 md:mx-auto md:max-w-5xl'
+        <div className='mt-5 mx-5 md:mx-auto md:max-w-5xl'
           dangerouslySetInnerHTML={{ __html: content }} />
       </div>
     </>
