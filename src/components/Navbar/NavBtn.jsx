@@ -1,15 +1,11 @@
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { MainContext } from '../context/MainContext';
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 function NavBtn({page, name, HideSearch}) {
 
-  const { navBtnStyles, currentPage, pathname } = useContext(MainContext);
-
-  useEffect(() => {
-
-    }, [currentPage]);
+  const { navBtnStyles, pathname } = useContext(MainContext);
 
   return (
     <Link href={page} passHref>

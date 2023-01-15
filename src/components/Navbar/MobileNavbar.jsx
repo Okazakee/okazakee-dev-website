@@ -5,7 +5,7 @@ import { SocialLinkMobile } from './SocialLinkMobile';
 
 export default function MobileNavbar() {
 
-    const { HideSearchBox, setSearchfield, searchfield, currentPage, SetCurrentPage } = useContext(MainContext);
+    const { HideSearchBox, setSearchfield, searchfield } = useContext(MainContext);
 
     const styles = {
     NavbarStyle: `fixed bottom-6 left-0 right-0 z-50 rounded-2xl text-sm text-center w-[90vw] h-[4rem] mx-auto pt-2.5 backdrop-blur-md backdrop-brightness-[.3] outline outline-1 outline-[#8c54fb]`,

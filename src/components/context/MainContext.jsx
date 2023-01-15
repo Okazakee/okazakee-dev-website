@@ -7,7 +7,6 @@ const MainProvider = ({ children }) =>  {
 
   const [HideSearchBox, SetHideSearchBox] = useState(true);
   const [searchfield, SetSearchfield] = useState('');
-  const [currentPage, SetCurrentPage] = useState('Bio');
   const { pathname } = useRouter()
 
   const navBtnStyles = {
@@ -16,7 +15,7 @@ const MainProvider = ({ children }) =>  {
     }
 
     return (
-      <MainContext.Provider value={{ pathname, HideSearchBox, SetHideSearchBox, searchfield, SetSearchfield, currentPage, SetCurrentPage, navBtnStyles }}>
+      <MainContext.Provider value={{ pathname, HideSearchBox, SetHideSearchBox, searchfield, SetSearchfield, navBtnStyles }}>
           {children}
       </MainContext.Provider>
   )
