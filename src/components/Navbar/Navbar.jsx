@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { MainContext } from '../context/MainContext';
-import { SearchBox } from './SearchBox';
 import { SocialLink } from './SocialLink';
 import NavBtn from './NavBtn';
 import { motion } from 'framer-motion';
@@ -24,9 +23,6 @@ export default function Navbar() {
             <NavBtn HideSearch={true} page='/Bio' name='Bio' btnType='selected'></NavBtn>
             <NavBtn HideSearch={false} page='/Portfolio' name='Portfolio' btnType='search'></NavBtn>
             <NavBtn HideSearch={false} page='/Blog' name='Blog' btnType='search'></NavBtn>
-          </div>
-          <div className={styles.SearchBoxStyle}>
-            <SearchBox isMobile={styles.false}></SearchBox>
           </div>
           <motion.div
           className={styles.linksDiv}>
