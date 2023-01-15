@@ -11,7 +11,7 @@ export default function Navbar() {
   const styles = {
     SearchBoxStyle: `min-w-fit w-full transition-all ease-in-out duration-300 ${HideSearchBox ? 'opacity-0 pointer-events-none' : 'opacity-100'}`,
     navStyle: 'transition-all ease-in-out duration-[200ms] fixed top-0 left-0 right-0 z-50 backdrop-blur-sm',
-    mainDiv: 'flex items-center justify-between mx-auto px-2 py-2 rounded-2xl max-w-7xl',
+    mainDiv: 'flex items-center justify-between mx-auto px-2 py-4 rounded-2xl max-w-7xl',
     innerDiv: 'flex text-2xl mr-1',
     linksDiv: 'flex justify-end hover:ml-4 ml-3 mr-1'
   }
