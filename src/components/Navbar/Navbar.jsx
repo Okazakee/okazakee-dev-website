@@ -26,9 +26,9 @@ export default function Navbar() {
             <NavBtn HideSearch={false} page='/Portfolio' name='Portfolio' btnType='search'></NavBtn>
             <NavBtn HideSearch={false} page='/Blog' name='Blog' btnType='search'></NavBtn>
           </div>
-          <div className={styles.SearchBoxStyle}> //TODO dunno what this does
+          {/* <div className={styles.SearchBoxStyle}> //TODO dunno what this does
             <SearchBox isMobile={styles.false}></SearchBox>
-          </div>
+          </div> */}
           <motion.div
           className={styles.linksDiv}>
             <SocialLink link='www.linkedin.com/in/okazakee/' social='Linkedin'></SocialLink>
