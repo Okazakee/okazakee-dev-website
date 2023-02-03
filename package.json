@@ -16,7 +16,7 @@
     "fs": "^0.0.1-security",
     "markdown-it": "^13.0.1",
     "mongodb": "^4.10.0",
-    "next": "12.1.4",
+    "next": "12.x",
     "next-images": "^1.8.4",
     "raw-loader": "^4.0.2",
     "react": "18.0.0",
