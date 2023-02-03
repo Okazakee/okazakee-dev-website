@@ -22,7 +22,7 @@ export default function Navbar() {
           <div className={styles.innerDiv}>
             <NavBtn HideSearch={true} page='/Bio' name='Bio' btnType='selected'></NavBtn>
             <NavBtn HideSearch={false} page='/Portfolio' name='Portfolio' btnType='search'></NavBtn>
-            {/* <NavBtn HideSearch={false} page='/Blog' name='Blog' btnType='search'></NavBtn> */}
+            <NavBtn HideSearch={false} page='/Blog' name='Blog' btnType='search'></NavBtn>
           </div>
           <motion.div
           className={styles.linksDiv}>

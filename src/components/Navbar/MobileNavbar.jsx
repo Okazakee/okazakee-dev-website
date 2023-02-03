@@ -26,7 +26,7 @@ export default function MobileNavbar() {
                 <div className='flex justify-around mx-4'>
                     <MobileNavBtn page='/Bio' socialHide={socialHide} SetSocialHide={SetSocialHide} defaultBtnStyle={styles.defaultBtnStyle} iconStyle={styles.iconStyle} btnimg='/images/bio.png' name='Bio' btnType='selected'></MobileNavBtn>
                     <MobileNavBtn page='/Portfolio' socialHide={socialHide} SetSocialHide={SetSocialHide} defaultBtnStyle={styles.defaultBtnStyle} iconStyle={styles.iconStyle} btnimg='/images/portfolio.png' name='Portfolio' btnType=''></MobileNavBtn>
-                    {/* <MobileNavBtn page='/Blog' socialHide={socialHide} SetSocialHide={SetSocialHide} defaultBtnStyle={styles.defaultBtnStyle} iconStyle={styles.iconStyle} btnimg='/images/blog.png' name='Blog' btnType='' ></MobileNavBtn> */}
+                    <MobileNavBtn page='/Blog' socialHide={socialHide} SetSocialHide={SetSocialHide} defaultBtnStyle={styles.defaultBtnStyle} iconStyle={styles.iconStyle} btnimg='/images/blog.png' name='Blog' btnType='' ></MobileNavBtn>
                     <MobileNavBtn page='' socialHide={socialHide} SetSocialHide={SetSocialHide} defaultBtnStyle={styles.defaultBtnStyle} iconStyle={styles.iconStyle} btnimg='/images/social.png' name='Socials' btnType='socialMenu'></MobileNavBtn>
                 </div>
             :   <div className={`flex justify-between text-[0.7rem] mx-2 text-[#e8e8e8]`}>
