@@ -7,6 +7,7 @@ const MainProvider = ({ children }) => {
   const [HideSearchBox, SetHideSearchBox] = useState(true);
   const [searchfield, SetSearchfield] = useState('');
   const { pathname } = useRouter();
+  const [imageLoaded, setImageLoaded] = useState(false); //not needed might be useful later
 
   const navBtnStyles = {
     defaultBtnStyle:
@@ -23,6 +24,8 @@ const MainProvider = ({ children }) => {
         searchfield,
         SetSearchfield,
         navBtnStyles,
+        imageLoaded,
+        setImageLoaded,
       }}
     >
       {children}

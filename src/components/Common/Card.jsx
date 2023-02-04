@@ -1,9 +1,9 @@
-import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 export const Card = ({ post, type }) => {
+
   const cover = post.img;
   const title = post.title.includes('-')
     ? post.title.split(' ').join('')
@@ -35,6 +35,7 @@ export const Card = ({ post, type }) => {
             layout="fill"
             objectFit="cover"
             priority="true"
+            onLoad={() => setImageLoaded(true)}
             quality={100}
           />
         </div>
