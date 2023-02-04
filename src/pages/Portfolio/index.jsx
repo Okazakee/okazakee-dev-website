@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { MongoClient } from 'mongodb';
 
 export default function Portfolio({ posts }) {
-
   const styles = {
     cardListStyle:
       'mx-2 grid justify-items-center md:grid-cols-2 lg:grid-cols-3',
@@ -28,13 +27,11 @@ export default function Portfolio({ posts }) {
             Here you can find my personal projects.
           </h1>
           <div className={styles.cardListStyle}>
-            {(
-              posts.map((post) => (
-                <Card key={post._id} type={'Portfolio'} post={post}>
-                  {post.title}
-                </Card>
-              ))
-            )}
+            {posts.map((post) => (
+              <Card key={post._id} type={'Portfolio'} post={post}>
+                {post.title}
+              </Card>
+            ))}
           </div>
         </div>
       </motion.div>

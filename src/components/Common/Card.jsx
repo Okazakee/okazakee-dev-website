@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 export const Card = ({ post, type }) => {
-
   const cover = post.img;
   const title = post.title.includes('-')
     ? post.title.split(' ').join('')
