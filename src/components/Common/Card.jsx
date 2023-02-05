@@ -34,7 +34,6 @@ export const Card = ({ post, type }) => {
             layout="fill"
             objectFit="cover"
             priority="true"
-            onLoad={() => setImageLoaded(true)}
             quality={100}
           />
         </div>
