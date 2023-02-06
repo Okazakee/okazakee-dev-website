@@ -3,27 +3,16 @@ import Link from 'next/link';
 import Head from 'next/head';
 
 export default function AdminAuth() {
-  const [authType, SetAuthType] = useState('');
+  const [authType, SetAuthType] = useState(true);
 
   return (
     <div>
       <Head>
         <title>Admin auth page - Okazakee.dev</title>
       </Head>
-      <h1 className="text-center my-5">ADMIN AUTH PAGE</h1>
-      {authType === '' && (
-        <div className="text-center">
-          <p>Select auth type:</p>
-          <div className="my-10">
-            <button onClick={() => SetAuthType('register')}>register</button>
-          </div>
-          <div className="my-10">
-            <button onClick={() => SetAuthType('login')}>login</button>
-          </div>
-        </div>
-      )}
-      {authType === 'register' && (
+      {!authType && (
         <div className="my-10 text-center">
+          <h1 className="text-3xl">REGISTER</h1>
           <div className="my-10">
             <p>Username:</p>
             <input type={'username'}></input>
@@ -37,7 +26,7 @@ export default function AdminAuth() {
             <input type={'password'}></input>
           </div>
           <div className="my-10">
-            <button type="submit">
+            <button className="bg-[#653bba]">
               <Link href={'/admin/panel'} passHref shallow>
                 Register
               </Link>
@@ -45,8 +34,9 @@ export default function AdminAuth() {
           </div>
         </div>
       )}
-      {authType === 'login' && (
+      {authType && (
         <div className="my-10 text-center">
+          <h1 className="text-3xl">LOGIN</h1>
           <div className="my-10">
             <p>Username:</p>
             <input type={'username'}></input>
@@ -56,7 +46,7 @@ export default function AdminAuth() {
             <input type={'password'}></input>
           </div>
           <div className="my-10">
-            <button type="submit">
+            <button className="bg-[#653bba]">
               <Link href={'/admin/panel'} passHref shallow>
                 Login
               </Link>
@@ -64,11 +54,33 @@ export default function AdminAuth() {
           </div>
         </div>
       )}
-      {authType !== '' && (
-        <button onClick={() => SetAuthType('')} className="text-center">
-          Go back
-        </button>
+      {authType ? (
+        <p>
+          Not registered? Request
+          <button
+            onClick={() => SetAuthType(false)}
+            className="text-center ml-3 text-[#653bba]"
+          >
+            HERE
+          </button>
+        </p>
+      ) : (
+        <p>
+          Already registered? Login
+          <button
+            onClick={() => SetAuthType(true)}
+            className="text-center ml-3 text-[#653bba]"
+          >
+            HERE
+          </button>
+        </p>
       )}
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  return {
+    props: {}, // will be passed to the page component as props
+  };
 }
