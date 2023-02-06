@@ -8,7 +8,7 @@ export default function Custom404() {
       <Head>
         <title>404 Error - Okazakee.dev</title>
       </Head>
-      <h1 className="grid place-items-center justify-center">
+      <h1 className="text-center m-5 sm:w-[80vw]">
         404 - Page Not Found
         <Link href="/" passHref>
           <button className="text-[#8c54fb] grid place-items-center justify-center mx-auto">
