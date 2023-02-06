@@ -4,7 +4,7 @@ import MobileNavBtn from './MobileNavBtn';
 import { SocialLinkMobile } from './SocialLinkMobile';
 
 export default function MobileNavbar() {
-  const { HideSearchBox, setSearchfield, searchfield } =
+  const { HideSearchBox, searchfield, setSearchfield, SetSocialHide, socialHide } =
     useContext(MainContext);
 
   const styles = {
@@ -13,8 +13,6 @@ export default function MobileNavbar() {
     selectedBtnStyle: 'nav underline underline-offset-1 h-fit text-[#e8e8e8]',
     iconStyle: 'h-8 w-8 relative mx-auto pointer-events-none',
   };
-
-  const [socialHide, SetSocialHide] = useState(true);
 
   const OnSearchChange = (text) => {
     setSearchfield(text.target.value);
@@ -27,49 +25,41 @@ export default function MobileNavbar() {
           <MobileNavBtn
             page="/Bio"
             socialHide={socialHide}
-            SetSocialHide={SetSocialHide}
             defaultBtnStyle={styles.defaultBtnStyle}
             iconStyle={styles.iconStyle}
             btnimg="/images/bio.png"
             name="Bio"
-            btnType="selected"
           ></MobileNavBtn>
           <MobileNavBtn
             page="/Portfolio"
             socialHide={socialHide}
-            SetSocialHide={SetSocialHide}
             defaultBtnStyle={styles.defaultBtnStyle}
             iconStyle={styles.iconStyle}
             btnimg="/images/portfolio.png"
             name="Portfolio"
-            btnType=""
           ></MobileNavBtn>
           <MobileNavBtn
             page="/Blog"
             socialHide={socialHide}
-            SetSocialHide={SetSocialHide}
             defaultBtnStyle={styles.defaultBtnStyle}
             iconStyle={styles.iconStyle}
             btnimg="/images/blog.png"
             name="Blog"
-            btnType=""
           ></MobileNavBtn>
           <MobileNavBtn
             page=""
             socialHide={socialHide}
-            SetSocialHide={SetSocialHide}
             defaultBtnStyle={styles.defaultBtnStyle}
             iconStyle={styles.iconStyle}
             btnimg="/images/social.png"
             name="Socials"
-            btnType="socialMenu"
-          ></MobileNavBtn>
+            ></MobileNavBtn>
         </div>
       ) : (
         <div
           className={`flex justify-between text-[0.7rem] mx-2 text-[#e8e8e8]`}
         >
-          <button onClick={() => SetSocialHide(!socialHide)}>
+          <button onClick={() => SetSocialHide(true)}>
             <SocialLinkMobile
               back={true}
               link="#"

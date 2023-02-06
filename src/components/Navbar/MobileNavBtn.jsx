@@ -11,24 +11,23 @@ function MobileNavBtn({
   iconStyle,
   btnimg,
   name,
-  btnType,
-  socialHide,
-  SetSocialHide,
 }) {
-  const { pathname } = useContext(MainContext);
+  const { pathname, SetSocialHide } = useContext(MainContext);
 
-  const handler = () => {
-    btnType === 'socialMenu' ? SetSocialHide(!socialHide) : null;
-  };
+
+  const socialHandler = () => {
+    console.log(name)
+    name === "Socials" ? SetSocialHide(false) : null;
+  }
 
   return (
     <Link href={page} passHref>
       <motion.button
+        onClick={() => socialHandler()}
         whileTap={{ scale: 0.8 }}
         className={
           pathname.startsWith(page) ? selectedBtnStyle : defaultBtnStyle
         }
-        onClick={() => handler()}
       >
         <div className={iconStyle}>
           <Image

@@ -29,7 +29,7 @@ export const SocialLink = ({ social, link }) => {
         onHoverEnd={() => SetIsHover(false)}
       >
         <Icon className={styles.iconStyle} />
-        <p className={styles.LinkStyle} onHoverStart={() => SetIsHover(true)}>
+        <p className={styles.LinkStyle}>
           {social}
         </p>
       </motion.div>
