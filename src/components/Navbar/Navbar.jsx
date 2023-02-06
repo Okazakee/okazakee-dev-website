@@ -23,21 +23,13 @@ export default function Navbar() {
     <div className={styles.navStyle}>
       <div className={styles.mainDiv}>
         <div className={styles.innerDiv}>
-          <NavBtn
-            HideSearch={true}
-            page="/Bio"
-            name="Bio"
-          ></NavBtn>
+          <NavBtn HideSearch={true} page="/Bio" name="Bio"></NavBtn>
           <NavBtn
             HideSearch={false}
             page="/Portfolio"
             name="Portfolio"
           ></NavBtn>
-          <NavBtn
-            HideSearch={false}
-            page="/Blog"
-            name="Blog"
-          ></NavBtn>
+          <NavBtn HideSearch={false} page="/Blog" name="Blog"></NavBtn>
         </div>
         <motion.div className={styles.linksDiv}>
           <SocialLink

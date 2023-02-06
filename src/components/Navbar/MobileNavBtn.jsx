@@ -14,11 +14,10 @@ function MobileNavBtn({
 }) {
   const { pathname, SetSocialHide } = useContext(MainContext);
 
-
   const socialHandler = () => {
-    console.log(name)
-    name === "Socials" ? SetSocialHide(false) : null;
-  }
+    console.log(name);
+    name === 'Socials' ? SetSocialHide(false) : null;
+  };
 
   return (
     <Link href={page} passHref>

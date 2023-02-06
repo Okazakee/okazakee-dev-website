@@ -28,7 +28,7 @@ const MainProvider = ({ children }) => {
         imageLoaded,
         setImageLoaded,
         socialHide,
-        SetSocialHide
+        SetSocialHide,
       }}
     >
       {children}
