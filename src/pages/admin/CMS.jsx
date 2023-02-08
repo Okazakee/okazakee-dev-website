@@ -1,15 +1,11 @@
 import React from 'react';
-import Head from 'next/head';
 
-export default function AdminPanel() {
+export default function CMS() {
   return (
     <div>
-      <Head>
-        <link rel="icon" href="/favicon.svg" />
-      </Head>
       <div>
         <h1 className="flex justify-items-center justify-center">
-          ADMIN PANEL PAGE
+          ADMIN CMS PAGE
         </h1>
       </div>
     </div>

@@ -5,15 +5,15 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 export const NavBtn = ({ page, name, HideSearch }) => {
-  const { navBtnStyles, urlPath } = useContext(MainContext);
+  const { navStyles, urlPath } = useContext(MainContext);
 
   return (
     <Link href={page} passHref>
       <motion.button
         className={
           urlPath.startsWith(page)
-            ? navBtnStyles.selectedBtnStyle
-            : navBtnStyles.defaultBtnStyle
+            ? navStyles.buttons.selectedBtnStyle
+            : navStyles.buttons.defaultBtnStyle
         }
         whileTap={{ scale: 0.9 }}
       >

@@ -50,7 +50,7 @@ export default function AdminAuth() {
             </div>
             <div className="flex justify-between items-center mx-2">
               <button className="bg-[#653bba] w-full rounded-3xl">
-                <Link href={'/admin/panel'} passHref shallow>
+                <Link href={'/admin/CMS'} passHref shallow>
                   Login
                 </Link>
               </button>
@@ -109,7 +109,7 @@ export default function AdminAuth() {
             </div>
             <div className="flex justify-between items-center mx-2">
               <button className="bg-[#653bba] w-full rounded-3xl">
-                <Link href={'/admin/panel'} passHref shallow>
+                <Link href={'/admin/CMS'} passHref shallow>
                   Register
                 </Link>
               </button>
