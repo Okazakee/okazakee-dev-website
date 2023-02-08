@@ -1,6 +1,5 @@
 import React from 'react';
-import Navbar from '../Navbar/Navbar';
-import MobileNavbar from '../Navbar/MobileNavbar';
+import { Navbar, MobileNavbar, AdminMode } from '../Navbar/Navbar';
 import Head from 'next/head';
 
 export default function Layout({ children }) {

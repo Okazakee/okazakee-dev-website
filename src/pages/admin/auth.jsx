@@ -7,7 +7,7 @@ export default function AdminAuth() {
   const [authType, SetAuthType] = useState(true);
 
   return (
-    <div className="">
+    <div className="flex items-center mb-[30vh] ">
       <Head>
         <title>Admin auth page - Okazakee.dev</title>
       </Head>

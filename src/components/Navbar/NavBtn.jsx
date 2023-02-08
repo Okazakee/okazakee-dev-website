@@ -1,9 +1,10 @@
 import { useContext } from 'react';
 import { MainContext } from '../context/MainContext';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-function NavBtn({ page, name, HideSearch }) {
+export const NavBtn = ({ page, name, HideSearch }) => {
   const { navBtnStyles, urlPath } = useContext(MainContext);
 
   return (
@@ -21,6 +22,44 @@ function NavBtn({ page, name, HideSearch }) {
       </motion.button>
     </Link>
   );
-}
+};
 
-export default NavBtn;
+export const MobileNavBtn = ({
+  page,
+  selectedBtnStyle,
+  defaultBtnStyle,
+  iconStyle,
+  btnimg,
+  name,
+}) => {
+  const { urlPath, SetSocialHide } = useContext(MainContext);
+
+  const socialHandler = () => {
+    console.log(name);
+    name === 'Socials' ? SetSocialHide(false) : null;
+  };
+
+  return (
+    <Link href={page} passHref>
+      <motion.button
+        onClick={() => socialHandler()}
+        whileTap={{ scale: 0.8 }}
+        className={
+          urlPath.startsWith(page) ? selectedBtnStyle : defaultBtnStyle
+        }
+      >
+        <div className={iconStyle}>
+          <Image
+            src={btnimg}
+            alt="navIcon"
+            layout="fill"
+            objectFit="scale-down"
+            priority="false"
+            quality={100}
+          />
+        </div>
+        {name}
+      </motion.button>
+    </Link>
+  );
+};

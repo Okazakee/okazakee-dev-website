@@ -11,7 +11,7 @@ export default function Portfolio({ posts }) {
   };
 
   return (
-    <>
+    <div>
       <Head>
         <title>Blog - Okazakee.dev</title>
       </Head>
@@ -35,7 +35,7 @@ export default function Portfolio({ posts }) {
           </div>
         </div>
       </motion.div>
-    </>
+    </div>
   );
 }
 
