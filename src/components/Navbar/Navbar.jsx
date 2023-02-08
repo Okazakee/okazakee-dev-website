@@ -7,36 +7,42 @@ import { NavBtn, MobileNavBtn } from './NavBtn';
 import { motion } from 'framer-motion';
 
 export const AdminHeader = () => {
-  const { urlPath, navStyles } = useContext(MainContext);
+  const { navStyles, urlPath } = useContext(MainContext);
 
   return (
-    <div>
-      {urlPath.includes('/admin') && (
-        <div className={navStyles.default.adminDiv}>
-          <div className="flex text-xl mr-1">
-            <div className="flex items-center">
-              <img src="/images/admin.png" className="h-10 w-10 mr-5"></img>
-              <p className="mr-2">Administrator Mode |</p>
-              {urlPath.endsWith('/auth') && (
-                <p>Please login to enter the CMS</p>
-              )}
-              {urlPath.endsWith('/CMS') && (
-                <p>CMS - Edit pages content and manage users</p>
-              )}
-            </div>
-          </div>
-          <div className={navStyles.default.innerDiv}>
-            <Link href="/">
+    <div className="fixed top-0 left-0 right-0 z-50">
+      <div className={navStyles.default.mainDiv}>
+        <img
+          src="/images/admin.png"
+          alt="admin_icon"
+          className="h-6 w-6 md:h-10 md:w-10"
+        ></img>
+        <div className="flex">
+          <p className="">
+            Administrator Mode |
+            {urlPath.endsWith('/auth') && ' Please login to enter the CMS'}
+            {urlPath.endsWith('/CMS') &&
+              ' CMS - Edit pages content and manage users'}
+          </p>
+        </div>
+        <div className={navStyles.default.innerDiv}>
+          <div className="hidden md:block">
+            <Link href="/Bio" passHref>
               <motion.button
                 className={navStyles.buttons.defaultBtnStyle}
                 whileTap={{ scale: 0.9 }}
               >
-                Exit
+                <img
+                  src="/images/home.png"
+                  alt="home_icon"
+                  className="h-6 w-6 md:h-10 md:w-10"
+                ></img>
+                <label className="text-center">Exit</label>
               </motion.button>
             </Link>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

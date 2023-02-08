@@ -1,17 +1,35 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 const MainContext = createContext();
 
+// make dynamic head element served by this context, correctly setup states as arrays as [value, servalue]
+// build seo(?) stuff like the url preview in chats/forums
+// check that only global stuff is present here, otherwise create appropriate hook in appropriate component
+// EG: searchbar is only needed in navbar component, remove it from here asap.
+
 const MainProvider = ({ children }) => {
+  // GLOBAL STATES
   const [HideSearchBox, SetHideSearchBox] = useState(true);
   const [searchfield, SetSearchfield] = useState('');
   const [imageLoaded, setImageLoaded] = useState(false); //not needed might be useful later
   const [socialHide, SetSocialHide] = useState(true);
-  const router = useRouter();
+  const [adminMode, SetAdminMode] = useState(false);
 
+  // GLOBAL ROUTER CONTROLLER
+  const router = useRouter();
   const urlPath = router.pathname;
 
+  useEffect(() => {
+    // Redirect user instead of displaying 404 page
+    router.asPath.endsWith('admin') && router.push('/admin/auth');
+    // Manage adminMode state based on url path
+    router.pathname.includes('/admin')
+      ? SetAdminMode(true)
+      : SetAdminMode(false);
+  }, [router]);
+
+  // TAILWIND STYLES
   const navStyles = {
     default: {
       adminDiv:
@@ -39,10 +57,33 @@ const MainProvider = ({ children }) => {
     },
   };
 
+  const pageStyles = {
+    biography: {
+      mainDiv: 'flex items-center mb-[10vh] lg:mb-[20vh]',
+      imgDiv: 'h-48 w-48 relative mx-auto',
+      textDiv: 'flex justify-center items-center my-4',
+      innerText: 'mt-2 sm:text-3xl md:text-4xl lg:text-4xl text-2xl',
+      innerText2: 'text-[#8c54fb] ml-4 text-4xl md:text-6xl',
+      bio: 'mx-6 lg:mx-24 md:mx-12 sm:mx-10 max-w-6xl text-justify sm:text-xl md:text-xl lg:text-[1.50rem] text-md',
+    },
+    portfolio: {
+      cardListStyle:
+        'mx-2 grid justify-items-center md:grid-cols-2 lg:grid-cols-3',
+      h1: 'text-center sm:text-2xl md:text-2xl lg:text-[1.75rem] text-2xl pb-2 sm:pb-5 cursor-default mx-2',
+    },
+    blog: {
+      cardListStyle:
+        'mx-2 grid justify-items-center md:grid-cols-2 lg:grid-cols-3',
+      h1: 'text-center sm:text-2xl md:text-2xl lg:text-[1.75rem] text-2xl pb-2 sm:pb-5 cursor-default mx-2',
+    },
+  };
+
   return (
     <MainContext.Provider
       value={{
+        adminMode,
         navStyles,
+        pageStyles,
         router,
         urlPath,
         HideSearchBox,

@@ -13,10 +13,18 @@ export default function AdminAuth() {
       </Head>
       {authType ? (
         <div className="text-center flex-wrap">
-          <img src="/images/user.png" className="w-28 -mb-14 mx-auto"></img>
+          <img
+            src="/images/user.png"
+            alt="user_icon"
+            className="w-28 -mb-14 mx-auto"
+          ></img>
           <div className="rounded-3xl border pt-20 pb-5">
             <div className="flex items-center justify-around mb-5">
-              <img src="/images/mail.png" className="w-5 h-fit mx-2"></img>
+              <img
+                src="/images/mail.png"
+                alt="mail_icon"
+                className="w-5 h-fit mx-2"
+              ></img>
               <div className="text-center">
                 <input
                   type={'email'}
@@ -27,7 +35,11 @@ export default function AdminAuth() {
               <div className="w-5 mx-2"></div>
             </div>
             <div className="flex items-center justify-around mb-5">
-              <img src="/images/lock.png" className="w-5 h-fit mx-2"></img>
+              <img
+                src="/images/lock.png"
+                alt="lock_icon"
+                className="w-5 h-fit mx-2"
+              ></img>
               <div className="text-center">
                 <div className="">
                   <input
@@ -70,10 +82,18 @@ export default function AdminAuth() {
         </div>
       ) : (
         <div className="text-center flex-wrap">
-          <img src="/images/user.png" className="w-28 -mb-14 mx-auto"></img>
+          <img
+            src="/images/user.png"
+            alt="user_icon"
+            className="w-28 -mb-14 mx-auto"
+          ></img>
           <div className="rounded-3xl border pt-20 pb-5">
             <div className="flex items-center justify-around mb-5">
-              <img src="/images/username.png" className="w-5 h-fit mx-2"></img>
+              <img
+                src="/images/username.png"
+                alt="username_icon"
+                className="w-5 h-fit mx-2"
+              ></img>
               <div className="text-center">
                 <input
                   type={'username'}
@@ -84,7 +104,11 @@ export default function AdminAuth() {
               <div className="w-5 mx-2"></div>
             </div>
             <div className="flex items-center justify-around mb-5">
-              <img src="/images/mail.png" className="w-5 h-fit mx-2"></img>
+              <img
+                src="/images/mail.png"
+                alt="mail_icon"
+                className="w-5 h-fit mx-2"
+              ></img>
               <div className="text-center">
                 <input
                   type={'email'}
@@ -95,7 +119,11 @@ export default function AdminAuth() {
               <div className="w-5 mx-2"></div>
             </div>
             <div className="flex items-center justify-around mb-5">
-              <img src="/images/lock.png" className="w-5 h-fit mx-2"></img>
+              <img
+                src="/images/lock.png"
+                alt="lock_icon"
+                className="w-5 h-fit mx-2"
+              ></img>
               <div className="text-center">
                 <div className="">
                   <input

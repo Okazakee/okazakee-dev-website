@@ -6,7 +6,7 @@ import { MongoClient, ObjectId } from 'mongodb';
 
 export default function Post({ post, content }) {
   return (
-    <>
+    <div>
       <Head>
         <title>{post.title} - Okazakee.dev</title>
       </Head>
@@ -27,7 +27,7 @@ export default function Post({ post, content }) {
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { MainContext } from '../../components/context/MainContext';
@@ -6,31 +6,16 @@ import { motion } from 'framer-motion';
 import { MongoClient } from 'mongodb';
 
 export default function Bio({ bio, propic }) {
-  const styles = {
-    mainDiv: 'flex items-center mb-[10vh] lg:mb-[20vh]',
-    imgDiv: 'h-48 w-48 relative mx-auto',
-    textDiv: 'flex justify-center items-center my-4',
-    innerText: 'mt-2 sm:text-3xl md:text-4xl lg:text-4xl text-2xl',
-    innerText2: 'text-[#8c54fb] ml-4 text-4xl md:text-6xl',
-    bio: 'mx-6 lg:mx-24 md:mx-12 sm:mx-10 max-w-6xl text-justify sm:text-xl md:text-xl lg:text-[1.50rem] text-md',
-  };
-
-  const { router } = useContext(MainContext);
+  const { router, pageStyles } = useContext(MainContext);
 
   const [clicks, setClicks] = useState(0);
 
-  const handleImageClick = () => {
-    setClicks(clicks + 1);
-
-    if (clicks === 4) {
-      router.push('/admin/auth');
-    }
-  };
-
-  console.log(clicks);
+  useEffect(() => {
+    clicks === 5 && router.push('/admin/auth');
+  }, [clicks, router]);
 
   return (
-    <>
+    <div>
       <Head>
         <title>Biography - Okazakee.dev</title>
       </Head>
@@ -38,10 +23,10 @@ export default function Bio({ bio, propic }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
-        className={styles.mainDiv}
+        className={pageStyles.biography.mainDiv}
       >
         <div className="">
-          <div className={styles.imgDiv}>
+          <div className={pageStyles.biography.imgDiv}>
             <Image
               className="rounded-full"
               src={propic}
@@ -50,17 +35,17 @@ export default function Bio({ bio, propic }) {
               objectFit="cover"
               priority="true"
               quality={100}
-              onClick={handleImageClick}
+              onClick={() => setClicks(clicks + 1)}
             />
           </div>
-          <div className={styles.textDiv}>
-            <h1 className={styles.innerText}>Hello, I&#39;m</h1>
-            <h1 className={styles.innerText2}>OKAZAKEE</h1>
+          <div className={pageStyles.biography.textDiv}>
+            <h1 className={pageStyles.biography.innerText}>Hello, I&#39;m</h1>
+            <h1 className={pageStyles.biography.innerText2}>OKAZAKEE</h1>
           </div>
-          <p className={styles.bio}>{bio}</p>
+          <p className={pageStyles.biography.bio}>{bio}</p>
         </div>
       </motion.div>
-    </>
+    </div>
   );
 }
 
