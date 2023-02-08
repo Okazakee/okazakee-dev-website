@@ -6,9 +6,11 @@ const MainContext = createContext();
 const MainProvider = ({ children }) => {
   const [HideSearchBox, SetHideSearchBox] = useState(true);
   const [searchfield, SetSearchfield] = useState('');
-  const { pathname } = useRouter();
   const [imageLoaded, setImageLoaded] = useState(false); //not needed might be useful later
   const [socialHide, SetSocialHide] = useState(true);
+  const router = useRouter();
+
+  const urlPath = router.pathname;
 
   const navBtnStyles = {
     defaultBtnStyle:
@@ -19,7 +21,8 @@ const MainProvider = ({ children }) => {
   return (
     <MainContext.Provider
       value={{
-        pathname,
+        router,
+        urlPath,
         HideSearchBox,
         SetHideSearchBox,
         searchfield,

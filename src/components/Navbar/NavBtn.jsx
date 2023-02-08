@@ -4,13 +4,13 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 function NavBtn({ page, name, HideSearch }) {
-  const { navBtnStyles, pathname } = useContext(MainContext);
+  const { navBtnStyles, urlPath } = useContext(MainContext);
 
   return (
     <Link href={page} passHref>
       <motion.button
         className={
-          pathname.startsWith(page)
+          urlPath.startsWith(page)
             ? navBtnStyles.selectedBtnStyle
             : navBtnStyles.defaultBtnStyle
         }

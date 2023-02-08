@@ -6,7 +6,7 @@ import NavBtn from './NavBtn';
 import { motion } from 'framer-motion';
 
 export default function Navbar() {
-  const { HideSearchBox, pathname } = useContext(MainContext);
+  const { HideSearchBox, urlPath, navBtnStyles } = useContext(MainContext);
 
   const styles = {
     SearchBoxStyle: `min-w-fit w-full transition-all ease-in-out duration-300 ${
@@ -24,7 +24,7 @@ export default function Navbar() {
 
   return (
     <div className={styles.navStyle}>
-      {!pathname.endsWith('/auth') && !pathname.endsWith('/panel') ? (
+      {!urlPath.includes('/admin') ? (
         <div className={styles.mainDiv}>
           <div className={styles.innerDiv}>
             <NavBtn HideSearch={true} page="/Bio" name="Bio"></NavBtn>
@@ -61,11 +61,24 @@ export default function Navbar() {
         </div>
       ) : (
         <div className={styles.adminDiv}>
-          <div className="flex items-center">
-            <img src="/images/admin.png" className="h-10 w-10 mr-5"></img>
-            <p>Administrator Mode</p>
+          <div className="flex text-xl mr-1">
+            <div className="flex items-center">
+              <img src="/images/admin.png" className="h-10 w-10 mr-5"></img>
+              <p className="mr-2">Administrator Mode |</p>
+              {urlPath.endsWith('/auth') && <p>Authentication</p>}
+              {urlPath.endsWith('/panel') && <p>EDITOR MODE</p>}
+            </div>
           </div>
-          <Link href={'/'}>Exit</Link>
+          <div className={styles.innerDiv}>
+            <Link href="/">
+              <motion.button
+                className={navBtnStyles.defaultBtnStyle}
+                whileTap={{ scale: 0.9 }}
+              >
+                Exit
+              </motion.button>
+            </Link>
+          </div>
         </div>
       )}
     </div>

@@ -1,5 +1,7 @@
+import { useState, useContext } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import { MainContext } from '../../components/context/MainContext';
 import { motion } from 'framer-motion';
 import { MongoClient } from 'mongodb';
 
@@ -12,6 +14,20 @@ export default function Bio({ bio, propic }) {
     innerText2: 'text-[#8c54fb] ml-4 text-4xl md:text-6xl',
     bio: 'mx-6 lg:mx-24 md:mx-12 sm:mx-10 max-w-6xl text-justify sm:text-xl md:text-xl lg:text-[1.50rem] text-md',
   };
+
+  const { router } = useContext(MainContext);
+
+  const [clicks, setClicks] = useState(0);
+
+  const handleImageClick = () => {
+    setClicks(clicks + 1);
+
+    if (clicks === 4) {
+      router.push('/admin/auth');
+    }
+  };
+
+  console.log(clicks);
 
   return (
     <>
@@ -34,6 +50,7 @@ export default function Bio({ bio, propic }) {
               objectFit="cover"
               priority="true"
               quality={100}
+              onClick={handleImageClick}
             />
           </div>
           <div className={styles.textDiv}>

@@ -12,7 +12,7 @@ function MobileNavBtn({
   btnimg,
   name,
 }) {
-  const { pathname, SetSocialHide } = useContext(MainContext);
+  const { urlPath, SetSocialHide } = useContext(MainContext);
 
   const socialHandler = () => {
     console.log(name);
@@ -25,7 +25,7 @@ function MobileNavBtn({
         onClick={() => socialHandler()}
         whileTap={{ scale: 0.8 }}
         className={
-          pathname.startsWith(page) ? selectedBtnStyle : defaultBtnStyle
+          urlPath.startsWith(page) ? selectedBtnStyle : defaultBtnStyle
         }
       >
         <div className={iconStyle}>
