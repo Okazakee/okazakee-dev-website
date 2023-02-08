@@ -31,7 +31,7 @@ const MainProvider = ({ children }) => {
 
   // TAILWIND STYLES
   const navStyles = {
-    layout: "font-['White_Rabbit_Regular'] bg-[#090909] text-[#e8e8e8] transition-all ease-in-out duration-[400ms] scroll-smooth mx-auto min-h-screen w-full flex justify-center pt-5 md:pt-20",
+    layout: "font-['White_Rabbit_Regular'] bg-[#090909] text-[#e8e8e8] transition-all ease-in-out duration-[400ms] scroll-smooth mx-auto min-h-screen w-full flex justify-center pt-5 md:pt-32",
     default: {
       adminNav: "fixed top-0 left-3 right-3 z-50",
       adminDiv:
@@ -65,9 +65,9 @@ const MainProvider = ({ children }) => {
       mainDiv: 'flex items-center mb-[10vh] lg:mb-[20vh]',
       imgDiv: 'h-48 w-48 relative mx-auto',
       textDiv: 'flex justify-center items-center my-4',
-      innerText: 'mt-2 sm:text-3xl md:text-4xl lg:text-4xl text-2xl',
-      innerText2: 'text-[#8c54fb] ml-4 text-4xl md:text-6xl',
-      bio: 'mx-6 lg:mx-24 md:mx-12 sm:mx-10 max-w-6xl text-justify sm:text-xl md:text-xl lg:text-[1.50rem] text-md',
+      innerText: 'mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl',
+      innerText2: 'text-[#8c54fb] ml-4 text-4xl sm:text-5xl lg:text-6xl',
+      bio: 'mx-6 lg:mx-24 md:mx-12 sm:mx-10 max-w-6xl text-justify sm:text-xl lg:text-[1.50rem] text-lg',
     },
     portfolio: {
       cardListStyle:
