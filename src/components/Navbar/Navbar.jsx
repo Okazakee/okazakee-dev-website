@@ -6,41 +6,51 @@ import { SocialLink, SocialLinkMobile } from './SocialLink';
 import { NavBtn, MobileNavBtn } from './NavBtn';
 import { motion } from 'framer-motion';
 
+export const AdminMobileHeader = () => {
+  const { navStyles } = useContext(MainContext);
+
+  return (
+    <div className={navStyles.mobile.NavbarStyle}>
+      <div className="flex justify-around mx-4">
+        
+      </div>
+    </div>
+  );
+};
+
 export const AdminHeader = () => {
   const { navStyles, urlPath } = useContext(MainContext);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50">
-      <div className={navStyles.default.mainDiv}>
-        <img
-          src="/images/admin.png"
-          alt="admin_icon"
-          className="h-6 w-6 md:h-10 md:w-10"
-        ></img>
-        <div className="flex">
-          <p className="">
-            Administrator Mode |
-            {urlPath.endsWith('/auth') && ' Please login to enter the CMS'}
-            {urlPath.endsWith('/CMS') &&
-              ' CMS - Edit pages content and manage users'}
-          </p>
-        </div>
-        <div className={navStyles.default.innerDiv}>
-          <div className="hidden md:block">
-            <Link href="/Bio" passHref>
-              <motion.button
-                className={navStyles.buttons.defaultBtnStyle}
-                whileTap={{ scale: 0.9 }}
-              >
-                <img
-                  src="/images/home.png"
-                  alt="home_icon"
-                  className="h-6 w-6 md:h-10 md:w-10"
-                ></img>
-                <label className="text-center">Exit</label>
-              </motion.button>
-            </Link>
+    <div className={navStyles.default.adminNav}>
+      <div className='flex'>
+        <Link href="/Bio" passHref>
+          <button className='md:block hidden'>
+            <img
+              src="/images/exit.png"
+              alt="exit_icon"
+              className="h-8 w-8"
+            ></img>
+          </button>
+        </Link>
+        <div className={navStyles.default.mainDiv}>
+          <div className="text-center mr-4">
+            <p className="">
+              {urlPath.endsWith('/auth') && ' Authentication - Please login to enter in the CMS'}
+              {urlPath.endsWith('/CMS') &&
+                ' CMS - Edit pages content and manage users'}
+            </p>
           </div>
+        </div>
+      </div>
+      <div className='hidden md:block fixed left-1/2 -translate-x-1/2 bottom-3'>
+        <div className='flex items-center'>
+          <img
+            src="/images/admin.png"
+            alt="admin_icon"
+            className="h-8 w-8 mr-2"
+          ></img>
+          <p>Administrator Mode</p>
         </div>
       </div>
     </div>
