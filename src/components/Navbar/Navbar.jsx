@@ -6,35 +6,14 @@ import { SocialLink, SocialLinkMobile } from './SocialLink';
 import { NavBtn, MobileNavBtn } from './NavBtn';
 import { motion } from 'framer-motion';
 
-export const AdminMobileHeader = () => {
-  const { navStyles } = useContext(MainContext);
-
-  return (
-    <div className={navStyles.mobile.NavbarStyle}>
-      <div className="flex justify-around mx-4">
-        
-      </div>
-    </div>
-  );
-};
-
 export const AdminHeader = () => {
   const { navStyles, urlPath } = useContext(MainContext);
 
   return (
     <div className={navStyles.default.adminNav}>
       <div className='flex'>
-        <Link href="/Bio" passHref>
-          <button className='md:block hidden'>
-            <img
-              src="/images/exit.png"
-              alt="exit_icon"
-              className="h-8 w-8"
-            ></img>
-          </button>
-        </Link>
         <div className={navStyles.default.mainDiv}>
-          <div className="text-center mr-4">
+          <div className="text-center mt-5 md:mt-0 md:text-xl">
             <p className="">
               {urlPath.endsWith('/auth') && ' Authentication - Please login to enter in the CMS'}
               {urlPath.endsWith('/CMS') &&
@@ -43,7 +22,39 @@ export const AdminHeader = () => {
           </div>
         </div>
       </div>
-      <div className='hidden md:block fixed left-1/2 -translate-x-1/2 bottom-3'>
+      <div className='hidden md:block fixed left-1/2 -translate-x-1/2 bottom-5'>
+        <div className='flex'>
+          <div className='flex items-center'>
+            <img
+              src="/images/admin.png"
+              alt="admin_icon"
+              className="h-8 w-8 mr-2"
+            ></img>
+            <p>Administrator Mode</p>
+          </div>
+        </div>
+      </div>
+      <div className='hidden md:block fixed right-5 bottom-3'>
+        <div className=''>
+            <MobileNavBtn
+              page="/Bio"
+              defaultBtnStyle={navStyles.mobile.defaultBtnStyle}
+              iconStyle={navStyles.mobile.iconStyle}
+              btnimg="/images/exit.png"
+              name="Exit">
+            </MobileNavBtn>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const AdminMobileHeader = () => {
+  const { navStyles } = useContext(MainContext);
+
+  return (
+    <div className={navStyles.mobile.NavbarStyle}>
+      <div className="flex justify-around mx-4">
         <div className='flex items-center'>
           <img
             src="/images/admin.png"
@@ -52,6 +63,13 @@ export const AdminHeader = () => {
           ></img>
           <p>Administrator Mode</p>
         </div>
+        <MobileNavBtn
+          page="/Bio"
+          defaultBtnStyle={navStyles.mobile.defaultBtnStyle}
+          iconStyle={navStyles.mobile.iconStyle}
+          btnimg="/images/exit.png"
+          name="Exit"
+        ></MobileNavBtn>
       </div>
     </div>
   );
