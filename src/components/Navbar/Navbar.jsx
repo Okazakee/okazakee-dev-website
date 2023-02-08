@@ -11,20 +11,21 @@ export const AdminHeader = () => {
 
   return (
     <div className={navStyles.default.adminNav}>
-      <div className='flex'>
+      <div className="flex">
         <div className={navStyles.default.mainDiv}>
           <div className="text-center mt-5 md:mt-0 md:text-xl">
             <p className="">
-              {urlPath.endsWith('/auth') && ' Authentication - Please login to enter in the CMS'}
+              {urlPath.endsWith('/auth') &&
+                ' Authentication - Please login to enter in the CMS'}
               {urlPath.endsWith('/CMS') &&
                 ' CMS - Edit pages content and manage users'}
             </p>
           </div>
         </div>
       </div>
-      <div className='hidden md:block fixed left-1/2 -translate-x-1/2 bottom-5'>
-        <div className='flex'>
-          <div className='flex items-center'>
+      <div className="hidden md:block fixed left-1/2 -translate-x-1/2 bottom-5">
+        <div className="flex">
+          <div className="flex items-center">
             <img
               src="/images/admin.png"
               alt="admin_icon"
@@ -34,16 +35,14 @@ export const AdminHeader = () => {
           </div>
         </div>
       </div>
-      <div className='hidden md:block fixed right-5 bottom-3'>
-        <div className=''>
-            <MobileNavBtn
-              page="/Bio"
-              defaultBtnStyle={navStyles.mobile.defaultBtnStyle}
-              iconStyle={navStyles.mobile.iconStyle}
-              btnimg="/images/exit.png"
-              name="Exit">
-            </MobileNavBtn>
-        </div>
+      <div className="hidden md:block fixed right-5 bottom-3">
+        <MobileNavBtn
+          page="/Bio"
+          defaultBtnStyle="text-[#b4b4b4] hover:text-[#e8e8e8]"
+          iconStyle={navStyles.mobile.iconStyle}
+          btnimg="/images/exit.png"
+          name="Exit"
+        ></MobileNavBtn>
       </div>
     </div>
   );
@@ -54,8 +53,8 @@ export const AdminMobileHeader = () => {
 
   return (
     <div className={navStyles.mobile.NavbarStyle}>
-      <div className="flex justify-around mx-4">
-        <div className='flex items-center'>
+      <div className="flex justify-around  mx-4">
+        <div className="flex text-lg mb-2 items-center">
           <img
             src="/images/admin.png"
             alt="admin_icon"

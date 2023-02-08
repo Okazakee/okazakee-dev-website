@@ -31,9 +31,10 @@ const MainProvider = ({ children }) => {
 
   // TAILWIND STYLES
   const navStyles = {
-    layout: "font-['White_Rabbit_Regular'] bg-[#090909] text-[#e8e8e8] transition-all ease-in-out duration-[400ms] scroll-smooth mx-auto min-h-screen w-full flex justify-center pt-5 md:pt-32",
+    layout:
+      "font-['White_Rabbit_Regular'] bg-[#090909] text-[#e8e8e8] transition-all ease-in-out duration-[400ms] scroll-smooth mx-auto min-h-screen w-full flex justify-center pt-5 md:pt-32",
     default: {
-      adminNav: "fixed top-0 left-3 right-3 z-50",
+      adminNav: 'fixed top-0 left-3 right-3 z-50',
       adminDiv:
         'flex items-center justify-between mx-auto px-10 py-4 rounded-2xl max-w-7xl',
       SearchBoxStyle: `min-w-fit w-full transition-all ease-in-out duration-300 ${
@@ -53,7 +54,8 @@ const MainProvider = ({ children }) => {
       iconStyle: 'h-8 w-8 relative mx-auto pointer-events-none',
     },
     buttons: {
-      adminBtn: "nav hover:underline hover:underline-offset-1 hover:text-[#8c54fb] transition-all",
+      adminBtn:
+        'nav hover:underline hover:underline-offset-1 hover:text-[#8c54fb] transition-all',
       defaultBtnStyle:
         'nav mx-3 hover:underline hover:underline-offset-1 hover:text-[#8c54fb] transition-all',
       selectedBtnStyle: 'nav mx-3 underline underline-offset-1 text-[#8c54fb]',

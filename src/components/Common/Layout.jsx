@@ -1,10 +1,15 @@
 import { React, useContext } from 'react';
-import { Navbar, MobileNavbar, AdminHeader, AdminMobileHeader } from '../Navbar/Navbar';
+import {
+  Navbar,
+  MobileNavbar,
+  AdminHeader,
+  AdminMobileHeader,
+} from '../Navbar/Navbar';
 import { MainContext } from '../context/MainContext';
 import Head from 'next/head';
 
 export default function Layout({ children }) {
-  const {navStyles, urlPath } = useContext(MainContext);
+  const { navStyles, urlPath } = useContext(MainContext);
 
   return (
     <div>
