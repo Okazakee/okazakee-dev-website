@@ -11,8 +11,8 @@ export default function Cms({ avaliablePages }) {
   return (
     <div>
       {isUserAuth && (
-        <div className="mt-20 sm:-mt-10 w-[90vw] max-w-7xl border border-red-700">
-          <div className="flex justify-center">
+        <div className="mt-20 sm:-mt-10 py-5 w-[90vw] max-w-7xl border border-red-700">
+          <div className="basis-3/4 mx-5">
             <div className="flex items-center justify-center border rounded-3xl min-w-[50%] h-10 mb-5">
               <h1 className="mx-5">
                 You are currently editing{' '}
@@ -23,20 +23,21 @@ export default function Cms({ avaliablePages }) {
               </h1>
             </div>
           </div>
-          <div className="">
-            <div className="flex-wrap border w-fit rounded-3xl mb-5 pt-5 px-5">
+          <div className="flex">
+            <div className="flex-wrap border basis-1/4 rounded-3xl pt-5 px-5 mx-5">
               {avaliablePages.map((page, i) => (
                 <div
+                  onClick={() => SetSelectedPage(page)}
                   key={i}
-                  className={`border w-fit mx-auto px-2 py-1 mb-5 rounded-3xl hover:bg-[#8c54fb] ${
+                  className={`cursor-pointer border text-center px-2 py-1 mb-5 rounded-3xl hover:bg-[#8c54fb] ${
                     selectedPage === page && 'bg-[#8c54fb]'
                   }`}
                 >
-                  <button onClick={() => SetSelectedPage(page)}>
-                    <div className="">{page}</div>
-                  </button>
+                  <div className="">{page}</div>
                 </div>
               ))}
+            </div>
+            <div className="flex-wrap border basis-3/4 rounded-3xl pt-5 px-5 mr-5">
             </div>
           </div>
         </div>
@@ -52,11 +53,21 @@ export async function getServerSideProps(context) {
     const collections = await db.listCollections().toArray();
 
     // Extract the collection names
-    const avaliablePages = collections.map((collection) => collection.name);
+    const sortedCollections = collections.sort((a, b) => {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
+    });
+
+    const avaliablePages = sortedCollections.map((collection) => collection.name);
 
     return {
       props: {
-        avaliablePages,
+        avaliablePages
       },
     };
   } catch (e) {
