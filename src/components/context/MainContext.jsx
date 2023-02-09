@@ -15,7 +15,9 @@ const MainProvider = ({ children }) => {
   const [imageLoaded, setImageLoaded] = useState(false); //not needed might be useful later
   const [socialHide, SetSocialHide] = useState(true);
   const [adminMode, SetAdminMode] = useState(false);
-  const [userAuth, SetUserAuth] = useState(false);
+
+  // User authentication state
+  const [isUserAuth, SetIsUserAuth] = useState(true);
 
   // GLOBAL ROUTER CONTROLLER
   const router = useRouter();
@@ -23,9 +25,9 @@ const MainProvider = ({ children }) => {
 
   useEffect(() => {
     // Redirect user if is not authenticated
-    !userAuth && router.asPath.endsWith('/cms') && router.push('/cms/auth');
+    !isUserAuth && router.asPath.endsWith('/Cms') && router.push('/Cms/auth');
     // Manage adminMode state based on url path
-    router.pathname.includes('/cms') ? SetAdminMode(true) : SetAdminMode(false);
+    router.pathname.includes('/Cms') ? SetAdminMode(true) : SetAdminMode(false);
   }, [router]);
 
   // TAILWIND STYLES
@@ -91,6 +93,8 @@ const MainProvider = ({ children }) => {
   return (
     <MainContext.Provider
       value={{
+        isUserAuth,
+        SetIsUserAuth,
         adminMode,
         navStyles,
         pageStyles,

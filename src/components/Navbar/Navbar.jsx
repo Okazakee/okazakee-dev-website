@@ -14,12 +14,18 @@ export const AdminHeader = () => {
       <div className="flex">
         <div className={navStyles.default.mainDiv}>
           <div className="text-center mt-5 md:mt-0 md:text-xl">
-            <p className="">
-              {urlPath.endsWith('/auth') &&
-                ' Authentication - Please login to enter in the CMS'}
-              {urlPath.endsWith('/cms') &&
-                ' CMS - Edit pages content and manage users'}
-            </p>
+            {urlPath.endsWith('/auth') && (
+              <p>
+                <label className="text-[#8c54fb]">Authentication</label> -
+                Please login to enter in the CMS
+              </p>
+            )}
+            {urlPath.endsWith('/Cms') && (
+              <p>
+                <label className="text-[#8c54fb]">CMS</label> - Edit pages
+                content and manage users
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -58,7 +64,7 @@ export const AdminMobileHeader = () => {
           <img
             src="/images/admin.png"
             alt="admin_icon"
-            className="h-8 w-8 mr-2"
+            className="h-fit w-10 mr-2"
           ></img>
           <p>Administrator Mode</p>
         </div>

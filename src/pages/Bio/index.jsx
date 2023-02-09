@@ -11,7 +11,7 @@ export default function Bio({ bio, propic }) {
   const [clicks, setClicks] = useState(0);
 
   useEffect(() => {
-    clicks === 5 && router.push('/cms/auth');
+    clicks === 5 && router.push('/Cms/auth');
   }, [clicks, router]);
 
   return (

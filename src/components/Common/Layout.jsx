@@ -17,7 +17,7 @@ export default function Layout({ children }) {
         <link rel="icon" href="/favicon.svg" />
       </Head>
       <main className={navStyles.layout}>
-        {!urlPath.includes('/cms') ? (
+        {!urlPath.includes('/Cms') ? (
           <div className="md:hidden">
             <MobileNavbar></MobileNavbar>
           </div>
@@ -26,7 +26,7 @@ export default function Layout({ children }) {
             <AdminMobileHeader></AdminMobileHeader>
           </div>
         )}
-        {!urlPath.includes('/cms') ? (
+        {!urlPath.includes('/Cms') ? (
           <div className="hidden sm:block">
             <Navbar></Navbar>
           </div>
