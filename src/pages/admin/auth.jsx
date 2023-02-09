@@ -1,161 +1,157 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
 
 export default function AdminAuth() {
-  const [authType, SetAuthType] = useState(true);
+  const [authType, SetAuthType] = useState('login');
 
   return (
-    <div className="flex items-center mb-[30vh] ">
+    <div className="pt-32 sm:pt-20">
       <Head>
         <title>Admin auth page - Okazakee.dev</title>
       </Head>
-      {authType ? (
-        <div className="text-center flex-wrap">
-          <img
-            src="/images/user.png"
-            alt="user_icon"
-            className="w-28 -mb-14 mx-auto"
-          ></img>
-          <div className="rounded-3xl border pt-20 pb-5">
-            <div className="flex items-center justify-around mb-5">
-              <img
-                src="/images/mail.png"
-                alt="mail_icon"
-                className="w-5 h-fit mx-2"
-              ></img>
-              <div className="text-center">
-                <input
-                  type={'email'}
-                  placeholder={'Email:'}
-                  className="text-center rounded-3xl flex-1 justify-center"
-                ></input>
-              </div>
-              <div className="w-5 mx-2"></div>
-            </div>
-            <div className="flex items-center justify-around mb-5">
-              <img
-                src="/images/lock.png"
-                alt="lock_icon"
-                className="w-5 h-fit mx-2"
-              ></img>
-              <div className="text-center">
-                <div className="">
-                  <input
-                    type={'password'}
-                    placeholder={'Password:'}
-                    className="text-center rounded-3xl"
-                  ></input>
+      <div className="flex-wrap sm:scale-150 scale-125 transform-gpu">
+        <img
+          src="/images/user.png"
+          alt="user_icon"
+          className="w-24 -mb-12 mx-auto"
+        ></img>
+        <div className="rounded-3xl border pt-16 pb-5">
+          <div>
+            {authType === 'login' ? (
+              <div className="">
+                <div className="flex items-center justify-around mb-5">
+                  <img
+                    src="/images/mail.png"
+                    alt="mail_icon"
+                    className="w-5 h-fit mx-2"
+                  ></img>
+                  <div className="text-center">
+                    <input
+                      type={'email'}
+                      placeholder={'Email:'}
+                      className="text-center rounded-3xl flex-1 justify-center"
+                    ></input>
+                  </div>
+                  <div className="w-5 mx-2"></div>
+                </div>
+                <div className="flex items-center justify-around mb-5">
+                  <img
+                    src="/images/lock.png"
+                    alt="lock_icon"
+                    className="w-5 h-fit mx-2"
+                  ></img>
+                  <div className="text-center">
+                    <div className="">
+                      <input
+                        type={'password'}
+                        placeholder={'Password:'}
+                        className="text-center rounded-3xl"
+                      ></input>
+                    </div>
+                  </div>
+                  <div className="w-5 mx-2"></div>
+                </div>
+                <div className="flex justify-between items-center mx-4 mb-5 text-sm">
+                  <div className="flex justify-between items-center">
+                    <input className="" type={'checkbox'}></input>
+                    <p className="ml-1">Remember me</p>
+                  </div>
+                  <div>
+                    <button className="ml-5">Forgot password?</button>
+                  </div>
+                </div>
+                <div className="flex justify-between items-center mx-2">
+                  <button className="bg-[#653bba] w-full rounded-3xl">
+                    <Link href={'/admin/CMS'} passHref>
+                      Login
+                    </Link>
+                  </button>
+                </div>
+                <div className="flex justify-center items-center mx-4 mt-5 text-sm">
+                  <p className="">
+                    Not registered? Request
+                    <button
+                      onClick={() => SetAuthType('register')}
+                      className="text-center ml-2 text-[#653bba]"
+                    >
+                      HERE
+                    </button>
+                  </p>
                 </div>
               </div>
-              <div className="w-5 mx-2"></div>
-            </div>
-            <div className="flex justify-between items-center text-xs mx-4 mb-5">
-              <div className="flex justify-between items-center">
-                <input className="" type={'checkbox'}></input>
-                <p className="ml-1">Remember me</p>
-              </div>
-              <div>
-                <button className="">Forgot password?</button>
-              </div>
-            </div>
-            <div className="flex justify-between items-center mx-2">
-              <button className="bg-[#653bba] w-full rounded-3xl">
-                <Link href={'/admin/CMS'} passHref shallow>
-                  Login
-                </Link>
-              </button>
-            </div>
-            <div className="flex justify-between items-center text-xs mx-4 mt-5">
-              <p className="text-sm">
-                Not registered? Request
-                <button
-                  onClick={() => SetAuthType(false)}
-                  className="text-center ml-2 text-[#653bba]"
-                >
-                  HERE
-                </button>
-              </p>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="text-center flex-wrap">
-          <img
-            src="/images/user.png"
-            alt="user_icon"
-            className="w-28 -mb-14 mx-auto"
-          ></img>
-          <div className="rounded-3xl border pt-20 pb-5">
-            <div className="flex items-center justify-around mb-5">
-              <img
-                src="/images/username.png"
-                alt="username_icon"
-                className="w-5 h-fit mx-2"
-              ></img>
-              <div className="text-center">
-                <input
-                  type={'username'}
-                  placeholder={'Username:'}
-                  className="text-center rounded-3xl flex-1 justify-center"
-                ></input>
-              </div>
-              <div className="w-5 mx-2"></div>
-            </div>
-            <div className="flex items-center justify-around mb-5">
-              <img
-                src="/images/mail.png"
-                alt="mail_icon"
-                className="w-5 h-fit mx-2"
-              ></img>
-              <div className="text-center">
-                <input
-                  type={'email'}
-                  placeholder={'Email:'}
-                  className="text-center rounded-3xl flex-1 justify-center"
-                ></input>
-              </div>
-              <div className="w-5 mx-2"></div>
-            </div>
-            <div className="flex items-center justify-around mb-5">
-              <img
-                src="/images/lock.png"
-                alt="lock_icon"
-                className="w-5 h-fit mx-2"
-              ></img>
-              <div className="text-center">
-                <div className="">
-                  <input
-                    type={'password'}
-                    placeholder={'Password:'}
-                    className="text-center rounded-3xl"
-                  ></input>
+            ) : (
+              <div className="">
+                <div className="flex items-center justify-around mb-5">
+                  <img
+                    src="/images/username.png"
+                    alt="username_icon"
+                    className="w-5 h-fit mx-2"
+                  ></img>
+                  <div className="text-center">
+                    <input
+                      type={'username'}
+                      placeholder={'Username:'}
+                      className="text-center rounded-3xl flex-1 justify-center"
+                    ></input>
+                  </div>
+                  <div className="w-5 mx-2"></div>
+                </div>
+                <div className="flex items-center justify-around mb-5">
+                  <img
+                    src="/images/mail.png"
+                    alt="mail_icon"
+                    className="w-5 h-fit mx-2"
+                  ></img>
+                  <div className="text-center">
+                    <input
+                      type={'email'}
+                      placeholder={'Email:'}
+                      className="text-center rounded-3xl flex-1 justify-center"
+                    ></input>
+                  </div>
+                  <div className="w-5 mx-2"></div>
+                </div>
+                <div className="flex items-center justify-around mb-5">
+                  <img
+                    src="/images/lock.png"
+                    alt="lock_icon"
+                    className="w-5 h-fit mx-2"
+                  ></img>
+                  <div className="text-center">
+                    <div className="">
+                      <input
+                        type={'password'}
+                        placeholder={'Password:'}
+                        className="text-center rounded-3xl"
+                      ></input>
+                    </div>
+                  </div>
+                  <div className="w-5 mx-2"></div>
+                </div>
+                <div className="flex justify-between items-center mx-2">
+                  <button className="bg-[#653bba] w-full rounded-3xl">
+                    <Link href={'/admin/CMS'} passHref>
+                      Register
+                    </Link>
+                  </button>
+                </div>
+                <div className="flex justify-center items-center mx-6 mt-5 text-sm">
+                  <p className="">
+                    Already registered? Login
+                    <button
+                      onClick={() => SetAuthType('login')}
+                      className="text-center ml-2 text-[#653bba]"
+                    >
+                      HERE
+                    </button>
+                  </p>
                 </div>
               </div>
-              <div className="w-5 mx-2"></div>
-            </div>
-            <div className="flex justify-between items-center mx-2">
-              <button className="bg-[#653bba] w-full rounded-3xl">
-                <Link href={'/admin/CMS'} passHref shallow>
-                  Register
-                </Link>
-              </button>
-            </div>
-            <div className="flex justify-between items-center text-xs mx-4 mt-5">
-              <p className="text-sm">
-                Already registered? Login
-                <button
-                  onClick={() => SetAuthType(true)}
-                  className="text-center ml-2 text-[#653bba]"
-                >
-                  HERE
-                </button>
-              </p>
-            </div>
+            )}
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }

@@ -32,7 +32,7 @@ const MainProvider = ({ children }) => {
   // TAILWIND STYLES
   const navStyles = {
     layout:
-      "font-['White_Rabbit_Regular'] bg-[#090909] text-[#e8e8e8] transition-all ease-in-out duration-[400ms] scroll-smooth mx-auto min-h-screen w-full flex justify-center pt-5 md:pt-32",
+      "font-['White_Rabbit_Regular'] bg-[#090909] text-[#e8e8e8] transition-all ease-in-out duration-[400ms] scroll-smooth mx-auto min-h-screen w-full flex justify-center pt-5 sm:pt-24",
     default: {
       adminNav: 'fixed top-0 left-3 right-3 z-50',
       adminDiv:
