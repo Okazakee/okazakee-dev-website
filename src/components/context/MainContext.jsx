@@ -25,10 +25,12 @@ const MainProvider = ({ children }) => {
 
   useEffect(() => {
     // Redirect user if is not authenticated
-    !isUserAuth && router.asPath.endsWith('/Cms') && router.replace('/Cms/auth');
+    !isUserAuth &&
+      router.asPath.endsWith('/Cms') &&
+      router.replace('/Cms/auth');
     // Manage adminMode state based on url path
     router.pathname.includes('/Cms') ? SetAdminMode(true) : SetAdminMode(false);
-  }, [router]);
+  }, [router, isUserAuth]);
 
   // TAILWIND STYLES
   const navStyles = {

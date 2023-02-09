@@ -38,17 +38,25 @@ export default function Cms({ avaliablePages, collectionsData }) {
               ))}
             </div>
             <div className="flex-wrap border basis-4/5 rounded-3xl pt-5 px-5 mr-5">
-              <div className='flex mb-2'>
-                <h1 className='mr-3'>title: {collectionsData[selectedPage][0].title}</h1>
+              <div className="flex mb-2">
+                <h1 className="mr-3">
+                  title: {collectionsData[selectedPage][0].title}
+                </h1>
               </div>
-              <div className='flex mb-2'>
-                <h1 className='mr-3'>Img Link: {collectionsData[selectedPage][0].img}</h1>
+              <div className="flex mb-2">
+                <h1 className="mr-3">
+                  Img Link: {collectionsData[selectedPage][0].img}
+                </h1>
               </div>
-              <div className='flex mb-2'>
-                <h1 className='mr-3'>text: {collectionsData[selectedPage][0].text}</h1>
+              <div className="flex mb-2">
+                <h1 className="mr-3">
+                  text: {collectionsData[selectedPage][0].text}
+                </h1>
               </div>
-              <div className='flex mb-2'>
-                <h1 className='mr-3'>MD: {collectionsData[selectedPage][0].markdown}</h1>
+              <div className="flex mb-2">
+                <h1 className="mr-3 ">
+                  MD: {collectionsData[selectedPage][0].markdown}
+                </h1>
               </div>
             </div>
           </div>
@@ -59,7 +67,6 @@ export default function Cms({ avaliablePages, collectionsData }) {
 }
 
 export async function getServerSideProps(context) {
-
   try {
     const client = await MongoClient.connect(process.env.MONGODB_URI);
     const db = client.db(process.env.COLLECTION_ENV);
@@ -76,7 +83,9 @@ export async function getServerSideProps(context) {
       }
       return 0;
     });
-    const avaliablePages = sortedCollections.map((collection) => collection.name);
+    const avaliablePages = sortedCollections.map(
+      (collection) => collection.name
+    );
 
     const collectionsData = {};
     for (const collectionName of avaliablePages) {
@@ -93,7 +102,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         avaliablePages,
-        collectionsData
+        collectionsData,
       },
     };
   } catch (e) {
