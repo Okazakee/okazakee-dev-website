@@ -15,14 +15,15 @@ const MainProvider = ({ children }) => {
   const [imageLoaded, setImageLoaded] = useState(false); //not needed might be useful later
   const [socialHide, SetSocialHide] = useState(true);
   const [adminMode, SetAdminMode] = useState(false);
+  const [userAuth, SetUserAuth] = useState(false);
 
   // GLOBAL ROUTER CONTROLLER
   const router = useRouter();
   const urlPath = router.pathname;
 
   useEffect(() => {
-    // Redirect user instead of displaying 404 page
-    router.asPath.endsWith('admin') && router.push('/cms/auth');
+    // Redirect user if is not authenticated
+    !userAuth && router.asPath.endsWith('/cms') && router.push('/cms/auth');
     // Manage adminMode state based on url path
     router.pathname.includes('/cms') ? SetAdminMode(true) : SetAdminMode(false);
   }, [router]);
