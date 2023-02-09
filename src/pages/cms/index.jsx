@@ -4,17 +4,17 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { MongoClient } from 'mongodb';
 
-export default function Cms({ avaliablePages }) {
+export default function Cms({ avaliablePages, collectionsData }) {
   const { pageStyles, isUserAuth } = useContext(MainContext);
   const [selectedPage, SetSelectedPage] = useState(avaliablePages[0]);
 
   return (
     <div>
       {isUserAuth && (
-        <div className="mt-20 sm:-mt-10 py-5 w-[90vw] max-w-7xl border border-red-700">
-          <div className="basis-3/4 mx-5">
-            <div className="flex items-center justify-center border rounded-3xl min-w-[50%] h-10 mb-5">
-              <h1 className="mx-5">
+        <div className="mt-20 sm:-mt-10 mb-16 py-5 w-[90vw] max-w-7xl">
+          <div className="mx-5">
+            <div className="flex items-center justify-center border rounded-3xl min-w-[50%] h-14 mb-5">
+              <h1 className="mx-5 text-2xl">
                 You are currently editing{' '}
                 <label className="text-[#8c54fb] cursor-text">
                   {selectedPage}
@@ -24,7 +24,7 @@ export default function Cms({ avaliablePages }) {
             </div>
           </div>
           <div className="flex">
-            <div className="flex-wrap border basis-1/4 rounded-3xl pt-5 px-5 mx-5">
+            <div className="flex-wrap border basis-1/5 rounded-3xl pt-5 px-5 mx-5">
               {avaliablePages.map((page, i) => (
                 <div
                   onClick={() => SetSelectedPage(page)}
@@ -37,7 +37,19 @@ export default function Cms({ avaliablePages }) {
                 </div>
               ))}
             </div>
-            <div className="flex-wrap border basis-3/4 rounded-3xl pt-5 px-5 mr-5">
+            <div className="flex-wrap border basis-4/5 rounded-3xl pt-5 px-5 mr-5">
+              <div className='flex mb-2'>
+                <h1 className='mr-3'>title: {collectionsData[selectedPage][0].title}</h1>
+              </div>
+              <div className='flex mb-2'>
+                <h1 className='mr-3'>Img Link: {collectionsData[selectedPage][0].img}</h1>
+              </div>
+              <div className='flex mb-2'>
+                <h1 className='mr-3'>text: {collectionsData[selectedPage][0].text}</h1>
+              </div>
+              <div className='flex mb-2'>
+                <h1 className='mr-3'>MD: {collectionsData[selectedPage][0].markdown}</h1>
+              </div>
             </div>
           </div>
         </div>
@@ -47,12 +59,14 @@ export default function Cms({ avaliablePages }) {
 }
 
 export async function getServerSideProps(context) {
+
   try {
     const client = await MongoClient.connect(process.env.MONGODB_URI);
     const db = client.db(process.env.COLLECTION_ENV);
+
     const collections = await db.listCollections().toArray();
 
-    // Extract the collection names
+    // Extract the collection names and reorder
     const sortedCollections = collections.sort((a, b) => {
       if (a.name < b.name) {
         return -1;
@@ -62,12 +76,24 @@ export async function getServerSideProps(context) {
       }
       return 0;
     });
-
     const avaliablePages = sortedCollections.map((collection) => collection.name);
+
+    const collectionsData = {};
+    for (const collectionName of avaliablePages) {
+      const data = await db.collection(collectionName).find({}).toArray();
+      // Convert each ObjectId to string
+      collectionsData[collectionName] = data.map((d) => {
+        if (d._id) {
+          d._id = d._id.toString();
+        }
+        return d;
+      });
+    }
 
     return {
       props: {
-        avaliablePages
+        avaliablePages,
+        collectionsData
       },
     };
   } catch (e) {
