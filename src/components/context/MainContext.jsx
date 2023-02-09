@@ -22,11 +22,9 @@ const MainProvider = ({ children }) => {
 
   useEffect(() => {
     // Redirect user instead of displaying 404 page
-    router.asPath.endsWith('admin') && router.push('/admin/auth');
+    router.asPath.endsWith('admin') && router.push('/cms/auth');
     // Manage adminMode state based on url path
-    router.pathname.includes('/admin')
-      ? SetAdminMode(true)
-      : SetAdminMode(false);
+    router.pathname.includes('/cms') ? SetAdminMode(true) : SetAdminMode(false);
   }, [router]);
 
   // TAILWIND STYLES
@@ -63,6 +61,12 @@ const MainProvider = ({ children }) => {
   };
 
   const pageStyles = {
+    cms: {
+      auth: {
+        input: 'text-center rounded-3xl',
+      },
+      asd: '',
+    },
     biography: {
       mainDiv: 'flex items-center mb-[10vh] lg:mb-[20vh]',
       imgDiv: 'h-48 w-48 relative mx-auto',

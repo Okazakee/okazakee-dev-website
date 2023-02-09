@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { MainContext } from '../../components/context/MainContext';
 import Link from 'next/link';
 import Head from 'next/head';
 
 export default function AdminAuth() {
   const [authType, SetAuthType] = useState('login');
+  const { pageStyles } = useContext(MainContext);
 
   return (
     <div className="pt-32 sm:pt-20">
       <Head>
-        <title>Admin auth page - Okazakee.dev</title>
+        <title>CMS auth page - Okazakee.dev</title>
       </Head>
       <div className="flex-wrap sm:scale-150 scale-125 transform-gpu">
         <img
@@ -30,7 +32,7 @@ export default function AdminAuth() {
                     <input
                       type={'email'}
                       placeholder={'Email:'}
-                      className="text-center rounded-3xl flex-1 justify-center"
+                      className={pageStyles.cms.auth.input}
                     ></input>
                   </div>
                   <div className="w-5 mx-2"></div>
@@ -46,7 +48,7 @@ export default function AdminAuth() {
                       <input
                         type={'password'}
                         placeholder={'Password:'}
-                        className="text-center rounded-3xl"
+                        className={pageStyles.cms.auth.input}
                       ></input>
                     </div>
                   </div>
@@ -63,7 +65,7 @@ export default function AdminAuth() {
                 </div>
                 <div className="flex justify-between items-center mx-2">
                   <button className="bg-[#653bba] w-full rounded-3xl">
-                    <Link href={'/admin/CMS'} passHref>
+                    <Link href={'/cms'} passHref>
                       Login
                     </Link>
                   </button>
@@ -92,7 +94,7 @@ export default function AdminAuth() {
                     <input
                       type={'username'}
                       placeholder={'Username:'}
-                      className="text-center rounded-3xl flex-1 justify-center"
+                      className={pageStyles.cms.auth.input}
                     ></input>
                   </div>
                   <div className="w-5 mx-2"></div>
@@ -107,7 +109,7 @@ export default function AdminAuth() {
                     <input
                       type={'email'}
                       placeholder={'Email:'}
-                      className="text-center rounded-3xl flex-1 justify-center"
+                      className={pageStyles.cms.auth.input}
                     ></input>
                   </div>
                   <div className="w-5 mx-2"></div>
@@ -123,7 +125,7 @@ export default function AdminAuth() {
                       <input
                         type={'password'}
                         placeholder={'Password:'}
-                        className="text-center rounded-3xl"
+                        className={pageStyles.cms.auth.input}
                       ></input>
                     </div>
                   </div>
@@ -131,7 +133,7 @@ export default function AdminAuth() {
                 </div>
                 <div className="flex justify-between items-center mx-2">
                   <button className="bg-[#653bba] w-full rounded-3xl">
-                    <Link href={'/admin/CMS'} passHref>
+                    <Link href={'/cms'} passHref>
                       Register
                     </Link>
                   </button>

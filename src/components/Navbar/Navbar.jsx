@@ -17,7 +17,7 @@ export const AdminHeader = () => {
             <p className="">
               {urlPath.endsWith('/auth') &&
                 ' Authentication - Please login to enter in the CMS'}
-              {urlPath.endsWith('/CMS') &&
+              {urlPath.endsWith('/cms') &&
                 ' CMS - Edit pages content and manage users'}
             </p>
           </div>
