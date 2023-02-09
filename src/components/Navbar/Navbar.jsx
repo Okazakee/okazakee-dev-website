@@ -20,7 +20,7 @@ export const AdminHeader = () => {
                 Please login to enter in the CMS
               </p>
             )}
-            {urlPath.endsWith('/Cms') && (
+            {urlPath.endsWith('/cms') && (
               <p>
                 <label className="text-[#8c54fb]">CMS</label> - Edit pages
                 content and manage users

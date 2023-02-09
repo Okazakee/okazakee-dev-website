@@ -24,7 +24,7 @@ export default function Cms({ avaliablePages, collectionsData }) {
             </div>
           </div>
           <div className="flex">
-            <div className="flex-wrap border basis-1/5 rounded-3xl pt-5 px-5 mx-5">
+            <div className="flex-wrap border basis-1/5 rounded-3xl pt-5 px-5 mx-5 lg:text-lg">
               {avaliablePages.map((page, i) => (
                 <div
                   onClick={() => SetSelectedPage(page)}
@@ -36,8 +36,14 @@ export default function Cms({ avaliablePages, collectionsData }) {
                   <div className="">{page}</div>
                 </div>
               ))}
+              <div
+                onClick={() => null}
+                className="cursor-pointer border text-center px-2 py-1 mb-5 rounded-3xl hover:bg-[#8c54fb]"
+              >
+                <div className="">Add a page</div>
+              </div>
             </div>
-            <div className="flex-wrap border basis-4/5 rounded-3xl pt-5 px-5 mr-5">
+            <div className="flex-wrap border basis-4/5 rounded-3xl pt-5 px-5 mr-5 max-h-[60vh] md:max-h-[70vh]  overflow-auto lg:text-lg">
               <div className="flex mb-2">
                 <h1 className="mr-3">
                   title: {collectionsData[selectedPage][0].title}
@@ -54,7 +60,7 @@ export default function Cms({ avaliablePages, collectionsData }) {
                 </h1>
               </div>
               <div className="flex mb-2">
-                <h1 className="mr-3 ">
+                <h1 className="mr-3">
                   MD: {collectionsData[selectedPage][0].markdown}
                 </h1>
               </div>
@@ -87,6 +93,7 @@ export async function getServerSideProps(context) {
       (collection) => collection.name
     );
 
+    // Make serialized response to be served as prop
     const collectionsData = {};
     for (const collectionName of avaliablePages) {
       const data = await db.collection(collectionName).find({}).toArray();
@@ -98,6 +105,10 @@ export async function getServerSideProps(context) {
         return d;
       });
     }
+
+    // Detect what type of page it is and serve a different response, like isArtivle=[true/false]
+    // if articles, show a grid of articles titles, each one can be clicked to open and edit its values
+    // if not, show directly editable data when clicking on left button
 
     return {
       props: {

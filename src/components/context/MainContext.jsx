@@ -26,10 +26,10 @@ const MainProvider = ({ children }) => {
   useEffect(() => {
     // Redirect user if is not authenticated
     !isUserAuth &&
-      router.asPath.endsWith('/Cms') &&
-      router.replace('/Cms/auth');
+      router.asPath.endsWith('/cms') &&
+      router.replace('/cms/auth');
     // Manage adminMode state based on url path
-    router.pathname.includes('/Cms') ? SetAdminMode(true) : SetAdminMode(false);
+    router.pathname.includes('/cms') ? SetAdminMode(true) : SetAdminMode(false);
   }, [router, isUserAuth]);
 
   // TAILWIND STYLES
