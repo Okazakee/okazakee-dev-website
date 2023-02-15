@@ -1,0 +1,107 @@
+{
+  Biography: [
+    {
+      _id: '633f58048d94db2d59891162',
+      img: 'https://raw.githubusercontent.com/Okazakee/Global-Assets/main/propic.jpg',
+      text: "My real name is Cristian, also known as Okazakee on the web, I'm a 23 years old Web Developer from Italy. I grew up beside my nerdy stuff since young age, I'm an IT enthusiast and I love Open Source, I worked as video editor in post production for years and in late 2021 I decided to switch my path to Web Development. I am working in different personal projects and dream to become a Full Stack developer in some years. Feel free to check my portfolio and my social profiles!"
+    }
+  ],
+  Blog: [
+    {
+      _id: '63c2c1336894b6237415cbe8',
+      title: 'My home dashboard',
+      img: 'https://raw.githubusercontent.com/Okazakee/Global-Assets/main/website/dashboard.png',
+      website: 'www.okazakee.dev',
+      source_code: 'www.github.com',
+      description: 'DESCRIPTION TEST TEST TEST TEST ',
+      markdown: '# Understanding the Home Lab: The Benefits of Self-Hosting\n' +
+        '\n' +
+        'A home lab is a collection of devices and software that allows individuals to set up and maintain their own private network and infrastructure. This can include servers, networking equipment, and other devices that are used for personal or educational purposes. \n' +
+        '\n' +
+        'One of the main benefits of setting up a home lab is the ability to self-host various services and applications. Self-hosting refers to the practice of hosting services and applications on your own personal equipment rather than relying on third-party providers. This can include hosting a website, email server, media server, and more. \n' +
+        '\n' +
+        'By self-hosting, individuals have full control over their data and how it is used. They can also ensure that their data is secure and that their privacy is protected. Additionally, self-hosting allows individuals to learn and experiment with new technologies, as well as gain a deeper understanding of how the internet and networks function.\n' +
+        '\n' +
+        'Another benefit of self-hosting is cost savings. Rather than paying for monthly subscription or usage fees to third-party providers, self-hosting allows individuals to pay for the initial cost of equipment and any necessary software. This can be especially beneficial for individuals or small businesses that have limited budgets for IT services.\n' +
+        '\n' +
+        'A home lab also allows for greater flexibility and scalability. If a service or application is no longer needed, it can easily be removed or replaced. If more resources are needed, they can be added to the lab as needed. \n' +
+        '\n' +
+        'Having a home lab also allows for a better understanding of how your infrastructure is working and knowledge of how to troubleshoot any issues that might arise. This can be especially useful if you are working in the IT field.\n' +
+        '\n' +
+        'In summary, a home lab allows individuals to self-host services and applications, have full control over their data, save costs, have greater flexibility, scalability, and gain knowledge on how their infrastructure is working.\n'
+    }
+  ],
+  Portfolio: [
+    {
+      _id: '634083e4397af47f535cda95',
+      title: 'This website!',
+      img: 'https://raw.githubusercontent.com/Okazakee/Global-Assets/main/website/website.png',
+      website: 'www.okazakee.dev',
+      source_code: 'www.github.com',
+      description: 'DESCRIPTION TEST TEST TEST TEST ',
+      markdown: '# My personal website!\n' +
+        '[okazakee.dev](okazakee.dev)\n' +
+        '\n' +
+        'The project is based on creating a personal **Web Platform** to display myself, my projects and my\n' +
+        'passion in internet. It has 3 main pages which are: **Biography**, **Portfolio** and **Blog**, and an Admin panel\n' +
+        'to manage and edit posts.\n' +
+        'The website will be built using **NextJS** as the frontend framework, fetching data such as images links\n' +
+        'and posts markdowns that will be stored in **MongoDB Atlas**.\n' +
+        '#\n' +
+        '*The project is completely open-source all details on the dedicated [GitHub page](https://github.com/Okazakee/okazakee-dev-website).*'
+    },
+    {
+      _id: '634320b13581072e4b5d2a3b',
+      title: 'CalypsoPi - Project',
+      img: 'https://raw.githubusercontent.com/Okazakee/Global-Assets/main/website/calypsopi.png',
+      website: 'www.okazakee.dev',
+      source_code: 'www.github.com',
+      markdown: '# Calypso-Pi Project\n' +
+        ' [www.calypso-pi.xyz](www.calypso-pi.xyz)\n' +
+        '    \n' +
+        'This project is focused on creating a Minecraft Server connected to a Web Platform using a Single Board Computer and Docker. At the end of the above, the idea is to create a system for **"Plug & Play"** installation.\n' +
+        '    \n' +
+        'In the development of the Web Platform **NextJS** will be used as frontend framework and **MariaDB** will be used to store user data (**NestJS/ExpressJS** will be used as ackend framework if there will be need to).\n' +
+        '\n' +
+        'As for the Minecraft Server, **PaperMC** software will be used as core, with the help of **LazyMC** a solution for managing sleep state of the server preserving Raspberry Pi lifespan. **Plugins** will be used for maintenance, statistics and optimizations configured as for our resources and needs. Both instances will be hosted in **Docker** containers on the Raspberry Pi, which we will name CalypsoPi-MCS.\n' +
+        '\n' +
+        '---\n' +
+        'Server Hardware:\n' +
+        '- [SBC](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/): Raspberry Pi 4B - 4 core (oc 2.0Ghz), 8GB ram\n' +
+        '- [Case](https://www.argon40.com/argon-one-m-2-case-for-raspberry-pi-4.html): Argon One M.2\n' +
+        '- [SSD](https://www.westerndigital.com/it-it/products/internal-drives/wd-green-sata-m-2-ssd#WDS240G2G0B): 240GB WD Green M.2\n' +
+        '- [Extra](https://www.samsung.com/it/memory-storage/memory-card/evo-microsd-card-64gb-mb-mp64ha-eu/): HDD 1TB WD Blue\n' +
+        '#\n' +
+        '*The project is completely open-source all details on the dedicated [GitHub page](https://github.com/CalypsoPi).*'
+    },
+    {
+      _id: '634321163581072e4b5d2a3c',
+      title: 'Fedora WSL Installer',
+      img: 'https://raw.githubusercontent.com/Okazakee/Global-Assets/main/website/fedorawsl.png',
+      website: 'www.okazakee.dev',
+      source_code: 'www.github.com',
+      markdown: '# Fedora WSL Installer\n' +
+        '\n' +
+        'Hello everyone! I am proud to announce my **new utility**!\n' +
+        '\n' +
+        "I often use WSL to do stuff since I can't install Linux directly for *reasons*, and I noticed that there is no easy way to get vanilla Fedora, only Ubuntu or Debian etc... So after days of searching and finding nothing, I decided to create my own solution, at least I avoid going crazy and maybe others need it too.\n" +
+        '\n' +
+        '### Usage\n' +
+        '\n' +
+        '- Run `iex ((New-Object System.Net.WebClient).\n' +
+        "DownloadString('https://www.okazakee.dev/wsl-installer'))` in your powershell.\n" +
+        '- Choose an option from menu.\n' +
+        '\n' +
+        '### Requirements\n' +
+        '\n' +
+        '- Powershell 7.\n' +
+        '- Docker Desktop.\n' +
+        '\n' +
+        '### Features\n' +
+        '\n' +
+        '- Installs Fedora WSL.\n' +
+        '- Change the WT profile icon.\n' +
+        '\n' +
+        '### Working on:\n' +
+        '\n' +
+}
