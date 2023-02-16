@@ -14,7 +14,15 @@ module.exports = {
     ]
   },
   images: {
-    domains: ['github.com', 'www.rainmakers.co', 'raw.githubusercontent.com', 'external-content.duckduckgo.com', 'random.imagecdn.app', 'some-random-api.ml'],
+    domains: [
+      'github.com',
+      'www.rainmakers.co',
+      'raw.githubusercontent.com',
+      'external-content.duckduckgo.com',
+      'random.imagecdn.app',
+      'some-random-api.ml',
+      'okazakee-dev-storage.s3.eu-west-3.amazonaws.com', // add S3 bucket domain
+    ],
   },
   webpack: (config) => {
     config.module.rules.push({
