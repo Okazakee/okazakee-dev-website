@@ -59,7 +59,7 @@ export async function getStaticProps() {
       .find({})
       .project({ _id: 0 })
       .toArray();
-    const bio = JSON.parse(JSON.stringify(...biography)).text;
+    const bio = JSON.parse(JSON.stringify(...biography)).bio;
     const propic = JSON.parse(JSON.stringify(...biography)).img;
 
     return {
