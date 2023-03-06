@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { MongoClient } from 'mongodb';
 
 export default function Cms({ avaliablePages, collectionsPagesData }) {
-
   const { pageStyles, isUserAuth } = useContext(MainContext);
   const [selectedPage, SetSelectedPage] = useState(avaliablePages[0]);
   const [selectedItem, SetSelectedItem] = useState('0');
@@ -15,7 +14,7 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
 
   const refreshData = () => {
     router.replace(router.asPath);
-  }
+  };
 
   const setItems = (direction) => {
     const itemsList = collectionsPagesData[selectedPage];
@@ -90,57 +89,70 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
                 <button
                   className={styles.body.buttons}
                   onClick={() => setItems('prev')}
-                  >
+                >
                   Previous Item
                 </button>
                 <button
                   className={styles.body.buttons}
                   onClick={() => setItems('next')}
-                  >
+                >
                   Next Item
                 </button>
-                <button
-                className={styles.body.buttons}
-                onClick={() => null}
-                  >Add field
+                <button className={styles.body.buttons} onClick={() => null}>
+                  Add field
                 </button>
                 <button
-                className={styles.body.buttons}
-                onClick={() => SetFieldSelectEnabled(!fieldSelectEnabled)}
-                  >{!fieldSelectEnabled ? <label className='cursor-pointer'>Remove field</label> : <label className='mx-6 cursor-pointer'>Done</label>}
+                  className={styles.body.buttons}
+                  onClick={() => SetFieldSelectEnabled(!fieldSelectEnabled)}
+                >
+                  {!fieldSelectEnabled ? (
+                    <label className="cursor-pointer">Remove field</label>
+                  ) : (
+                    <label className="mx-6 cursor-pointer">Done</label>
+                  )}
                 </button>
                 <button
-                className={styles.body.buttons}
-                onClick={() => refreshData()}
-                  >Refresh ↻
+                  className={styles.body.buttons}
+                  onClick={() => refreshData()}
+                >
+                  Refresh ↻
                 </button>
                 <button className={styles.body.buttons}>Apply</button>
               </div>
               <div className="max-h-[55vh] md:max-h-[58vh] overflow-y-auto">
-              <div className={styles.imgdiv}>
-                <Image
-                  className="rounded-xl"
-                  src={collectionsPagesData[selectedPage][selectedItem].img}
-                  alt="img"
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="50% 25%"
-                  priority="true"
-                  quality={100}
-                />
-              </div>
+                <div className={styles.imgdiv}>
+                  <Image
+                    className="rounded-xl"
+                    src={collectionsPagesData[selectedPage][selectedItem].img}
+                    alt="img"
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="50% 25%"
+                    priority="true"
+                    quality={100}
+                  />
+                </div>
                 {Object.entries(
                   collectionsPagesData[selectedPage][selectedItem]
-                ).map(([key, value]) => (
-                   key !== "_id" &&
-                    <div key={key} className="flex my-2">
-                      {fieldSelectEnabled ? <input type="checkbox" className='items-center mt-2 mr-2'></input> : null}
-                      <div>
-                        <h1 className="text-[#8c54fb] text-xl">{key.toUpperCase()}:</h1>
-                        <p className=''>{value}</p>
+                ).map(
+                  ([key, value]) =>
+                    key !== '_id' && (
+                      <div key={key} className="flex my-2">
+                        {fieldSelectEnabled ? (
+                          <input
+                            type="checkbox"
+                            className="items-center mt-2 mr-2"
+                          ></input>
+                        ) : null}
+                        <div>
+                          <h1 className="text-[#8c54fb] text-xl">
+                            {key.toUpperCase()}:
+                          </h1>
+                          <p className="">{value}</p>
+                        </div>
                       </div>
-                    </div>
-                ))}
+                    )
+                )}
               </div>
             </div>
           </div>
@@ -151,7 +163,6 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
 }
 
 export async function getServerSideProps(context) {
-
   let client;
   let db;
   let collectionsData;
