@@ -151,9 +151,6 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
 }
 
 export async function getServerSideProps(context) {
-  // Detect what type of page it is and serve a different response, like pageType=[1/2/3] 1= bio 2= article etc.
-  // if articles, show a grid of articles titles, each one can be clicked to open and edit its values
-  // if not, show directly editable data when clicking on left button
 
   let client;
   let db;

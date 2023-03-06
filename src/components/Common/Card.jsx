@@ -33,6 +33,7 @@ export const Card = ({ post, type }) => {
             alt="card cover"
             layout="fill"
             objectFit="cover"
+            objectPosition="50% 25%"
             priority="true"
             quality={100}
           />
