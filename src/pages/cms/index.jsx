@@ -107,7 +107,7 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
                 {Object.entries(
                   collectionsPagesData[selectedPage][selectedItem]
                 ).map(([key, value]) => (
-                  <div className="flex mb-2">
+                  <div key={key} className="flex mb-2">
                     <h1 className="mr-3">{key}</h1>
                     <p>{value}</p>
                   </div>
@@ -215,17 +215,4 @@ export async function getServerSideProps(context) {
   } catch (e) {
     console.error('Error occured while sending props to frontend', e);
   }
-
-  // Make serialized response to be served as prop
-  /* const collectionsData = {};
-    for (const collectionName of avaliablePages) {
-      const data = await db.collection(collectionName).find({}).toArray();
-      // Convert each ObjectId to string
-      collectionsData[collectionName] = data.map((d) => {
-        if (d._id) {
-          d._id = d._id.toString();
-        }
-        return d;
-      });
-    } */
 }
