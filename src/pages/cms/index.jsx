@@ -1,14 +1,21 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../../components/context/MainContext';
-import Link from 'next/link';
-import Head from 'next/head';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { MongoClient } from 'mongodb';
 
 export default function Cms({ avaliablePages, collectionsPagesData }) {
+
   const { pageStyles, isUserAuth } = useContext(MainContext);
   const [selectedPage, SetSelectedPage] = useState(avaliablePages[0]);
   const [selectedItem, SetSelectedItem] = useState('0');
+  const [fieldSelectEnabled, SetFieldSelectEnabled] = useState(false);
+
+  const router = useRouter();
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  }
 
   const setItems = (direction) => {
     const itemsList = collectionsPagesData[selectedPage];
@@ -19,6 +26,10 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
         )
       : SetSelectedItem((prevItem) => Math.max(prevItem - 1, 0));
   };
+
+  /* useEffect(() => {
+    SetSelectedItem('0');
+  }, [selectedPage]); */
 
   const styles = {
     header: {
@@ -31,17 +42,17 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
     },
     buttons: {
       div1: 'flex',
-      div2: 'flex-wrap border basis-1/5 rounded-3xl pt-5 px-5 mx-5 lg:text-lg h-[70vh]',
+      div2: 'flex-wrap border basis-1/6 rounded-3xl pt-5 px-5 mx-5 lg:text-lg h-[70vh]',
       div3_4:
         'cursor-pointer border text-center px-2 py-1 mb-5 rounded-3xl hover:bg-[#8c54fb]',
     },
     body: {
       buttons:
         'border text-center px-2 py-1 mb-5 rounded-3xl hover:bg-[#8c54fb] mx-2',
-      div1: 'flex-wrap border basis-4/5 rounded-3xl pt-5 px-5 mr-5 max-h-[60vh] md:max-h-[70vh] lg:text-lg',
+      div1: 'flex-wrap border basis-5/6 rounded-3xl pt-5 px-5 mr-5 max-h-[60vh] md:max-h-[70vh] lg:text-lg',
       div2: 'text-end cursor-pointer',
     },
-    imgdiv: 'relative h-[25vh] sm:h-[20vh] max-w-[35%] mx-auto',
+    imgdiv: 'relative h-[25vh] sm:h-[20vh] mx-auto',
   };
 
   return (
@@ -61,7 +72,7 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
             <div className={styles.buttons.div2}>
               {avaliablePages.map((page, i) => (
                 <div
-                  onClick={() => SetSelectedPage(page)}
+                  onClick={() => SetSelectedItem('0') + SetSelectedPage(page)}
                   key={i}
                   className={`${styles.buttons.div3_4} ${
                     selectedPage === page && 'bg-[#8c54fb]'
@@ -75,63 +86,61 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
               </div>
             </div>
             <div className={styles.body.div1}>
-              <div className="flex justify-center pb-2 -mt-2">
+              <div className="flex justify-center">
                 <button
                   className={styles.body.buttons}
                   onClick={() => setItems('prev')}
-                >
+                  >
                   Previous Item
                 </button>
                 <button
                   className={styles.body.buttons}
                   onClick={() => setItems('next')}
-                >
+                  >
                   Next Item
                 </button>
+                <button
+                className={styles.body.buttons}
+                onClick={() => null}
+                  >Add field
+                </button>
+                <button
+                className={styles.body.buttons}
+                onClick={() => SetFieldSelectEnabled(!fieldSelectEnabled)}
+                  >{!fieldSelectEnabled ? <label className='cursor-pointer'>Remove field</label> : <label className='mx-6 cursor-pointer'>Done</label>}
+                </button>
+                <button
+                className={styles.body.buttons}
+                onClick={() => refreshData()}
+                  >Refresh ↻
+                </button>
                 <button className={styles.body.buttons}>Apply</button>
-                <button className={styles.body.buttons}>Reload ↻</button>
               </div>
-              <div className="max-h-[55vh] md:max-h-[62vh] overflow-y-auto">
-                <div className={styles.imgdiv}>
-                  <Image
-                    className="rounded-xl"
-                    src={collectionsPagesData[selectedPage][selectedItem].img}
-                    alt="img"
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="50% 25%"
-                    priority="true"
-                    quality={100}
-                  />
-                </div>
+              <div className="max-h-[55vh] md:max-h-[58vh] overflow-y-auto">
+              <div className={styles.imgdiv}>
+                <Image
+                  className="rounded-xl"
+                  src={collectionsPagesData[selectedPage][selectedItem].img}
+                  alt="img"
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="50% 25%"
+                  priority="true"
+                  quality={100}
+                />
+              </div>
                 {Object.entries(
                   collectionsPagesData[selectedPage][selectedItem]
                 ).map(([key, value]) => (
-                  <div key={key} className="flex mb-2">
-                    <h1 className="mr-3">{key}</h1>
-                    <p>{value}</p>
-                  </div>
+                   key !== "_id" &&
+                    <div key={key} className="flex my-2">
+                      {fieldSelectEnabled ? <input type="checkbox" className='items-center mt-2 mr-2'></input> : null}
+                      <div>
+                        <h1 className="text-[#8c54fb] text-xl">{key.toUpperCase()}:</h1>
+                        <p className=''>{value}</p>
+                      </div>
+                    </div>
                 ))}
-                {/* <div className="flex mb-2">
-                  <h1 className="mr-3">
-                    title: {collectionsPagesData[selectedPage][0].title}
-                  </h1>
-                </div>
-                <div className="flex mb-2">
-                  <h1 className="mr-3">
-                    bio: {collectionsPagesData[selectedPage][0].bio}
-                  </h1>
-                </div>
-                <div className="flex mb-2">
-                  <h1 className="mr-3">
-                    Img Link: {collectionsPagesData[selectedPage][0].img}
-                  </h1>
-                </div>
-                <div className="flex mb-2">
-                  <h1 className="mr-3">
-                    Markdown: {collectionsPagesData[selectedPage][0].markdown}
-                  </h1>
-                </div> */}
               </div>
             </div>
           </div>
