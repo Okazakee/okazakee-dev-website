@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { MainContext } from '../../components2/context/MainContext';
+import { MainContext } from '../../component/context/MainContext';
 import { motion } from 'framer-motion';
 import { MongoClient } from 'mongodb';
 

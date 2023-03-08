@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { MainContext } from '../../components/context/MainContext';
+import { MainContext } from '../../context/MainContext';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { MongoClient } from 'mongodb';

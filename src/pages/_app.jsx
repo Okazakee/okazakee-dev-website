@@ -4,7 +4,7 @@ config.autoAddCss = false;
 import '../styles/globals.css';
 import '/Fonts/Fonts.css';
 import Layout from '../components/common/Layout';
-import { MainProvider } from '../components/context/MainContext';
+import { MainProvider } from '../context/MainContext';
 import { Analytics } from '@vercel/analytics/react';
 
 function MyApp({ Component, pageProps }) {

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { MainContext } from '../../components/context/MainContext';
+import { MainContext } from '../../context/MainContext';
 import Head from 'next/head';
 import { Card } from '../../components/common/Card';
 import { motion } from 'framer-motion';
