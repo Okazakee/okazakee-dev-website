@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { MainContext } from '../context/MainContext';
+import { MainContext } from '../../context/MainContext';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';

@@ -4,7 +4,7 @@ import {
   MobileNavbar,
   AdminHeader,
   AdminMobileHeader,
-} from '../../Navbar';
+} from '../navbar/Navbar';
 import { MainContext } from '../../context/MainContext';
 import Head from 'next/head';
 

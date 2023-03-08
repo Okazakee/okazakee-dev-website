@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { MainContext } from '../context/MainContext';
+import { MainContext } from '../../context/MainContext';
 import { SocialLink, SocialLinkMobile } from './SocialLink';
 import { NavBtn, MobileNavBtn } from './NavBtn';
 import { motion } from 'framer-motion';
