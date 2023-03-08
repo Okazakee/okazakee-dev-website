@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { MainContext } from '../../components2/context/MainContext';
+import { MainContext } from '../../components/context/MainContext';
 import Head from 'next/head';
-import { Card } from '../../components2/common/Card';
+import { Card } from '../../components/common/Card';
 import { motion } from 'framer-motion';
 import { MongoClient } from 'mongodb';
 
