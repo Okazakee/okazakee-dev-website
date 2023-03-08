@@ -2,15 +2,14 @@ import React, { useState, useContext } from 'react';
 import { MainContext } from '../../components/context/MainContext';
 import Link from 'next/link';
 import Head from 'next/head';
-import jwt from "jsonwebtoken"
+import jwt from 'jsonwebtoken';
 
 export function AdminAuth() {
-
   const [authType, SetAuthType] = useState('login');
   const { pageStyles } = useContext(MainContext);
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   /* // Handle login form submission
   const handleLogin = async (e) => {
