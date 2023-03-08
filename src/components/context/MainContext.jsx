@@ -27,7 +27,7 @@ const MainProvider = ({ children }) => {
     // Redirect user if is not authenticated
     !isUserAuth &&
       router.asPath.endsWith('/cms') &&
-      router.replace('/cms/auth');
+      router.replace('/login');
     // Manage adminMode state based on url path
     router.pathname.includes('/cms') ? SetAdminMode(true) : SetAdminMode(false);
   }, [router, isUserAuth]); */
