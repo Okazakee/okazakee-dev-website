@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { MongoClient } from 'mongodb';
 
 export default function Cms({ avaliablePages, collectionsPagesData }) {
-  const { pageStyles, isUserAuth } = useContext(MainContext);
+
   const [selectedPage, SetSelectedPage] = useState(avaliablePages[0]);
   const [selectedItem, SetSelectedItem] = useState('0');
   const [fieldSelectEnabled, SetFieldSelectEnabled] = useState(false);
@@ -52,108 +52,106 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
 
   return (
     <div>
-      {isUserAuth && (
-        <div className={styles.header.div1}>
-          <div className={styles.header.div2}>
-            <div className={styles.header.div3}>
-              <h1 className={styles.header.h1}>
-                You are currently editing{' '}
-                <label className={styles.header.label}>{selectedPage}</label>{' '}
-                page
-              </h1>
+      <div className={styles.header.div1}>
+        <div className={styles.header.div2}>
+          <div className={styles.header.div3}>
+            <h1 className={styles.header.h1}>
+              You are currently editing{' '}
+              <label className={styles.header.label}>{selectedPage}</label>{' '}
+              page
+            </h1>
+          </div>
+        </div>
+        <div className={styles.buttons.div1}>
+          <div className={styles.buttons.div2}>
+            {avaliablePages.map((page, i) => (
+              <div
+                onClick={() => SetSelectedItem('0') + SetSelectedPage(page)}
+                key={i}
+                className={`${styles.buttons.div3_4} ${
+                  selectedPage === page && 'bg-[#8c54fb]'
+                }`}
+              >
+                <div className="">{page}</div>
+              </div>
+            ))}
+            <div onClick={() => null} className={styles.buttons.div3_4}>
+              <div className="">+</div>
             </div>
           </div>
-          <div className={styles.buttons.div1}>
-            <div className={styles.buttons.div2}>
-              {avaliablePages.map((page, i) => (
-                <div
-                  onClick={() => SetSelectedItem('0') + SetSelectedPage(page)}
-                  key={i}
-                  className={`${styles.buttons.div3_4} ${
-                    selectedPage === page && 'bg-[#8c54fb]'
-                  }`}
-                >
-                  <div className="">{page}</div>
-                </div>
-              ))}
-              <div onClick={() => null} className={styles.buttons.div3_4}>
-                <div className="">+</div>
-              </div>
-            </div>
-            <div className={styles.body.div1}>
-              <div className="flex justify-center">
-                <button
-                  className={styles.body.buttons}
-                  onClick={() => setItems('prev')}
-                >
-                  Previous Item
-                </button>
-                <button
-                  className={styles.body.buttons}
-                  onClick={() => setItems('next')}
-                >
-                  Next Item
-                </button>
-                <button className={styles.body.buttons} onClick={() => null}>
-                  Add field
-                </button>
-                <button
-                  className={styles.body.buttons}
-                  onClick={() => SetFieldSelectEnabled(!fieldSelectEnabled)}
-                >
-                  {!fieldSelectEnabled ? (
-                    <label className="cursor-pointer">Remove field</label>
-                  ) : (
-                    <label className="mx-6 cursor-pointer">Done</label>
-                  )}
-                </button>
-                <button
-                  className={styles.body.buttons}
-                  onClick={() => refreshData()}
-                >
-                  Refresh ↻
-                </button>
-                <button className={styles.body.buttons}>Apply</button>
-              </div>
-              <div className="max-h-[55vh] md:max-h-[58vh] overflow-y-auto">
-                <div className={styles.imgdiv}>
-                  <Image
-                    className="rounded-xl"
-                    src={collectionsPagesData[selectedPage][selectedItem].img}
-                    alt="img"
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="50% 25%"
-                    priority="true"
-                    quality={100}
-                  />
-                </div>
-                {Object.entries(
-                  collectionsPagesData[selectedPage][selectedItem]
-                ).map(
-                  ([key, value]) =>
-                    key !== '_id' && (
-                      <div key={key} className="flex my-2">
-                        {fieldSelectEnabled ? (
-                          <input
-                            type="checkbox"
-                            className="items-center mt-2 mr-2"
-                          ></input>
-                        ) : null}
-                        <div>
-                          <h1 className="text-[#8c54fb] text-xl">
-                            {key.toUpperCase()}:
-                          </h1>
-                          <p className="">{value}</p>
-                        </div>
-                      </div>
-                    )
+          <div className={styles.body.div1}>
+            <div className="flex justify-center">
+              <button
+                className={styles.body.buttons}
+                onClick={() => setItems('prev')}
+              >
+                Previous Item
+              </button>
+              <button
+                className={styles.body.buttons}
+                onClick={() => setItems('next')}
+              >
+                Next Item
+              </button>
+              <button className={styles.body.buttons} onClick={() => null}>
+                Add field
+              </button>
+              <button
+                className={styles.body.buttons}
+                onClick={() => SetFieldSelectEnabled(!fieldSelectEnabled)}
+              >
+                {!fieldSelectEnabled ? (
+                  <label className="cursor-pointer">Remove field</label>
+                ) : (
+                  <label className="mx-6 cursor-pointer">Done</label>
                 )}
+              </button>
+              <button
+                className={styles.body.buttons}
+                onClick={() => refreshData()}
+              >
+                Refresh ↻
+              </button>
+              <button className={styles.body.buttons}>Apply</button>
+            </div>
+            <div className="max-h-[55vh] md:max-h-[58vh] overflow-y-auto">
+              <div className={styles.imgdiv}>
+                <Image
+                  className="rounded-xl"
+                  src={collectionsPagesData[selectedPage][selectedItem].img}
+                  alt="img"
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="50% 25%"
+                  priority="true"
+                  quality={100}
+                />
               </div>
+              {Object.entries(
+                collectionsPagesData[selectedPage][selectedItem]
+              ).map(
+                ([key, value]) =>
+                  key !== '_id' && (
+                    <div key={key} className="flex my-2">
+                      {fieldSelectEnabled ? (
+                        <input
+                          type="checkbox"
+                          className="items-center mt-2 mr-2"
+                        ></input>
+                      ) : null}
+                      <div>
+                        <h1 className="text-[#8c54fb] text-xl">
+                          {key.toUpperCase()}:
+                        </h1>
+                        <p className="">{value}</p>
+                      </div>
+                    </div>
+                  )
+              )}
             </div>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }

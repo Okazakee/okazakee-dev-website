@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { MainContext } from '../../context/MainContext';
 import Link from 'next/link';
 import Head from 'next/head';
-import jwt from 'jsonwebtoken';
 
 export default function AdminAuth() {
   const [authType, SetAuthType] = useState('login');
@@ -10,23 +9,6 @@ export default function AdminAuth() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  /* // Handle login form submission
-  const handleLogin = async (e) => {
-    e.preventDefault()
-
-    // Authenticate user here with API or any other way
-    const user = { email }
-
-    // Generate JWT token with user data and secret key
-    const token = jwt.sign(user, process.env.JWT_SECRET)
-
-    // Store token in browser's localStorage
-    localStorage.setItem("token", token)
-
-    // Redirect user to dashboard or some protected route
-    Router.push("/cms")
-  } */
 
   return (
     <div className="pt-32 sm:pt-20">

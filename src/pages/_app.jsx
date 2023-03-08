@@ -18,4 +18,6 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
+MyApp.middleware = require("../middleware").middleware;
+
 export default MyApp;
