@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export class middleware extends Component {
   render() {
-    return (
-      <div>middleware</div>
-    )
+    return <div>middleware</div>;
   }
 }
 
-export default middleware
+export default middleware;

@@ -1,17 +1,17 @@
 import { useContext } from 'react';
-import { MainContext } from '../../components/context/MainContext';
+import { MainContext } from '../../components2/context/MainContext';
 import Head from 'next/head';
-import { Card } from '../../components/common/Card';
+import { Card } from '../../components2/common/Card';
 import { motion } from 'framer-motion';
 import { MongoClient } from 'mongodb';
 
-export default function Portfolio({ posts }) {
+export default function Blog({ posts }) {
   const { pageStyles } = useContext(MainContext);
 
   return (
     <div>
       <Head>
-        <title>Portfolio - Okazakee.dev</title>
+        <title>Blog - Okazakee.dev</title>
       </Head>
       <motion.div
         className="pb-20"
@@ -20,13 +20,13 @@ export default function Portfolio({ posts }) {
         transition={{ duration: 0.2 }}
       >
         <div>
-          <h1 className={pageStyles.portfolio.h1}>
-            Welcome to my <label className="text-[#8c54fb]">portfolio!</label>{' '}
-            Here you can find my personal projects.
+          <h1 className={pageStyles.blog.h1}>
+            Welcome to my <label className="text-[#8c54fb]">Blog!</label> Here
+            you can find my personal articles.
           </h1>
-          <div className={pageStyles.portfolio.cardListStyle}>
+          <div className={pageStyles.blog.cardListStyle}>
             {posts.map((post) => (
-              <Card key={post._id} type={'portfolio'} post={post}>
+              <Card key={post._id} type={'Blog'} post={post}>
                 {post.title}
               </Card>
             ))}
@@ -42,12 +42,13 @@ export async function getStaticProps() {
     const client = await MongoClient.connect(process.env.MONGODB_URI);
     const db = client.db(process.env.COLLECTION_ENV);
     const res = await db
-      .collection('Portfolio')
+      .collection('Blog')
       .find({})
       .project({ _id: 1, title: 1, img: 1 })
       .toArray();
 
     const posts = JSON.parse(JSON.stringify(res));
+
     return {
       props: {
         posts,
