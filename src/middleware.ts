@@ -1,18 +1,17 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function middleware(req: NextRequest) {
-
-  const token = req.cookies.get("auth-token");
+  const token = req.cookies.get('auth-token');
 
   // Make a POST request to /api/auth ensuring authentication token validation to access cms
   let verifiedToken;
 
-  const response = await fetch('preview.okazakee.dev/api/auth', {
+  const response = await fetch('https://preview.okazakee.dev/api/auth', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ token: token })
+    body: JSON.stringify({ token: token }),
   });
 
   if (!response.ok) {
@@ -23,18 +22,18 @@ export async function middleware(req: NextRequest) {
   }
 
   if (req.nextUrl.pathname.startsWith('/login') && !verifiedToken) {
-    return
+    return;
   }
 
   if (req.url.includes('/login') && verifiedToken) {
-    return NextResponse.redirect(new URL('/cms', req.url))
+    return NextResponse.redirect(new URL('/cms', req.url));
   }
 
   if (!verifiedToken) {
-    return NextResponse.redirect(new URL('/login', req.url))
+    return NextResponse.redirect(new URL('/login', req.url));
   }
 }
 
 export const config = {
   matcher: ['/cms', '/login'],
-}
+};

@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { MongoClient } from 'mongodb';
 
 export default function Cms({ avaliablePages, collectionsPagesData }) {
-
   const [selectedPage, SetSelectedPage] = useState(avaliablePages[0]);
   const [selectedItem, SetSelectedItem] = useState('0');
   const [fieldSelectEnabled, SetFieldSelectEnabled] = useState(false);
@@ -57,8 +56,7 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
           <div className={styles.header.div3}>
             <h1 className={styles.header.h1}>
               You are currently editing{' '}
-              <label className={styles.header.label}>{selectedPage}</label>{' '}
-              page
+              <label className={styles.header.label}>{selectedPage}</label> page
             </h1>
           </div>
         </div>
