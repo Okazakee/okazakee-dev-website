@@ -4,8 +4,8 @@ import {
   MobileNavbar,
   AdminHeader,
   AdminMobileHeader,
-} from '../../navbar/Navbar';
-import { MainContext } from '../context/MainContext';
+} from '../../Navbar';
+import { MainContext } from '../../context/MainContext';
 import Head from 'next/head';
 
 export default function Layout({ children }) {
