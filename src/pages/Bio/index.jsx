@@ -5,7 +5,7 @@ import { MainContext } from '../../components/context/MainContext';
 import { motion } from 'framer-motion';
 import { MongoClient } from 'mongodb';
 
-export default function bio({ bio, propic }) {
+export default function Bio({ bio, propic }) {
   const { router, pageStyles } = useContext(MainContext);
 
   const [clicks, setClicks] = useState(0);

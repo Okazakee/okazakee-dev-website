@@ -5,7 +5,7 @@ import { Card } from '../../components/Common/Card';
 import { motion } from 'framer-motion';
 import { MongoClient } from 'mongodb';
 
-export default function portfolio({ posts }) {
+export default function Blog({ posts }) {
   const { pageStyles } = useContext(MainContext);
 
   return (

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import jwt from 'jsonwebtoken';
 
-export function AdminAuth() {
+export default function AdminAuth() {
   const [authType, SetAuthType] = useState('login');
   const { pageStyles } = useContext(MainContext);
 
@@ -42,7 +42,7 @@ export function AdminAuth() {
         <div className="rounded-3xl border pt-16 pb-5">
           <div>
             {authType === 'login' ? (
-              <form onSubmit={handleLogin}>
+              <form onSubmit={null}>
                 <div className="flex items-center justify-around mb-5">
                   <img
                     src="/images/mail.png"

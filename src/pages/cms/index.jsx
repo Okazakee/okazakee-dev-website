@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { MongoClient } from 'mongodb';
 
-export function Cms({ avaliablePages, collectionsPagesData }) {
+export default function Cms({ avaliablePages, collectionsPagesData }) {
   const { pageStyles, isUserAuth } = useContext(MainContext);
   const [selectedPage, SetSelectedPage] = useState(avaliablePages[0]);
   const [selectedItem, SetSelectedItem] = useState('0');
