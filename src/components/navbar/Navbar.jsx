@@ -92,7 +92,7 @@ export const Navbar = () => {
             page="/portfolio"
             name="Portfolio"
           ></NavBtn>
-          <NavBtn HideSearch={false} page="/Blog" name="Blog"></NavBtn>
+          <NavBtn HideSearch={false} page="/blog" name="Blog"></NavBtn>
         </div>
         <motion.div className={navStyles.default.linksDiv}>
           <SocialLink
@@ -148,7 +148,7 @@ export const MobileNavbar = () => {
             name="Portfolio"
           ></MobileNavBtn>
           <MobileNavBtn
-            page="/Blog"
+            page="/blog"
             socialHide={socialHide}
             defaultBtnStyle={navStyles.mobile.defaultBtnStyle}
             iconStyle={navStyles.mobile.iconStyle}
