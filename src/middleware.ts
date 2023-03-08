@@ -8,23 +8,19 @@ export async function middleware(req: NextRequest) {
   let verifiedToken;
   let errorToDisplay;
 
-  try {
-    const response = await fetch('http://localhost:3000/api/auth', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ token: token })
-    });
+  const response = await fetch('http://localhost:3000/api/auth', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ token: token })
+  });
 
-    if (!response.ok) {
-      errorToDisplay = await response.json();
-    }
-
-    verifiedToken = await response.json();
-
-  } catch (error) {
-    console.error('There was a problem with the fetch operation:', errorToDisplay.error);
+  if (!response.ok) {
+    console.log(await response.json());
+    verifiedToken = false;
+  } else {
+    verifiedToken = true;
   }
 
   if (req.nextUrl.pathname.startsWith('/login') && !verifiedToken) {
