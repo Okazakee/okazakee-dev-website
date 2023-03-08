@@ -26,7 +26,7 @@ export default function Portfolio({ posts }) {
           </h1>
           <div className={pageStyles.portfolio.cardListStyle}>
             {posts.map((post) => (
-              <Card key={post._id} type={'Portfolio'} post={post}>
+              <Card key={post._id} type={'portfolio'} post={post}>
                 {post.title}
               </Card>
             ))}

@@ -43,7 +43,7 @@ export const AdminHeader = () => {
       </div>
       <div className="hidden md:block fixed right-5 bottom-3">
         <MobileNavBtn
-          page="/Bio"
+          page="/bio"
           defaultBtnStyle="text-[#b4b4b4] hover:text-[#e8e8e8]"
           iconStyle={navStyles.mobile.iconStyle}
           btnimg="/images/exit.png"
@@ -69,7 +69,7 @@ export const AdminMobileHeader = () => {
           <p>Administrator Mode</p>
         </div>
         <MobileNavBtn
-          page="/Bio"
+          page="/bio"
           defaultBtnStyle={navStyles.mobile.defaultBtnStyle}
           iconStyle={navStyles.mobile.iconStyle}
           btnimg="/images/exit.png"
@@ -87,10 +87,10 @@ export const Navbar = () => {
     <div className={navStyles.default.navStyle}>
       <div className={navStyles.default.mainDiv}>
         <div className={navStyles.default.innerDiv}>
-          <NavBtn HideSearch={true} page="/Bio" name="Bio"></NavBtn>
+          <NavBtn HideSearch={true} page="/bio" name="Bio"></NavBtn>
           <NavBtn
             HideSearch={false}
-            page="/Portfolio"
+            page="/portfolio"
             name="Portfolio"
           ></NavBtn>
           <NavBtn HideSearch={false} page="/Blog" name="Blog"></NavBtn>
@@ -133,7 +133,7 @@ export const MobileNavbar = () => {
       {socialHide ? (
         <div className="flex justify-around mx-4">
           <MobileNavBtn
-            page="/Bio"
+            page="/bio"
             socialHide={socialHide}
             defaultBtnStyle={navStyles.mobile.defaultBtnStyle}
             iconStyle={navStyles.mobile.iconStyle}
@@ -141,7 +141,7 @@ export const MobileNavbar = () => {
             name="Bio"
           ></MobileNavBtn>
           <MobileNavBtn
-            page="/Portfolio"
+            page="/portfolio"
             socialHide={socialHide}
             defaultBtnStyle={navStyles.mobile.defaultBtnStyle}
             iconStyle={navStyles.mobile.iconStyle}

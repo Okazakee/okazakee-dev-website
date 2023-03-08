@@ -2,10 +2,32 @@ import React, { useState, useContext } from 'react';
 import { MainContext } from '../../components/context/MainContext';
 import Link from 'next/link';
 import Head from 'next/head';
+import jwt from "jsonwebtoken"
 
-export default function AdminAuth() {
+export function AdminAuth() {
+
   const [authType, SetAuthType] = useState('login');
   const { pageStyles } = useContext(MainContext);
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  /* // Handle login form submission
+  const handleLogin = async (e) => {
+    e.preventDefault()
+
+    // Authenticate user here with API or any other way
+    const user = { email }
+
+    // Generate JWT token with user data and secret key
+    const token = jwt.sign(user, process.env.JWT_SECRET)
+
+    // Store token in browser's localStorage
+    localStorage.setItem("token", token)
+
+    // Redirect user to dashboard or some protected route
+    Router.push("/cms")
+  } */
 
   return (
     <div className="pt-32 sm:pt-20">
@@ -21,7 +43,7 @@ export default function AdminAuth() {
         <div className="rounded-3xl border pt-16 pb-5">
           <div>
             {authType === 'login' ? (
-              <div className="">
+              <form onSubmit={handleLogin}>
                 <div className="flex items-center justify-around mb-5">
                   <img
                     src="/images/mail.png"
@@ -31,6 +53,8 @@ export default function AdminAuth() {
                   <div className="text-center">
                     <input
                       type={'email'}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder={'Email:'}
                       className={pageStyles.cms.auth.input}
                     ></input>
@@ -47,6 +71,8 @@ export default function AdminAuth() {
                     <div className="">
                       <input
                         type={'password'}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         placeholder={'Password:'}
                         className={pageStyles.cms.auth.input}
                       ></input>
@@ -65,7 +91,7 @@ export default function AdminAuth() {
                 </div>
                 <div className="flex justify-between items-center mx-2">
                   <button className="bg-[#653bba] w-full rounded-3xl">
-                    <Link href={'/cms'} passHref>
+                    <Link type="submit" href={'/cms'} passHref>
                       Login
                     </Link>
                   </button>
@@ -81,9 +107,9 @@ export default function AdminAuth() {
                     </button>
                   </p>
                 </div>
-              </div>
+              </form>
             ) : (
-              <div className="">
+              <form className="">
                 <div className="flex items-center justify-around mb-5">
                   <img
                     src="/images/username.png"
@@ -108,6 +134,8 @@ export default function AdminAuth() {
                   <div className="text-center">
                     <input
                       type={'email'}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder={'Email:'}
                       className={pageStyles.cms.auth.input}
                     ></input>
@@ -125,6 +153,8 @@ export default function AdminAuth() {
                       <input
                         type={'password'}
                         placeholder={'Password:'}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         className={pageStyles.cms.auth.input}
                       ></input>
                     </div>
@@ -133,7 +163,7 @@ export default function AdminAuth() {
                 </div>
                 <div className="flex justify-between items-center mx-2">
                   <button className="bg-[#653bba] w-full rounded-3xl">
-                    <Link href={'/cms'} passHref>
+                    <Link type="submit" href={'/cms'} passHref>
                       Register
                     </Link>
                   </button>
@@ -149,17 +179,11 @@ export default function AdminAuth() {
                     </button>
                   </p>
                 </div>
-              </div>
+              </form>
             )}
           </div>
         </div>
       </div>
     </div>
   );
-}
-
-export async function getServerSideProps(context) {
-  return {
-    props: {}, // dunno if this will be useful
-  };
 }

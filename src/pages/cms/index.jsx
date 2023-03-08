@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { MongoClient } from 'mongodb';
 
-export default function Cms({ avaliablePages, collectionsPagesData }) {
+export function Cms({ avaliablePages, collectionsPagesData }) {
   const { pageStyles, isUserAuth } = useContext(MainContext);
   const [selectedPage, SetSelectedPage] = useState(avaliablePages[0]);
   const [selectedItem, SetSelectedItem] = useState('0');
@@ -25,10 +25,6 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
         )
       : SetSelectedItem((prevItem) => Math.max(prevItem - 1, 0));
   };
-
-  /* useEffect(() => {
-    SetSelectedItem('0');
-  }, [selectedPage]); */
 
   const styles = {
     header: {

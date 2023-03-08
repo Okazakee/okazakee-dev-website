@@ -23,14 +23,14 @@ const MainProvider = ({ children }) => {
   const router = useRouter();
   const urlPath = router.pathname;
 
-  useEffect(() => {
+  /* useEffect(() => {
     // Redirect user if is not authenticated
     !isUserAuth &&
       router.asPath.endsWith('/cms') &&
       router.replace('/cms/auth');
     // Manage adminMode state based on url path
     router.pathname.includes('/cms') ? SetAdminMode(true) : SetAdminMode(false);
-  }, [router, isUserAuth]);
+  }, [router, isUserAuth]); */
 
   // TAILWIND STYLES
   const navStyles = {
@@ -73,7 +73,7 @@ const MainProvider = ({ children }) => {
       asd: '',
     },
     biography: {
-      mainDiv: 'flex items-center mb-[10vh] lg:mb-[20vh]',
+      mainDiv: 'flex items-center mb-[10vh] lg:mt-[10vh]',
       imgDiv: 'h-48 w-48 relative mx-auto',
       textDiv: 'flex justify-center items-center my-4',
       innerText: 'mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl',
