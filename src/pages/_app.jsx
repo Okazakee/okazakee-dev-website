@@ -5,12 +5,14 @@ import '../styles/globals.css';
 import '/Fonts/Fonts.css';
 import Layout from '../components/common/Layout';
 import { MainProvider } from '../components/context/MainContext';
+import { Analytics } from '@vercel/analytics/react';
 
 function MyApp({ Component, pageProps }) {
   return (
     <MainProvider>
       <Layout>
         <Component {...pageProps} />
+        <Analytics />
       </Layout>
     </MainProvider>
   );
