@@ -6,9 +6,8 @@ export async function middleware(req: NextRequest) {
 
   // Make a POST request to /api/auth ensuring authentication token validation to access cms
   let verifiedToken;
-  let errorToDisplay;
 
-  const response = await fetch('http://localhost:3000/api/auth', {
+  const response = await fetch('preview.okazakee.dev/api/auth', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
