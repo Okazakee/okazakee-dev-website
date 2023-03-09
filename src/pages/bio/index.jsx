@@ -38,7 +38,7 @@ export default function Bio({ bio, propic }) {
             <Image
               className="rounded-full"
               src={propic}
-              placeholder='blur'
+              placeholder="blur"
               blurDataURL={pageStyles.biography.blurDataURL}
               alt="propic"
               priority="true"
