@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { MainContext } from '../../context/MainContext';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { motion } from 'framer-motion';
 
 export const NavBtn = ({ page, name, HideSearch }) => {

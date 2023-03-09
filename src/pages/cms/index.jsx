@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../../context/MainContext';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { MongoClient } from 'mongodb';
 
 export default function Cms({ avaliablePages, collectionsPagesData }) {
