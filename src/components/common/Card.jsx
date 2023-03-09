@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -36,9 +36,10 @@ export const Card = ({ post, type }) => {
             fill
             sizes="100vw"
             style={{
-              objectFit: "cover",
-              objectPosition: "50% 25%"
-            }} />
+              objectFit: 'cover',
+              objectPosition: '50% 25%',
+            }}
+          />
         </div>
         <div className="p-5">
           <p>{post.title}</p>

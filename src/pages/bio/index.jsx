@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import Head from 'next/head';
-import Image from "next/image";
+import Image from 'next/image';
 import { MainContext } from '../../context/MainContext';
 import { motion } from 'framer-motion';
 import { MongoClient } from 'mongodb';
@@ -37,8 +37,9 @@ export default function Bio({ bio, propic }) {
               fill
               sizes="100vw"
               style={{
-                objectFit: "cover"
-              }} />
+                objectFit: 'cover',
+              }}
+            />
           </div>
           <div className={pageStyles.biography.textDiv}>
             <h1 className={pageStyles.biography.innerText}>Hello, I&#39;m</h1>

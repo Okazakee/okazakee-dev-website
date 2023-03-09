@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../../context/MainContext';
 import { useRouter } from 'next/router';
-import Image from "next/image";
+import Image from 'next/image';
 import { MongoClient } from 'mongodb';
 
 export default function Cms({ avaliablePages, collectionsPagesData }) {
@@ -123,9 +123,10 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
                   fill
                   sizes="100vw"
                   style={{
-                    objectFit: "cover",
-                    objectPosition: "50% 25%"
-                  }} />
+                    objectFit: 'cover',
+                    objectPosition: '50% 25%',
+                  }}
+                />
               </div>
               {Object.entries(
                 collectionsPagesData[selectedPage][selectedItem]
