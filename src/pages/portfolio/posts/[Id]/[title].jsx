@@ -12,20 +12,13 @@ export default function Post({ post, content }) {
       </Head>
       <div className="mx-4">
         <Image
-          className="rounded-xl"
+          className="rounded w-full lg:h-[20em] h-[15em] object-cover object-center"
           src={post.img}
           width={2000}
           height={600}
           alt="coverimg"
-          priority="true"
           quality={100}
-          sizes="100vw"
-          style={{
-            width: "100%",
-            height: "auto",
-            objectFit: "cover",
-            objectPosition: "50% 25%"
-          }} />
+        />
       </div>
       <div
         className="prose prose-invert mb-20 mt-5 mx-5 md:max-w-5xl md:text-xl text-md"
