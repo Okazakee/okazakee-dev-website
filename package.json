@@ -36,6 +36,7 @@
     "webpack": "^5.75.0"
   },
   "devDependencies": {
+    "@next/codemod": "^13.2.3",
     "@types/react": "18.0.28",
     "autoprefixer": "^10.4.7",
     "eslint": "8.12.0",
