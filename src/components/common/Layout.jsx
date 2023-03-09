@@ -17,21 +17,21 @@ export default function Layout({ children }) {
         <link rel="icon" href="/favicon.svg" />
       </Head>
       <main className={navStyles.layout}>
-        {!urlPath.includes('/cms') ? (
+        {!urlPath.includes('/cms') && !urlPath.includes('/login') ? (
           <div className="md:hidden">
-            <MobileNavbar></MobileNavbar>
+            <MobileNavbar />
           </div>
         ) : (
           <div className="sm:hidden">
-            <AdminMobileHeader></AdminMobileHeader>
+            <AdminMobileHeader />
           </div>
         )}
-        {!urlPath.includes('/cms') ? (
+        {!urlPath.includes('/cms') && !urlPath.includes('/login') ? (
           <div className="hidden sm:block">
-            <Navbar></Navbar>
+            <Navbar />
           </div>
         ) : (
-          <AdminHeader></AdminHeader>
+          <AdminHeader />
         )}
         {children}
       </main>

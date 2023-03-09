@@ -59,7 +59,8 @@ const MainProvider = ({ children }) => {
     },
     biography: {
       mainDiv: 'flex items-center mb-[10vh] lg:mt-[10vh]',
-      imgDiv: 'h-48 w-48 relative mx-auto object-cover',
+      imgDiv:
+        'lg:h-[16em] lg:w-[16em] md:h-[14em] md:w-[14em] h-[12em] w-[12em] relative mx-auto object-cover',
       blurDataURL: 'egLWe%R%_4xH%ds=a{t7s;WA-=s;R#RjIotQWUbDj[jwogofWBWBV_',
       textDiv: 'flex justify-center items-center my-4',
       innerText: 'mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl',

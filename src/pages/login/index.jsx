@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
-import { MainContext } from '../../context/MainContext';
 import Link from 'next/link';
 import Head from 'next/head';
+import React, { useState, useContext } from 'react';
+import { MainContext } from '../../context/MainContext';
 
 export default function AdminAuth() {
   const [authType, SetAuthType] = useState('login');
