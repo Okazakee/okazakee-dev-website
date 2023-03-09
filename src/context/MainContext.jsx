@@ -55,17 +55,16 @@ const MainProvider = ({ children }) => {
       auth: {
         input: 'text-center rounded-3xl',
       },
-      asd: '',
     },
     biography: {
-      mainDiv: 'flex items-center mb-[10vh] lg:mt-[10vh]',
+      mainDiv: 'flex items-center mb-[10vh] md:mt-[5vh]',
       imgDiv:
         'lg:h-[16em] lg:w-[16em] md:h-[14em] md:w-[14em] h-[12em] w-[12em] relative mx-auto object-cover',
       blurDataURL: 'egLWe%R%_4xH%ds=a{t7s;WA-=s;R#RjIotQWUbDj[jwogofWBWBV_',
       textDiv: 'flex justify-center items-center my-4',
       innerText: 'mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl',
       innerText2: 'text-[#8c54fb] ml-4 text-4xl sm:text-5xl lg:text-6xl',
-      bio: 'mx-6 lg:mx-24 md:mx-12 sm:mx-10 max-w-6xl text-justify sm:text-xl lg:text-[1.50rem] text-lg',
+      bio: 'mx-6 lg:mx-24 md:mx-12 sm:mx-10 max-w-6xl text-justify sm:text-xl lg:text-[1.40rem] text-lg',
     },
     portfolio: {
       cardListStyle:

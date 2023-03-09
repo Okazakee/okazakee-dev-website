@@ -6,7 +6,7 @@ export async function middleware(req: NextRequest) {
   const token = req.cookies.get('auth-token');
 
   // Make a POST request to /api/auth ensuring authentication token validation to access cms
-  const response = await fetch('https://preview.okazakee.dev/api/auth', {
+  const response = await fetch(process.env.API_ENDPOINT + '/auth', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
