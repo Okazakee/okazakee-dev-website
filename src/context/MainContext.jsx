@@ -6,15 +6,12 @@ const MainContext = createContext();
 // make dynamic head element served by this context, correctly setup states as arrays as [value, servalue]
 // build seo(?) stuff like the url preview in chats/forums
 // check that only global stuff is present here, otherwise create appropriate hook in appropriate component
-// EG: searchbar is only needed in navbar component, remove it from here asap.
 
 const MainProvider = ({ children }) => {
   // GLOBAL STATES
   const [HideSearchBox, SetHideSearchBox] = useState(true);
   const [searchfield, SetSearchfield] = useState('');
-  const [imageLoaded, setImageLoaded] = useState(false); //not needed might be useful later
   const [socialHide, SetSocialHide] = useState(true);
-  const [adminMode, SetAdminMode] = useState(false);
 
   // GLOBAL ROUTER CONTROLLER
   const router = useRouter();
@@ -62,7 +59,8 @@ const MainProvider = ({ children }) => {
     },
     biography: {
       mainDiv: 'flex items-center mb-[10vh] lg:mt-[10vh]',
-      imgDiv: 'h-48 w-48 relative mx-auto',
+      imgDiv: 'h-48 w-48 relative mx-auto object-cover',
+      blurDataURL: 'egLWe%R%_4xH%ds=a{t7s;WA-=s;R#RjIotQWUbDj[jwogofWBWBV_',
       textDiv: 'flex justify-center items-center my-4',
       innerText: 'mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl',
       innerText2: 'text-[#8c54fb] ml-4 text-4xl sm:text-5xl lg:text-6xl',
@@ -83,7 +81,6 @@ const MainProvider = ({ children }) => {
   return (
     <MainContext.Provider
       value={{
-        adminMode,
         navStyles,
         pageStyles,
         router,
@@ -92,8 +89,6 @@ const MainProvider = ({ children }) => {
         SetHideSearchBox,
         searchfield,
         SetSearchfield,
-        imageLoaded,
-        setImageLoaded,
         socialHide,
         SetSocialHide,
       }}
