@@ -11,7 +11,15 @@ export default function Bio({ bio, propic }) {
   const [clicks, setClicks] = useState(0);
 
   useEffect(() => {
-    clicks === 5 && router.push('/login');
+    const timer = setTimeout(() => {
+      setClicks(0);
+    }, 5000);
+
+    if (clicks === 5) {
+      router.push('/login');
+    }
+
+    return () => clearTimeout(timer);
   }, [clicks, router]);
 
   return (
@@ -30,15 +38,14 @@ export default function Bio({ bio, propic }) {
             <Image
               className="rounded-full"
               src={propic}
+              placeholder='blur'
+              blurDataURL={pageStyles.biography.blurDataURL}
               alt="propic"
               priority="true"
               quality={100}
               onClick={() => setClicks(clicks + 1)}
               fill
               sizes="100vw"
-              style={{
-                objectFit: 'cover',
-              }}
             />
           </div>
           <div className={pageStyles.biography.textDiv}>

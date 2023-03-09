@@ -14,6 +14,8 @@ export default function Post({ post, content }) {
         <Image
           className="rounded w-full lg:h-[20em] h-[15em] object-cover object-center"
           src={post.img}
+          placeholder='blur'
+          blurDataURL='qB7o3X8wR4o~ofaJV@tSTNaIV?o#kDVskCkW4T.8fSogfkV?ozbH$uNfjZbcadjZo#oI?^IAWAogWAa|f,aeE4xWofoeayfQofae'
           width={2000}
           height={600}
           alt="coverimg"
