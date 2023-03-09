@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import Head from 'next/head';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { MainContext } from '../../context/MainContext';
 import { motion } from 'framer-motion';
 import { MongoClient } from 'mongodb';
@@ -31,12 +31,14 @@ export default function Bio({ bio, propic }) {
               className="rounded-full"
               src={propic}
               alt="propic"
-              layout="fill"
-              objectFit="cover"
               priority="true"
               quality={100}
               onClick={() => setClicks(clicks + 1)}
-            />
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover"
+              }} />
           </div>
           <div className={pageStyles.biography.textDiv}>
             <h1 className={pageStyles.biography.innerText}>Hello, I&#39;m</h1>

@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -31,12 +31,14 @@ export const Card = ({ post, type }) => {
             className="rounded-t-xl"
             src={cover}
             alt="card cover"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="50% 25%"
             priority="true"
             quality={100}
-          />
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "cover",
+              objectPosition: "50% 25%"
+            }} />
         </div>
         <div className="p-5">
           <p>{post.title}</p>

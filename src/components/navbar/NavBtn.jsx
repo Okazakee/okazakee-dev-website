@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { MainContext } from '../../context/MainContext';
 import Link from 'next/link';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { motion } from 'framer-motion';
 
 export const NavBtn = ({ page, name, HideSearch }) => {
@@ -52,11 +52,13 @@ export const MobileNavBtn = ({
           <Image
             src={btnimg}
             alt="navIcon"
-            layout="fill"
-            objectFit="scale-down"
             priority="false"
             quality={100}
-          />
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "scale-down"
+            }} />
         </div>
         {name}
       </motion.button>

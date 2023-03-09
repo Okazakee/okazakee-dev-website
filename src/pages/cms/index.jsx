@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../../context/MainContext';
 import { useRouter } from 'next/router';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { MongoClient } from 'mongodb';
 
 export default function Cms({ avaliablePages, collectionsPagesData }) {
@@ -118,12 +118,14 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
                   className="rounded-xl"
                   src={collectionsPagesData[selectedPage][selectedItem].img}
                   alt="img"
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="50% 25%"
                   priority="true"
                   quality={100}
-                />
+                  fill
+                  sizes="100vw"
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "50% 25%"
+                  }} />
               </div>
               {Object.entries(
                 collectionsPagesData[selectedPage][selectedItem]

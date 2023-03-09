@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Head from 'next/head';
 import { remark } from 'remark';
 import html from 'remark-html';
@@ -17,12 +17,15 @@ export default function Post({ post, content }) {
           width={2000}
           height={600}
           alt="coverimg"
-          layout="responsive"
-          objectFit="cover"
-          objectPosition="50% 25%"
           priority="true"
           quality={100}
-        />
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "auto",
+            objectFit: "cover",
+            objectPosition: "50% 25%"
+          }} />
       </div>
       <div
         className="prose prose-invert mb-20 mt-5 mx-5 md:max-w-5xl md:text-xl text-md"
