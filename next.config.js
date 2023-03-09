@@ -8,7 +8,7 @@ module.exports = {
     return [
       {
         source: '/',
-        destination: '/Bio',
+        destination: '/bio',
         permanent: false, //set true before production
       },
     ]
