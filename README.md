@@ -1,23 +1,47 @@
-## Getting Started
+Personal Web Platform
+=====================
 
-First, run the development server:
+This is a serverless web platform that showcases my personal information, projects, and interests on the internet. The platform consists of several pages, including Biography, Portfolio, and Blog, along with a CMS panel for managing website content.
 
-```bash
-yarn dev
-```
+Features
+--------
 
-## Learn More
+*   NextJS framework for optimized Server Side Rendering (SSR) and Edge Functions
+*   JWT authentication for secure user access to CMS panel
+*   Amazon S3 for storing images and files
+*   MongoDB Atlas for data storage and management
+*   Integrated blog feature powered by Markdown
 
-To learn more about Next.js, take a look at the following resources:
+Getting Started
+---------------
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1.  Clone the repo: `git clone https://github.com/Okazakee/okazakee-dev-website.git`
+2.  Install dependencies: `yarn install`
+3.  Set environment variables:
+    *   `ADMIN_USERNAME`
+    *   `ADMIN_EMAIL`
+    *   `ADMIN_PASSWORD`
+    *   `API_ENDPOINT`
+    *   `JWT_SECRET`
+    *   `MONGODB_URI`
+    *   `COLLECTION_ENV`
+4.  Run development server: `yarn dev`
 
-## Deploy on Vercel
+Usage
+-----
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Use `yarn build` to create a production build, then deploy using your preferred hosting service.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Use Vercel if you want to deploy accordingly to branches pushes.
 
-## MongoDB
-add infos before production
+Additionally, you can use the CMS panel at `/cms` to manage your website content.
+
+Contributing
+------------
+
+This project is still in development and currently not open for contributions. However, feel free to reach out if you have any suggestions or feedback!
+
+License
+-------
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
