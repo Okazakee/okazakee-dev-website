@@ -4,6 +4,7 @@ import { MainContext } from '../../context/MainContext';
 import { SocialLink, SocialLinkMobile } from './SocialLink';
 import { NavBtn, MobileNavBtn } from './NavBtn';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export const AdminHeader = () => {
   const { navStyles, urlPath } = useContext(MainContext);
@@ -31,11 +32,13 @@ export const AdminHeader = () => {
       <div className="hidden md:block fixed left-1/2 -translate-x-1/2 bottom-5">
         <div className="flex">
           <div className="flex items-center">
-            <img
+            <Image
+              width={32}
+              height={32}
               src="/images/admin.png"
               alt="admin_icon"
-              className="h-8 w-8 mr-2"
-            ></img>
+              className="mr-2"
+            ></Image>
             <p>Administrator Mode</p>
           </div>
         </div>
@@ -60,11 +63,13 @@ export const AdminMobileHeader = () => {
     <div className={navStyles.mobile.NavbarStyle}>
       <div className="flex justify-around  mx-4">
         <div className="flex text-lg mb-2 items-center">
-          <img
+          <Image
+            width={40}
+            height={40}
             src="/images/admin.png"
             alt="admin_icon"
-            className="h-fit w-10 mr-2"
-          ></img>
+            className="mr-2"
+          ></Image>
           <p>Administrator Mode</p>
         </div>
         <MobileNavBtn
