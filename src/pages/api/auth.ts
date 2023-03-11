@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { jwtVerify, SignJWT } from 'jose';
 
+// JWT SECRET LOADER
 export const getJwtSecretKey = () => {
   const secret = process.env.JWT_SECRET_KEY;
 
@@ -11,6 +12,7 @@ export const getJwtSecretKey = () => {
   return secret;
 };
 
+// AUTH VERIFIER
 export const verifyAuth = async (token) => {
   try {
     const verified = await jwtVerify(
@@ -23,10 +25,22 @@ export const verifyAuth = async (token) => {
   }
 };
 
+// FORM HANDLER
+export const formstuff = async (token) => {
+  try {
+    console.log('test')
+
+  } catch (error) {
+    throw Error();
+  }
+};
+
+// RESPONSES HANDLER
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // Check if req is POST, if not res error
   if (req.method !== 'POST') {
     res
       .status(405)
@@ -36,11 +50,13 @@ export default async function handler(
 
   const { token } = req.body;
 
+  // Check if token exists, if not res error
   if (!token) {
     res.status(400).json({ error: 'Token is required!', verifiedToken: false });
     return;
   }
 
+  // Check token validity, if it is not valid res error
   try {
     const payload = await verifyAuth(token);
     res.status(200).json({ payload, verifiedToken: true });
