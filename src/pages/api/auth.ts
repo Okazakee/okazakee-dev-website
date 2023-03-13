@@ -26,9 +26,11 @@ export const verifyAuth = async (token) => {
 };
 
 // FORM HANDLER
-export const formstuff = async (token) => {
+export const adminCheck = async (formData) => {
   try {
-    console.log('test')
+    formData.email === process.env.ADMIN_EMAIL &&
+    formData.password === process.env.ADMIN_PASSWORD
+    return true;
 
   } catch (error) {
     throw Error();

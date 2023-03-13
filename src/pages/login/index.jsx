@@ -12,10 +12,13 @@ export default function AdminAuth() {
   const [isLoginForm, SetisLoginForm] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [username, setUserName] = useState('');
 
   const handlePOST = async () => {
     const data = {
-      token: '131273127u2byu1ebyb2un'
+      username: username,
+      email: email,
+      password: password
     }
 
     axios.post('http://localhost:3000/api/auth', data.token)
@@ -56,6 +59,7 @@ export default function AdminAuth() {
                   <input
                     type={'username'}
                     placeholder={'Username:'}
+                    onChange={(e) => setUserName(e.target.value)}
                     className='text-center text-2xl rounded-3xl px-5 py-1'
                     ></input>
                 </div>
@@ -74,8 +78,8 @@ export default function AdminAuth() {
                 <input
                   type={'email'}
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
                   placeholder={'Email:'}
+                  onChange={(e) => setEmail(e.target.value)}
                   className='text-center text-2xl rounded-3xl px-5 py-1'
                 ></input>
               </div>
