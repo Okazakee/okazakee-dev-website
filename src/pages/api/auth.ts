@@ -28,9 +28,7 @@ export const verifyAuth = async (token) => {
 // FORM HANDLER
 export const adminCheck = async (formData) => {
   try {
-    formData.email === process.env.ADMIN_EMAIL &&
-    formData.password === process.env.ADMIN_PASSWORD
-    return true;
+    null
 
   } catch (error) {
     throw Error();
@@ -52,7 +50,7 @@ export default async function handler(
 
   const { token } = req.body;
 
-  // Check if token exists, if not res error
+  // Check if token exists, if not, check form credentials
   if (!token) {
     res.status(400).json({ error: 'Token is required!', verifiedToken: false });
     return;

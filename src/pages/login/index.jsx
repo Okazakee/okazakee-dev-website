@@ -21,7 +21,7 @@ export default function AdminAuth() {
       password: password
     }
 
-    axios.post('http://localhost:3000/api/auth', data.token)
+    axios.post('http://localhost:3000/api/auth', data)
       .then(response => {
         console.log(response.data);
       })
