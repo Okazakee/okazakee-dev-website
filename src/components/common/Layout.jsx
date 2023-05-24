@@ -20,7 +20,10 @@ export default function Layout({ children }) {
           content="Welcome to the personal website of Cristian (Okazakee), a passionate and skilled Web Developer from Italy. Explore Cristian's portfolio and bio, showcasing expertise in web development and a commitment to Open Source."
         ></meta>
         <meta property="og:title" content="Okazakee's personal website!" />
-        <meta property="og:image" content="https://okazakee-dev-storage.s3.eu-west-3.amazonaws.com/okazakee.dev/Biography/propic_hd.jpg" />
+        <meta
+          property="og:image"
+          content="https://okazakee-dev-storage.s3.eu-west-3.amazonaws.com/okazakee.dev/Biography/propic_hd.jpg"
+        />
         <meta property="og:url" content="https://okazakee.dev/" />
         <meta property="og:type" content="website"></meta>
         <meta
