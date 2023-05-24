@@ -28,8 +28,7 @@ export const verifyAuth = async (token) => {
 // FORM HANDLER
 export const formstuff = async (token) => {
   try {
-    console.log('test')
-
+    console.log('test');
   } catch (error) {
     throw Error();
   }
