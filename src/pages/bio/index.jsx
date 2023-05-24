@@ -41,7 +41,7 @@ export default function Bio({ bio, propic }) {
               placeholder="blur"
               blurDataURL={pageStyles.biography.blurDataURL}
               alt="propic"
-              priority="true"
+              priority={true}
               quality={100}
               onClick={() => setClicks(clicks + 1)}
               fill
