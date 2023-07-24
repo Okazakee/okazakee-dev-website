@@ -59,44 +59,42 @@ export const JWTsign = async (username) => {
   };
 
 // RESPONSES HANDLER
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  // Check if req is POST, if not res error
-  if (req.method !== 'POST') {
-    res
-      .status(405)
-      .json({ error: 'Method not allowed!', verifiedToken: false });
-    return;
-  }
-
-  // Get user data from req body
-  const userData = req.body;
-  const {username, password} = userData;
-
-  if (username && password) {
-    try {
-        const payload = await userVerify(username, password);
-        if (payload) {
-            try {
-                // sign jwt
-                const newToken = await JWTsign(username);
-                res.status(200).json({newToken});
-            } catch (error) {
-                // response error generating jwt
-                res.status(400).json({error: 'Something went wrong while signing the new JWT token'});
-            }
-        }
-      } catch (error) {
-        res
-          .status(401)
-          .json({ error: 'Invalid user data!', verifiedUser: false });
-      }
-  } else {
-    res
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+    // Check if req is POST, if not res error
+    if (req.method !== 'POST') {
+      return res
+        .status(405)
+        .json({ error: 'Method not allowed!', verifiedToken: false });
+    }
+  
+    // Get user data from req body
+    const userData = req.body;
+    const { username, password } = userData;
+  
+    if (!username || !password) {
+      return res
         .status(400)
-        .json({ error: 'Invalid request: Missing username or password.' });
-    return;
+        .json({ error: 'Missing username or password.' });
+    }
+  
+    try {
+      const payload = await userVerify(username, password);
+  
+      if (payload) {
+        try {
+          // Sign jwt
+          const newToken = await JWTsign(username);
+          // Set the JWT token as a cookie in the response
+          res.setHeader('Set-Cookie', `jwtToken=${newToken}; Path=/;`);
+          return res.status(200).json({ success: true, message: 'Login successful' });
+        } catch (error) {
+          // Response error generating jwt
+          return res.status(400).json({ error: 'Something went wrong while signing the new JWT token' });
+        }
+      } else {
+        return res.status(401).json({ error: 'Invalid user data!', verifiedUser: false });
+      }
+    } catch (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
   }
-}

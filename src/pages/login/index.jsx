@@ -1,12 +1,11 @@
 import { useState, useContext, useEffect } from 'react';
-import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
 import { MainContext } from '../../context/MainContext';
 import axios from 'axios';
 
 export default function AdminAuth() {
-  const { pageStyles } = useContext(MainContext);
+  const { pageStyles, router } = useContext(MainContext);
 
   const [isLoginForm, SetisLoginForm] = useState(true);
   const [email, setEmail] = useState('');
@@ -42,12 +41,9 @@ export default function AdminAuth() {
       // Make a POST request to the authentication API without the token
       const response = await axios.post('http://localhost:3000/api/userVerify', userData);
 
-      // Handle the response based on the API logic later
-      // For now, let's assume the API will respond with a success message or error message
       if (response.status === 200) {
-        setPostError('Login successful!'); // Temporary message
-      } else {
-        setPostError('Login failed! Invalid email or password.'); // Temporary message
+        //redirect if ok
+        router.push('/cms')
       }
 
     } catch (error) {
