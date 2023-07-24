@@ -14,7 +14,7 @@ export const AdminHeader = () => {
       <div className="flex">
         <div className={navStyles.default.mainDiv}>
           <div className="text-center mt-5 md:mt-0 md:text-xl">
-            {urlPath.endsWith('/auth') && (
+            {urlPath.endsWith('/login') && (
               <p>
                 <label className="text-[#8c54fb]">Authentication</label> -
                 Please login to enter in the CMS

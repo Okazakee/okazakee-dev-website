@@ -30,28 +30,22 @@ export default function AdminAuth() {
   }, [postError]);
 
   const handlePOST = async (event) => {
-    console.log("asda")
-
     event.preventDefault();
 
     try {
       // User data to be sent in the request payload
       const userData = {
-        email: email,
         username: username,
         password: password,
       };
 
       // Make a POST request to the authentication API without the token
-      const response = await axios.post('http://localhost:3000/api/auth', userData);
-
-      // Log the response data
-      console.log(response.data);
+      const response = await axios.post('http://localhost:3000/api/userVerify', userData);
 
       // Handle the response based on the API logic later
       // For now, let's assume the API will respond with a success message or error message
-      if (response.data.verifiedToken) {
-        console.log('Login successful!'); // Temporary message
+      if (response.status === 200) {
+        setPostError('Login successful!'); // Temporary message
       } else {
         setPostError('Login failed! Invalid email or password.'); // Temporary message
       }
@@ -78,27 +72,25 @@ export default function AdminAuth() {
           ></Image>
         </div>
         <form className="flex flex-col" onSubmit={handlePOST}>
-          {!isLoginForm && (
-            <div className="flex items-center justify-around mb-10">
-              <Image
-                width={40}
-                height={40}
-                src="/images/username.png"
-                alt="username_icon"
-                className="mx-4"
-              ></Image>
-              <div className="text-center">
-                <input
-                  type={'username'}
-                  placeholder={'Username:'}
-                  onChange={(e) => setUserName(e.target.value)}
-                  className="text-center text-2xl rounded-3xl px-5 py-1"
-                ></input>
-              </div>
-              <div className="w-10 mx-4"></div>
-            </div>
-          )}
           <div className="flex items-center justify-around mb-10">
+            <Image
+              width={40}
+              height={40}
+              src="/images/username.png"
+              alt="username_icon"
+              className="mx-4"
+            ></Image>
+            <div className="text-center">
+              <input
+                type={'username'}
+                placeholder={'Username:'}
+                onChange={(e) => setUserName(e.target.value)}
+                className="text-center text-2xl rounded-3xl px-5 py-1"
+              ></input>
+            </div>
+            <div className="w-10 mx-4"></div>
+          </div>
+          {/* <div className="flex items-center justify-around mb-10">
             <Image
               width={40}
               height={40}
@@ -116,7 +108,7 @@ export default function AdminAuth() {
               ></input>
             </div>
             <div className="w-10 mx-4"></div>
-          </div>
+          </div> */}
           <div className="flex items-center justify-around mb-10">
             <Image
               width={40}
@@ -150,15 +142,6 @@ export default function AdminAuth() {
                   Register
                 </p>
               )}
-              {/* {isLoginForm ? (
-                <Link href={'/cms'} passHref>
-                  Login
-                </Link>
-              ) : (
-                <Link href={'/cms'} passHref>
-                  Register
-                </Link>
-              )} */}
             </button>
           </div>
           {isLoginForm && (

@@ -1,32 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { MongoClient } from 'mongodb';
-import { jwtVerify, SignJWT } from 'jose';
-
-// Account existance check
-export const userVerify = async (email, password) => {
-  try {
-    const client = await MongoClient.connect(process.env.MONGODB_URI);
-    const db = client.db('Users');
-    const usersCollection = db.collection('Administrators');
-
-    // Perform the check to see if the user exists in the collection
-    const user = await usersCollection.findOne({ email: email });
-
-    // Close the database connection
-    client.close();
-
-    if (user) {
-      // User exists
-      return true;
-    } else {
-      // User does not exist
-      return false;
-    }
-  } catch (error) {
-    console.error('Error verifying user:', error);
-    throw error;
-  }
-};
+import { jwtVerify } from 'jose';
 
 // JWT SECRET LOADER
 export const getJwtSecretKey = () => {
@@ -40,7 +13,7 @@ export const getJwtSecretKey = () => {
 };
 
 // AUTH VERIFIER
-export const verifyAuth = async (token) => {
+export const tokenVerify = async (token) => {
   try {
     const verified = await jwtVerify(
       token,
@@ -78,7 +51,7 @@ export default async function handler(
 
   // Check token validity, if it is not valid res error
   try {
-    const payload = await verifyAuth(token);
+    const payload = await tokenVerify(token);
     res.status(200).json({ payload, verifiedToken: true });
   } catch (error) {
     res
@@ -86,3 +59,11 @@ export default async function handler(
       .json({ error: 'Your token has expired!', verifiedToken: false });
   }
 }
+
+// ITER
+/*
+user hits /cms or /login
+middleware hits /jwtVerify with jwt cookie, if present check validity, if not redirect, if validity ok redirect /cms, if validity not ok redirect /login
+token is sent in POST to /jwtVerify
+pass it to tokenVerify()
+*/

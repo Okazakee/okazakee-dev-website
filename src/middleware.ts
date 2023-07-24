@@ -6,9 +6,12 @@ export async function middleware(req: NextRequest) {
 
   if (token) {
 
-    // Make a POST request to /api/auth ensuring authentication token validation to access cms
-    const response = await fetch(process.env.API_ENDPOINT + '/auth', {
+    // Make a POST request to /api/jwtVerify ensuring authentication token validation to access cms
+    const response = await fetch(process.env.API_ENDPOINT + '/jwtVerify', {
       method: 'POST',
+      headers: {
+        'X-Request-Source': 'middleware', // Set a custom header to identify the source
+      },
       body: token.value,
     });
 
