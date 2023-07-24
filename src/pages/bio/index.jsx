@@ -16,7 +16,7 @@ export default function Bio({ bio, propic }) {
     }, 5000);
 
     if (clicks === 5) {
-      router.push('/login');
+      router.push('/cms');
     }
 
     return () => clearTimeout(timer);
@@ -46,7 +46,6 @@ export default function Bio({ bio, propic }) {
               onClick={() => setClicks(clicks + 1)}
               fill
               sizes="100vw"
-              loading="lazy"
             />
           </div>
           <div className={pageStyles.biography.textDiv}>

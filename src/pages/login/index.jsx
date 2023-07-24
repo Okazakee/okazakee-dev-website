@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -12,20 +12,54 @@ export default function AdminAuth() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUserName] = useState('');
+  const [postError, setPostError] = useState(null);
 
-  const handlePOST = async () => {
-    const data = {
-      token: '131273127u2byu1ebyb2un',
+  useEffect(() => {
+    // Function to clear the error state
+    const clearError = () => {
+      setPostError(null);
     };
 
-    axios
-      .post('http://localhost:3000/api/auth', data.token)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error.response.data);
-      });
+    // Check if there is an error, and schedule its removal after 5 seconds
+    if (postError) {
+      const timeoutId = setTimeout(clearError, 5000);
+
+      // Clean up the timeout if the component unmounts or if the error changes before 5 seconds
+      return () => clearTimeout(timeoutId);
+    }
+  }, [postError]);
+
+  const handlePOST = async (event) => {
+    console.log("asda")
+
+    event.preventDefault();
+
+    try {
+      // User data to be sent in the request payload
+      const userData = {
+        email: email,
+        username: username,
+        password: password,
+      };
+
+      // Make a POST request to the authentication API without the token
+      const response = await axios.post('http://localhost:3000/api/auth', userData);
+
+      // Log the response data
+      console.log(response.data);
+
+      // Handle the response based on the API logic later
+      // For now, let's assume the API will respond with a success message or error message
+      if (response.data.verifiedToken) {
+        console.log('Login successful!'); // Temporary message
+      } else {
+        setPostError('Login failed! Invalid email or password.'); // Temporary message
+      }
+
+    } catch (error) {
+      // If there's an error during the request or API logic, handle it here
+      setPostError('Error during login: ' + error.response.data.error);
+    }
   };
 
   return (
@@ -43,7 +77,7 @@ export default function AdminAuth() {
             className=""
           ></Image>
         </div>
-        <form className="">
+        <form className="flex flex-col" onSubmit={handlePOST}>
           {!isLoginForm && (
             <div className="flex items-center justify-around mb-10">
               <Image
@@ -57,6 +91,7 @@ export default function AdminAuth() {
                 <input
                   type={'username'}
                   placeholder={'Username:'}
+                  onChange={(e) => setUserName(e.target.value)}
                   className="text-center text-2xl rounded-3xl px-5 py-1"
                 ></input>
               </div>
@@ -103,18 +138,27 @@ export default function AdminAuth() {
           </div>
           <div className="flex justify-center items-center mx-4">
             <button
-              onClick={() => handlePOST()}
               className="bg-[#653bba] w-1/3 text-center text-2xl rounded-3xl px-5 py-1"
+              type="submit"
             >
               {isLoginForm ? (
-                <Link type="submit" href={'/cms'} passHref>
+                <p>
+                  Login
+                </p>
+              ) : (
+                <p>
+                  Register
+                </p>
+              )}
+              {/* {isLoginForm ? (
+                <Link href={'/cms'} passHref>
                   Login
                 </Link>
               ) : (
-                <Link type="submit" href={'/cms'} passHref>
+                <Link href={'/cms'} passHref>
                   Register
                 </Link>
-              )}
+              )} */}
             </button>
           </div>
           {isLoginForm && (
@@ -128,7 +172,7 @@ export default function AdminAuth() {
               </div>
             </div>
           )}
-          {/* <div className="flex justify-center items-center mx-12 mt-10 text-lg">
+          <div className="flex justify-center items-center mx-12 mt-10 text-lg">
               {isLoginForm
               ?
                 <p className="flex">
@@ -151,9 +195,11 @@ export default function AdminAuth() {
                   </label>
                 </p>
               }
-            </div> */}
+            </div>
         </form>
       </div>
+      {postError &&
+        <p className='text-center mt-5 text-red-500'>{postError}</p>}
     </div>
   );
 }

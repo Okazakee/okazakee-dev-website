@@ -1,5 +1,32 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { MongoClient } from 'mongodb';
 import { jwtVerify, SignJWT } from 'jose';
+
+// Account existance check
+export const userVerify = async (email, password) => {
+  try {
+    const client = await MongoClient.connect(process.env.MONGODB_URI);
+    const db = client.db('Users');
+    const usersCollection = db.collection('Administrators');
+
+    // Perform the check to see if the user exists in the collection
+    const user = await usersCollection.findOne({ email: email });
+
+    // Close the database connection
+    client.close();
+
+    if (user) {
+      // User exists
+      return true;
+    } else {
+      // User does not exist
+      return false;
+    }
+  } catch (error) {
+    console.error('Error verifying user:', error);
+    throw error;
+  }
+};
 
 // JWT SECRET LOADER
 export const getJwtSecretKey = () => {
@@ -19,17 +46,10 @@ export const verifyAuth = async (token) => {
       token,
       new TextEncoder().encode(getJwtSecretKey())
     );
+
+    console.log("Token is valid!");
+
     return verified.payload;
-  } catch (error) {
-    throw Error();
-  }
-};
-
-// FORM HANDLER
-export const adminCheck = async (formData) => {
-  try {
-    console.log('test')
-
   } catch (error) {
     throw Error();
   }
@@ -48,11 +68,11 @@ export default async function handler(
     return;
   }
 
-  const { token } = req.body;
+  const token = req.body;
 
-  // Check if token exists, if not, check form credentials
+  // Check if token exists
   if (!token) {
-    res.status(400).json({ error: 'Token is required!', verifiedToken: false });
+    res.status(400).json({ error: 'No JWT token found! Redirecting...', verifiedToken: false });
     return;
   }
 
