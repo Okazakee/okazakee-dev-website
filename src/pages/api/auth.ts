@@ -28,7 +28,7 @@ export const verifyAuth = async (token) => {
 // FORM HANDLER
 export const adminCheck = async (formData) => {
   try {
-    null
+    console.log('test')
 
   } catch (error) {
     throw Error();
