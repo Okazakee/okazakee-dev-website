@@ -46,7 +46,7 @@ export default function AdminAuth() {
       const response = await axios.post(process.env.NEXT_PUBLIC_API_ENDPOINT + '/loginHandler', userData);
 
       if (response.status === 200) {
-        //redirect if ok
+        //redirect
         router.push('/cms')
       }
 

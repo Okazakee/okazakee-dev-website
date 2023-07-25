@@ -1,13 +1,26 @@
-import React from 'react';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { MainContext } from '../../context/MainContext';
 import { SocialLink, SocialLinkMobile } from './SocialLink';
 import { NavBtn, MobileNavBtn } from './NavBtn';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Cookies from 'js-cookie';
 
 export const AdminHeader = () => {
   const { navStyles, urlPath } = useContext(MainContext);
+  const [profileData, setProfileData] = useState('');
+
+  useEffect(() => {
+    const cookie = Cookies.get('profileData');
+
+    if (cookie) {
+      try {
+        setProfileData(JSON.parse(cookie));
+      } catch (error) {
+        console.error('Error while getting profile data:', error);
+      }
+    }
+  }, []);
 
   return (
     <div className={navStyles.default.adminNav}>
@@ -29,18 +42,30 @@ export const AdminHeader = () => {
           </div>
         </div>
       </div>
+      <div className="hidden md:block fixed left-5 bottom-5">
+      {urlPath.endsWith('/cms') && (
+        <div className="flex items-center">
+          <Image
+            width={32}
+            height={32}
+            src={profileData.imgUrl ? profileData.imgUrl : '/images/user.png'}
+            alt="admin_icon"
+            className="mr-2 rounded-full"
+          ></Image>
+          <p>{profileData.username}</p>
+        </div>
+        )}
+      </div>
       <div className="hidden md:block fixed left-1/2 -translate-x-1/2 bottom-5">
-        <div className="flex">
-          <div className="flex items-center">
-            <Image
-              width={32}
-              height={32}
-              src="/images/admin.png"
-              alt="admin_icon"
-              className="mr-2"
-            ></Image>
-            <p>Administrator Mode</p>
-          </div>
+        <div className="flex items-center">
+          <Image
+            width={32}
+            height={32}
+            src="/images/admin.png"
+            alt="admin_icon"
+            className="mr-2"
+          ></Image>
+          <p>Administrator Mode</p>
         </div>
       </div>
       <div className="hidden md:block fixed right-5 bottom-3">

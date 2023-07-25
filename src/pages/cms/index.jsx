@@ -2,13 +2,22 @@ import { useState, useContext } from 'react';
 import { MainContext } from '../../context/MainContext';
 import Image from 'next/image';
 import { MongoClient } from 'mongodb';
+import moment from 'moment/moment';
+import getUserProfileData from '../../utils/api/getUserProfileData';
+import { decodeJwt } from 'jose';
+import Cookies from 'js-cookie';
 
-export default function Cms({ avaliablePages, collectionsPagesData }) {
+export default function Cms({ avaliablePages, collectionsPagesData, profileData }) {
   const [selectedPage, SetSelectedPage] = useState(avaliablePages[0]);
   const [selectedItem, SetSelectedItem] = useState('0');
   const [fieldSelectEnabled, SetFieldSelectEnabled] = useState(false);
 
   const { router } = useContext(MainContext);
+
+  if (profileData) {
+    const expirationDate = moment().add(1, 'hour').toDate();
+    Cookies.set('profileData', JSON.stringify(profileData), { expires: expirationDate, path: '/cms' });
+  }
 
   const refreshData = () => {
     router.replace(router.asPath);
@@ -161,6 +170,33 @@ export async function getServerSideProps(context) {
   let collectionsData;
   let collectionsPagesData;
   let avaliablePages;
+  let jwt = null;
+  let profileData = null;
+
+  try {
+    // get cookies
+    const cookies = context.req.headers.cookie.split(";");
+    // find the right jwt cookie
+    const jwtTokenCookie = cookies.find(cookie => cookie.startsWith('jwtToken='));
+    // if present return the value
+    if (jwtTokenCookie) {
+      jwt = jwtTokenCookie.split('=')[1];
+    }
+
+    if (jwt) {
+      // decode jwt cookie if exist
+      const decodedToken = decodeJwt(jwt);
+
+      // pick username value
+      const username = decodedToken.username;
+
+      // call getprofdata function
+      profileData = await getUserProfileData(username);
+
+    }
+  } catch (e) {
+    console.error('Error occured while fetching profile data,', e);
+  }
 
   // Connect to mongoDB and collection
   try {
@@ -220,6 +256,7 @@ export async function getServerSideProps(context) {
       props: {
         avaliablePages,
         collectionsPagesData,
+        profileData
       },
     };
   } catch (e) {
