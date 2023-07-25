@@ -5,7 +5,7 @@ import { MainContext } from '../../context/MainContext';
 import axios from 'axios';
 
 export default function AdminAuth() {
-  const { pageStyles, router } = useContext(MainContext);
+  const { router } = useContext(MainContext);
 
   const [isLoginForm, SetisLoginForm] = useState(true);
   const [email, setEmail] = useState('');
@@ -39,7 +39,7 @@ export default function AdminAuth() {
       };
 
       // Make a POST request to the authentication API without the token
-      const response = await axios.post('http://localhost:3000/api/userVerify', userData);
+      const response = await axios.post(process.env.NEXT_PUBLIC_API_ENDPOINT + '/userVerify', userData);
 
       if (response.status === 200) {
         //redirect if ok
