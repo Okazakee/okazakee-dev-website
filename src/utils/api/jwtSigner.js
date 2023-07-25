@@ -1,5 +1,5 @@
 import { SignJWT } from 'jose';
-import jwtSecretLoader from '../utils/jwtSecretLoader';
+import jwtSecretLoader from './jwtSecretLoader';
 
 const jwtSigner = async (username, rememberMe) => {
     const secret = await jwtSecretLoader();

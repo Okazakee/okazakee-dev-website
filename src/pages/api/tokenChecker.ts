@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import jwtVerifier from '../../utils/jwtVerifier';
+import jwtVerifier from '../../utils/api/jwtVerifier';
 
 // RESPONSES HANDLER
 export default async function handler(

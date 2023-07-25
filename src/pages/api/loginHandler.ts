@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import userCheck from '../../utils/userCheck';
-import jwtSigner from '../../utils/jwtSigner';
+import userCheck from '../../utils/api/userCheck';
+import jwtSigner from '../../utils/api/jwtSigner';
 
 // RESPONSES HANDLER
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
