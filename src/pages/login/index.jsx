@@ -8,7 +8,7 @@ export default function AdminAuth() {
   const { router } = useContext(MainContext);
 
   const [isLoginForm, SetisLoginForm] = useState(true);
-  const [email, setEmail] = useState('');
+  const [rememberMe, SetRememberMe] = useState(false);
   const [password, setPassword] = useState('');
   const [username, setUserName] = useState('');
   const [postError, setPostError] = useState(null);
@@ -37,12 +37,13 @@ export default function AdminAuth() {
     try {
       // User data to be sent in the request payload
       const userData = {
-        username: username,
-        password: password,
+        username,
+        password,
+        rememberMe
       };
 
       // Make a POST request to the authentication API without the token
-      const response = await axios.post(process.env.NEXT_PUBLIC_API_ENDPOINT + '/userVerify', userData);
+      const response = await axios.post(process.env.NEXT_PUBLIC_API_ENDPOINT + '/loginHandler', userData);
 
       if (response.status === 200) {
         //redirect if ok
@@ -59,7 +60,7 @@ export default function AdminAuth() {
   };
 
   return (
-    <div className="pt-16 sm:pt-0 max-w-[32rem]">
+    <div className="mt-16 sm:pt-0 max-w-[32rem]">
       <Head>
         <title>CMS auth page - Okazakee.dev</title>
       </Head>
@@ -148,14 +149,14 @@ export default function AdminAuth() {
             </button>
           </div>
           {isLoginForm && (
-            <div className="flex justify-between items-center mx-12 mt-10 text-xl">
-              <div className="flex justify-between items-center">
-                <input className="" type={'checkbox'}></input>
+            <div className="flex justify-center items-center mx-12 mt-10 text-xl">
+              <div className="flex text-center justify-between items-center">
+                <input onChange={() => SetRememberMe(!rememberMe)} type={'checkbox'}></input>
                 <p className="ml-2">Remember me</p>
               </div>
-              <div>
+              {/* <div>
                 <button className="ml-10">Forgot password?</button>
-              </div>
+              </div> */}
             </div>
           )}
           {/* <div className="flex justify-center items-center mx-12 mt-10 text-lg">
