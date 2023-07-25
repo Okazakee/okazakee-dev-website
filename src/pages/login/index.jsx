@@ -59,7 +59,7 @@ export default function AdminAuth() {
   };
 
   return (
-    <div className="pt-16 sm:pt-0">
+    <div className="pt-16 sm:pt-0 max-w-[32rem]">
       <Head>
         <title>CMS auth page - Okazakee.dev</title>
       </Head>
@@ -185,7 +185,7 @@ export default function AdminAuth() {
         </form>
       </div>
       {postError &&
-        <p className='text-center mt-5 text-red-500'>{postError}</p>}
+        <p className='text-center mt-5 text-red-500 mx-5'>{postError}</p>}
     </div>
   );
 }

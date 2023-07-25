@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { MainContext } from '../../context/MainContext';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { MongoClient } from 'mongodb';
 
@@ -9,7 +8,7 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
   const [selectedItem, SetSelectedItem] = useState('0');
   const [fieldSelectEnabled, SetFieldSelectEnabled] = useState(false);
 
-  const router = useRouter();
+  const { router } = useContext(MainContext);
 
   const refreshData = () => {
     router.replace(router.asPath);
@@ -42,15 +41,15 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
     },
     body: {
       buttons:
-        'border text-center px-2 py-1 mb-5 rounded-3xl hover:bg-[#8c54fb] mx-2',
+        'border text-center px-3 py-1 mb-5 rounded-3xl hover:bg-[#8c54fb] mx-2',
       div1: 'flex-wrap border basis-5/6 rounded-3xl pt-5 px-5 mr-5 max-h-[60vh] md:max-h-[70vh] lg:text-lg',
       div2: 'text-end cursor-pointer',
     },
-    imgdiv: 'relative h-[25vh] sm:h-[20vh] mx-auto',
+    imgdiv: 'relative h-[30vh] w-[30vw] mx-auto',
   };
 
   return (
-    <div>
+    <>
       <div className={styles.header.div1}>
         <div className={styles.header.div2}>
           <div className={styles.header.div3}>
@@ -121,7 +120,6 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
                   priority="true"
                   quality={100}
                   fill
-                  sizes="100vw"
                   style={{
                     objectFit: 'cover',
                     objectPosition: '50% 25%',
@@ -153,7 +151,7 @@ export default function Cms({ avaliablePages, collectionsPagesData }) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

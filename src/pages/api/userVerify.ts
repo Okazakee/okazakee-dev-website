@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { MongoClient } from 'mongodb';
 import { SignJWT } from 'jose';
+import sha256 from 'crypto-js/sha256';
 
 // JWT SECRET LOADER
 export const getJwtSecretKey = () => {
@@ -26,7 +27,7 @@ export const userVerify = async (username, password) => {
     // Close the database connection
     client.close();
 
-    if (user && user.password === password) {
+    if (user && user.password === sha256(password).toString()) {
       // User exists, and the password matches
       return true;
     } else {
@@ -92,7 +93,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           return res.status(400).json({ error: 'Something went wrong while signing the new JWT token' });
         }
       } else {
-        return res.status(401).json({ error: 'Invalid user data!', verifiedUser: false });
+        return res.status(401).json({ error: `User does not exist or password doesn't match`, verifiedUser: false });
       }
     } catch (error) {
       return res.status(500).json({ error: 'Internal server error' });
