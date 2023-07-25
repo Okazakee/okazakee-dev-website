@@ -48,9 +48,18 @@ export const AdminHeader = () => {
           page="/bio"
           defaultBtnStyle="text-[#b4b4b4] hover:text-[#e8e8e8]"
           iconStyle={navStyles.mobile.iconStyle}
-          btnimg="/images/exit.png"
-          name="Exit"
+          btnimg="/images/home.png"
+          name="Home"
         ></MobileNavBtn>
+        {urlPath.endsWith('/cms') && (
+            <MobileNavBtn
+              page="/login"
+              defaultBtnStyle="text-[#b4b4b4] hover:text-[#e8e8e8]"
+              iconStyle={navStyles.mobile.iconStyle}
+              btnimg="/images/exit.png"
+              name="Logout"
+            ></MobileNavBtn>
+          )}
       </div>
     </div>
   );

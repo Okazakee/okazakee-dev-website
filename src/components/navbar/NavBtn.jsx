@@ -3,6 +3,7 @@ import { MainContext } from '../../context/MainContext';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Cookies from 'js-cookie';
 
 export const NavBtn = ({ page, name, HideSearch }) => {
   const { navStyles, urlPath } = useContext(MainContext);
@@ -41,11 +42,9 @@ export const MobileNavBtn = ({
   return (
     <Link href={page} passHref>
       <motion.button
-        onClick={() => socialHandler()}
+        onClick={() => name === 'Logout' ? Cookies.remove('jwtToken') : socialHandler()}
         whileTap={{ scale: 0.8 }}
-        className={
-          urlPath.startsWith(page) ? selectedBtnStyle : defaultBtnStyle
-        }
+        className={`${urlPath.startsWith(page) ? selectedBtnStyle : defaultBtnStyle} ${name === 'Logout' && 'ml-5'}`}
       >
         <div className={iconStyle}>
           <Image
