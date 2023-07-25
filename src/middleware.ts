@@ -9,9 +9,6 @@ export async function middleware(req: NextRequest) {
     // Make a POST request to /api/tokenChecker ensuring authentication token validation to access cms
     const response = await fetch(process.env.NEXT_PUBLIC_API_ENDPOINT + '/tokenChecker', {
       method: 'POST',
-      headers: {
-        'X-Request-Source': 'middleware', // Set a custom header to identify the source
-      },
       body: token.value,
     });
 

@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import userCheck from '../../utils/api/userCheck';
 import jwtSigner from '../../utils/api/jwtSigner';
+import validator from 'validator';
 
 // RESPONSES HANDLER
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -14,6 +15,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Get user data from req body
     const userData = req.body;
     const { username, password, rememberMe } = userData;
+
+    if (!validator.isAlphanumeric(username) || !validator.matches(password, /^[a-zA-Z0-9!@#$%^&*()_+.-]+$/)) {
+      return res
+        .status(400)
+        .json({ error: 'User data contains invalid characters.' });
+    }
 
     if (!username || !password) {
       return res

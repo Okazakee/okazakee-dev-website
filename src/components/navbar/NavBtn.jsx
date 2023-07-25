@@ -35,7 +35,6 @@ export const MobileNavBtn = ({
   const { urlPath, SetSocialHide } = useContext(MainContext);
 
   const socialHandler = () => {
-    console.log(name);
     name === 'Socials' ? SetSocialHide(false) : null;
   };
 

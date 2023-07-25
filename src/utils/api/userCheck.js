@@ -22,7 +22,7 @@ const userCheck = async (username, password) => {
     }
   } catch (error) {
     console.error('Error verifying user:', error);
-    throw error;
+    return error;
   }
 };
 

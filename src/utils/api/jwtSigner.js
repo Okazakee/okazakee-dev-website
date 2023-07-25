@@ -12,7 +12,7 @@ const jwtSigner = async (username, rememberMe) => {
         .setIssuedAt() // Set the issued at time (iat) to the current time
         .setExpirationTime(rememberMe ? '1y' : '1d')
         .sign(secretKey); // Sign the JWT using the provided secret
-console.log(jwt)
+
         return jwt; // Return the signed JWT
     } catch (error) {
         console.error('Error signing JWT:', error);
