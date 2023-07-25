@@ -6,7 +6,7 @@ This is a serverless web platform that showcases my personal information, projec
 Features
 --------
 
-*   NextJS framework for optimized Server Side Rendering (SSR) and Edge Functions
+*   NextJS framework for optimized Server Side Rendering (SSR) and Serverless Functions
 *   JWT authentication for secure user access to CMS panel
 *   Amazon S3 for storing images and files
 *   MongoDB Atlas for data storage and management
@@ -18,9 +18,6 @@ Getting Started
 1.  Clone the repo: `git clone https://github.com/Okazakee/okazakee-dev-website.git`
 2.  Install dependencies: `yarn install`
 3.  Set environment variables:
-    *   `ADMIN_USERNAME`
-    *   `ADMIN_EMAIL`
-    *   `ADMIN_PASSWORD`
     *   `API_ENDPOINT`
     *   `JWT_SECRET`
     *   `MONGODB_URI`
