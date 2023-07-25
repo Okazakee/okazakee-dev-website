@@ -12,6 +12,7 @@ export default function AdminAuth() {
   const [password, setPassword] = useState('');
   const [username, setUserName] = useState('');
   const [postError, setPostError] = useState(null);
+  const [buttonLocked, SetButtonLocked] = useState(false);
 
   useEffect(() => {
     // Function to clear the error state
@@ -31,6 +32,8 @@ export default function AdminAuth() {
   const handlePOST = async (event) => {
     event.preventDefault();
 
+    SetButtonLocked(true);
+
     try {
       // User data to be sent in the request payload
       const userData = {
@@ -49,6 +52,9 @@ export default function AdminAuth() {
     } catch (error) {
       // If there's an error during the request or API logic, handle it here
       setPostError('Error during login: ' + error.response.data.error);
+    } finally {
+      // Regardless of success or error, always unlock the button
+      SetButtonLocked(false);
     }
   };
 
@@ -81,7 +87,7 @@ export default function AdminAuth() {
                 type={'username'}
                 placeholder={'Username:'}
                 onChange={(e) => setUserName(e.target.value)}
-                className="text-center text-2xl rounded-3xl px-5 py-1"
+                className="text-center text-2xl rounded-3xl px-5 py-1 text-[#090909]"
               ></input>
             </div>
             <div className="w-10 mx-4"></div>
@@ -119,14 +125,15 @@ export default function AdminAuth() {
                 placeholder={'Password:'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="text-center text-2xl rounded-3xl px-5 py-1"
+                className="text-center text-2xl rounded-3xl px-5 py-1 text-[#090909]"
               ></input>
             </div>
             <div className="w-10 mx-4"></div>
           </div>
           <div className="flex justify-center items-center mx-4">
             <button
-              className="bg-[#653bba] w-1/3 text-center text-2xl rounded-3xl px-5 py-1"
+              className={`bg-[#653bba] w-1/3 text-center text-2xl rounded-3xl px-5 py-1 ${buttonLocked && 'bg-[#341d61]'}`}
+              disabled={buttonLocked}
               type="submit"
             >
               {isLoginForm ? (
@@ -151,30 +158,30 @@ export default function AdminAuth() {
               </div>
             </div>
           )}
-          <div className="flex justify-center items-center mx-12 mt-10 text-lg">
-              {isLoginForm
-              ?
-                <p className="flex">
-                  Not registered? Request
-                  <label
-                    onClick={() => SetisLoginForm(false)}
-                    className="cursor-pointer text-center ml-4 text-[#653bba]"
-                  >
-                    HERE
-                  </label>
-                </p>
-              :
-                <p className="flex">
-                  Already registered? Login
-                  <label
-                    onClick={() => SetisLoginForm(true)}
-                    className="cursor-pointer text-center ml-4 text-[#653bba]"
-                  >
-                    HERE
-                  </label>
-                </p>
-              }
-            </div>
+          {/* <div className="flex justify-center items-center mx-12 mt-10 text-lg">
+            {isLoginForm
+            ?
+              <p className="flex">
+                Not registered? Request
+                <label
+                  onClick={() => SetisLoginForm(false)}
+                  className="cursor-pointer text-center ml-4 text-[#653bba]"
+                >
+                  HERE
+                </label>
+              </p>
+            :
+              <p className="flex">
+                Already registered? Login
+                <label
+                  onClick={() => SetisLoginForm(true)}
+                  className="cursor-pointer text-center ml-4 text-[#653bba]"
+                >
+                  HERE
+                </label>
+              </p>
+            }
+          </div> */}
         </form>
       </div>
       {postError &&
