@@ -12,6 +12,7 @@ const MainProvider = ({ children }) => {
   const [HideSearchBox, SetHideSearchBox] = useState(true);
   const [searchfield, SetSearchfield] = useState('');
   const [socialHide, SetSocialHide] = useState(true);
+  const [profileData, SetProfileData] = useState({});
 
   // GLOBAL ROUTER CONTROLLER
   const router = useRouter();
@@ -91,6 +92,8 @@ const MainProvider = ({ children }) => {
         SetSearchfield,
         socialHide,
         SetSocialHide,
+        profileData,
+        SetProfileData
       }}
     >
       {children}

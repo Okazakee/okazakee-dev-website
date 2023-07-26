@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../../context/MainContext';
 import Image from 'next/image';
 import { MongoClient } from 'mongodb';
@@ -11,12 +11,20 @@ export default function Cms({ avaliablePages, collectionsPagesData, profileData 
   const [selectedPage, SetSelectedPage] = useState(avaliablePages[0]);
   const [selectedItem, SetSelectedItem] = useState('0');
   const [fieldSelectEnabled, SetFieldSelectEnabled] = useState(false);
+  const [moreItemsAvaliable, SetMoreItemsAvaliable] = useState(false);
 
-  const { router } = useContext(MainContext);
+  const { router, SetProfileData } = useContext(MainContext);
+
+  useEffect(() => {
+    if (collectionsPagesData[selectedPage].length > 1) {
+      return SetMoreItemsAvaliable(true);
+    } else {
+      return SetMoreItemsAvaliable(false)
+    }
+  }, [collectionsPagesData, selectedItem, selectedPage])
 
   if (profileData) {
-    const expirationDate = moment().add(1, 'hour').toDate();
-    Cookies.set('profileData', JSON.stringify(profileData), { expires: expirationDate, path: '/cms' });
+    SetProfileData(profileData);
   }
 
   const refreshData = () => {
@@ -49,12 +57,15 @@ export default function Cms({ avaliablePages, collectionsPagesData, profileData 
         'cursor-pointer border text-center px-2 py-1 mb-5 rounded-3xl hover:bg-[#8c54fb]',
     },
     body: {
-      buttons:
-        'border text-center px-3 py-1 mb-5 rounded-3xl hover:bg-[#8c54fb] mx-2',
       div1: 'flex-wrap border basis-5/6 rounded-3xl pt-5 px-5 mr-5 max-h-[60vh] md:max-h-[70vh] lg:text-lg',
       div2: 'text-end cursor-pointer',
     },
     imgdiv: 'relative h-[30vh] w-[30vw] mx-auto',
+    actionsContainer: {
+      buttons: 'border text-center px-3 py-1 rounded-3xl hover:bg-[#8c54fb] mx-2',
+      div2: 'flex items-center justify-center rounded-3xl mt-5',
+      h1: 'mx-5 text-2xl',
+    },
   };
 
   return (
@@ -86,41 +97,7 @@ export default function Cms({ avaliablePages, collectionsPagesData, profileData 
             </div>
           </div>
           <div className={styles.body.div1}>
-            <div className="flex justify-center">
-              <button
-                className={styles.body.buttons}
-                onClick={() => setItems('prev')}
-              >
-                Previous Item
-              </button>
-              <button
-                className={styles.body.buttons}
-                onClick={() => setItems('next')}
-              >
-                Next Item
-              </button>
-              <button className={styles.body.buttons} onClick={() => null}>
-                Add field
-              </button>
-              <button
-                className={styles.body.buttons}
-                onClick={() => SetFieldSelectEnabled(!fieldSelectEnabled)}
-              >
-                {!fieldSelectEnabled ? (
-                  <label className="cursor-pointer">Remove field</label>
-                ) : (
-                  <label className="mx-6 cursor-pointer">Done</label>
-                )}
-              </button>
-              <button
-                className={styles.body.buttons}
-                onClick={() => refreshData()}
-              >
-                Refresh ↻
-              </button>
-              <button className={styles.body.buttons}>Apply</button>
-            </div>
-            <div className="max-h-[55vh] md:max-h-[58vh] overflow-y-auto">
+            <div className="h-full overflow-y-auto">
               <div className={styles.imgdiv}>
                 <Image
                   className="rounded-xl"
@@ -156,6 +133,50 @@ export default function Cms({ avaliablePages, collectionsPagesData, profileData 
                     </div>
                   )
               )}
+            </div>
+            <div className={styles.actionsContainer.div2}>
+              {moreItemsAvaliable &&
+                <>
+                  <button
+                    className={styles.actionsContainer.buttons}
+                    onClick={() => setItems('prev')}
+                  >
+                    Previous Item
+                  </button>
+                  <button
+                    className={styles.actionsContainer.buttons}
+                    onClick={() => setItems('next')}
+                  >
+                    Next Item
+                  </button>
+                </>
+              }
+              <button
+                className={styles.actionsContainer.buttons}
+                onClick={() => setItems('prev')}
+              >
+                Add Item
+              </button>
+              <button className={styles.actionsContainer.buttons} onClick={() => null}>
+                Add field
+              </button>
+              <button
+                className={styles.actionsContainer.buttons}
+                onClick={() => SetFieldSelectEnabled(!fieldSelectEnabled)}
+              >
+                {!fieldSelectEnabled ? (
+                  <label className="cursor-pointer">Remove field</label>
+                ) : (
+                  <label className="mx-6 cursor-pointer">Done</label>
+                )}
+              </button>
+              <button
+                className={styles.actionsContainer.buttons}
+                onClick={() => refreshData()}
+              >
+                Refresh ↻
+              </button>
+              <button className={styles.actionsContainer.buttons}>Apply</button>
             </div>
           </div>
         </div>

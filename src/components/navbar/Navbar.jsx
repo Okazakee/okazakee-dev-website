@@ -4,23 +4,9 @@ import { SocialLink, SocialLinkMobile } from './SocialLink';
 import { NavBtn, MobileNavBtn } from './NavBtn';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Cookies from 'js-cookie';
 
 export const AdminHeader = () => {
-  const { navStyles, urlPath } = useContext(MainContext);
-  const [profileData, setProfileData] = useState('');
-
-  useEffect(() => {
-    const cookie = Cookies.get('profileData');
-
-    if (cookie) {
-      try {
-        setProfileData(JSON.parse(cookie));
-      } catch (error) {
-        console.error('Error while getting profile data:', error);
-      }
-    }
-  }, []);
+  const { navStyles, urlPath, profileData } = useContext(MainContext);
 
   return (
     <div className={navStyles.default.adminNav}>
