@@ -81,6 +81,7 @@ export default function Cms({ avaliablePages, collectionsPagesData, profileData 
         </div>
         <div className={styles.buttons.div1}>
           <div className={styles.buttons.div2}>
+            <p className='text-center mb-4'>Website Pages:</p>
             {avaliablePages.map((page, i) => (
               <div
                 onClick={() => SetSelectedItem('0') + SetSelectedPage(page)}

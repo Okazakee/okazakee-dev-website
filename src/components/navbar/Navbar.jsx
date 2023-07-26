@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { MainContext } from '../../context/MainContext';
 import { SocialLink, SocialLinkMobile } from './SocialLink';
 import { NavBtn, MobileNavBtn } from './NavBtn';
@@ -28,49 +28,51 @@ export const AdminHeader = () => {
           </div>
         </div>
       </div>
-      <div className="hidden md:block fixed left-5 bottom-5">
-      {urlPath.endsWith('/cms') && (
-        <div className="flex items-center">
-          <Image
-            width={32}
-            height={32}
-            src={profileData.imgUrl ? profileData.imgUrl : '/images/user.png'}
-            alt="admin_icon"
-            className="mr-2 rounded-full"
-          ></Image>
-          <p>{profileData.username}</p>
-        </div>
-        )}
-      </div>
-      <div className="hidden md:block fixed left-1/2 -translate-x-1/2 bottom-5">
-        <div className="flex items-center">
-          <Image
-            width={32}
-            height={32}
-            src="/images/admin.png"
-            alt="admin_icon"
-            className="mr-2"
-          ></Image>
-          <p>Administrator Mode</p>
-        </div>
-      </div>
-      <div className="hidden md:block fixed right-5 bottom-3">
-        <MobileNavBtn
-          page="/bio"
-          defaultBtnStyle="text-[#b4b4b4] hover:text-[#e8e8e8]"
-          iconStyle={navStyles.mobile.iconStyle}
-          btnimg="/images/home.png"
-          name="Home"
-        ></MobileNavBtn>
-        {urlPath.endsWith('/cms') && (
-            <MobileNavBtn
-              page="/login"
-              defaultBtnStyle="text-[#b4b4b4] hover:text-[#e8e8e8]"
-              iconStyle={navStyles.mobile.iconStyle}
-              btnimg="/images/exit.png"
-              name="Logout"
-            ></MobileNavBtn>
+      <div className='mx-auto fixed bottom-5 left-0 right-0 flex justify-between items-center w-full max-w-7xl'>
+        <div className="hidden md:block">
+          {urlPath.endsWith('/cms') && (
+            <div className="flex items-center">
+              <Image
+                width={32}
+                height={32}
+                src={profileData.imgUrl ? profileData.imgUrl : '/images/user.png'}
+                alt="admin_icon"
+                className="mr-2 rounded-full"
+              ></Image>
+              <p>{profileData.username}</p>
+            </div>
           )}
+        </div>
+        <div className="hidden md:block">
+          <div className="flex items-center">
+            <Image
+              width={32}
+              height={32}
+              src="/images/admin.png"
+              alt="admin_icon"
+              className="mr-2"
+            ></Image>
+            <p>Administrator Mode</p>
+          </div>
+        </div>
+        <div className="hidden md:block">
+          <MobileNavBtn
+            page="/bio"
+            defaultBtnStyle="text-[#b4b4b4] hover:text-[#e8e8e8]"
+            iconStyle={navStyles.mobile.iconStyle}
+            btnimg="/images/home.png"
+            name="Home"
+          ></MobileNavBtn>
+          {urlPath.endsWith('/cms') && (
+              <MobileNavBtn
+                page="/login"
+                defaultBtnStyle="text-[#b4b4b4] hover:text-[#e8e8e8]"
+                iconStyle={navStyles.mobile.iconStyle}
+                btnimg="/images/exit.png"
+                name="Logout"
+              ></MobileNavBtn>
+            )}
+        </div>
       </div>
     </div>
   );
