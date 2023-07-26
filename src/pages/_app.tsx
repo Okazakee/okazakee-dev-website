@@ -1,3 +1,4 @@
+import type { AppProps } from "next/app";
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
@@ -7,7 +8,7 @@ import Layout from '../components/common/Layout';
 import { MainProvider } from '../context/MainContext';
 import { Analytics } from '@vercel/analytics/react';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <MainProvider>
       <Layout>
