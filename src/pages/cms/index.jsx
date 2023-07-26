@@ -60,7 +60,7 @@ export default function Cms({ avaliablePages, collectionsPagesData, profileData 
       div1: 'flex-wrap border basis-5/6 rounded-3xl pt-5 px-5 mr-5 max-h-[60vh] md:max-h-[70vh] lg:text-lg',
       div2: 'text-end cursor-pointer',
     },
-    imgdiv: 'relative h-[30vh] w-[30vw] mx-auto',
+    imgdiv: 'relative h-[25vh] w-[25vw] mx-auto',
     actionsContainer: {
       buttons: 'border text-center px-3 py-1 rounded-3xl hover:bg-[#8c54fb] mx-2',
       div2: 'flex items-center justify-center rounded-3xl mt-5',
