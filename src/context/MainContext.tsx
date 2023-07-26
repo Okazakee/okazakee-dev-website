@@ -1,25 +1,98 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState } from 'react';
 import { useRouter } from 'next/router';
+import { NavStyles, PageStyles, ContextState, MainContextType } from '../../types';
 
-const MainContext = createContext();
+const initialState: ContextState = {
+  HideSearchBox: true,
+  searchfield: '',
+  socialHide: true,
+  profileData: {
+    username: '',
+    imgUrl: '',
+    // Add other properties as needed
+  },
+};
 
+const MainContext = createContext<MainContextType>({
+  ...initialState,
+  navStyles: {
+    layout: '',
+    default: {
+      adminNav: '',
+      adminDiv: '',
+      SearchBoxStyle: '',
+      navStyle: '',
+      mainDiv: '',
+      innerDiv: '',
+      linksDiv: ''
+    },
+    mobile: {
+      NavbarStyle: '',
+      defaultBtnStyle: '',
+      selectedBtnStyle: '',
+      iconStyle: ''
+    },
+    buttons: {
+      adminBtn: '',
+      defaultBtnStyle: '',
+      selectedBtnStyle: ''
+    },
+  },
+  pageStyles: {
+    cms: {
+      auth: {
+        input: '',
+      },
+    },
+    biography: {
+      mainDiv: '',
+      imgDiv: '',
+      blurDataURL: '',
+      textDiv: '',
+      innerText: '',
+      innerText2: '',
+      bio: '',
+    },
+    portfolio: {
+      cardListStyle: '',
+      h1: '',
+    },
+    blog: {
+      cardListStyle: '',
+      h1: '',
+    },
+  },
+  router: null,
+  urlPath: '',
+  SetHideSearchBox: () => {},
+  SetSearchfield: () => {},
+  SetSocialHide: () => {},
+  SetProfileData: () => {},
+});
+
+type ChildrenProps = {
+  children: React.ReactNode
+}
 // make dynamic head element served by this context, correctly setup states as arrays as [value, servalue]
 // build seo(?) stuff like the url preview in chats/forums
 // check that only global stuff is present here, otherwise create appropriate hook in appropriate component
 
-const MainProvider = ({ children }) => {
+const MainProvider = ({ children }: ChildrenProps) => {
   // GLOBAL STATES
   const [HideSearchBox, SetHideSearchBox] = useState(true);
   const [searchfield, SetSearchfield] = useState('');
   const [socialHide, SetSocialHide] = useState(true);
-  const [profileData, SetProfileData] = useState({});
+  const [profileData, SetProfileData] = useState({
+    username: '',
+    imgUrl: ''
+  });
 
   // GLOBAL ROUTER CONTROLLER
   const router = useRouter();
   const urlPath = router.pathname;
 
   // TAILWIND STYLES
-  const navStyles = {
+  const navStyles: NavStyles = {
     layout:
       "font-['White_Rabbit_Regular'] bg-[#090909] text-[#e8e8e8] transition-all ease-in-out duration-[400ms] scroll-smooth mx-auto min-h-screen w-full flex justify-center pt-5 sm:pt-24",
     default: {
@@ -51,7 +124,7 @@ const MainProvider = ({ children }) => {
     },
   };
 
-  const pageStyles = {
+  const pageStyles: PageStyles = {
     cms: {
       auth: {
         input: 'text-center rounded-3xl',

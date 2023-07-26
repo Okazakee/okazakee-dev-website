@@ -3,7 +3,7 @@ import sha256 from 'crypto-js/sha256';
 
 const userCheck = async (username, password) => {
   try {
-    const client = await MongoClient.connect(process.env.MONGODB_URI);
+    const client = await MongoClient.connect(process.env.MONGODB_URI as string);
     const db = client.db('Users');
     const usersCollection = db.collection('Administrators');
 

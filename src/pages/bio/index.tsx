@@ -3,9 +3,14 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { MainContext } from '../../context/MainContext';
 import { motion } from 'framer-motion';
-import { MongoClient } from 'mongodb';
+import { MongoClient, Db } from 'mongodb';
 
-export default function Bio({ bio, propic }) {
+interface BioPageProps {
+  bio: string,
+  propic: string
+}
+
+export default function Bio({ bio, propic }: BioPageProps) {
   const { router, pageStyles } = useContext(MainContext);
 
   const [clicks, setClicks] = useState(0);
@@ -61,7 +66,7 @@ export default function Bio({ bio, propic }) {
 
 export async function getStaticProps() {
   try {
-    const client = await MongoClient.connect(process.env.MONGODB_URI);
+    const client = await MongoClient.connect(process.env.MONGODB_URI as string);
     const db = client.db(process.env.COLLECTION_ENV);
 
     const biography = await db
@@ -69,8 +74,9 @@ export async function getStaticProps() {
       .find({})
       .project({ _id: 0 })
       .toArray();
-    const bio = JSON.parse(JSON.stringify(...biography)).bio;
-    const propic = JSON.parse(JSON.stringify(...biography)).img;
+
+    const bio = biography[0].bio;
+    const propic = biography[0].img;
 
     return {
       props: {
@@ -83,5 +89,12 @@ export async function getStaticProps() {
     };
   } catch (e) {
     console.error(e);
+    return {
+      props: {
+        bio: '',
+        propic: '',
+      },
+      revalidate: 43200,
+    };
   }
 }

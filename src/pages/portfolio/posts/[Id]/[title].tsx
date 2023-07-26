@@ -31,7 +31,7 @@ export default function Post({ post, content }) {
 }
 
 export const getStaticPaths = async () => {
-  const client = await MongoClient.connect(process.env.MONGODB_URI);
+  const client = await MongoClient.connect(process.env.MONGODB_URI as string);
   const db = client.db(process.env.COLLECTION_ENV);
   const res = await db.collection('Portfolio').find({}).toArray();
 
@@ -51,7 +51,7 @@ export const getStaticPaths = async () => {
 };
 
 export async function getStaticProps(context) {
-  const client = await MongoClient.connect(process.env.MONGODB_URI);
+  const client = await MongoClient.connect(process.env.MONGODB_URI as string);
   const db = client.db(process.env.COLLECTION_ENV);
   const id = context.params.Id;
   const res = await db

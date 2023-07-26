@@ -222,7 +222,7 @@ export async function getServerSideProps(context) {
 
   // Connect to mongoDB and collection
   try {
-    client = await MongoClient.connect(process.env.MONGODB_URI);
+    client = await MongoClient.connect(process.env.MONGODB_URI as string);
     console.log('Connected to mongoDB');
 
     db = client.db(process.env.COLLECTION_ENV);

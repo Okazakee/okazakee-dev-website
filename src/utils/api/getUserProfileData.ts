@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 
 export const getUserProfileData = async (username) => {
     try {
-        const client = await MongoClient.connect(process.env.MONGODB_URI);
+        const client = await MongoClient.connect(process.env.MONGODB_URI as string);
         const db = client.db('Users');
         const usersCollection = db.collection('Administrators');
 
