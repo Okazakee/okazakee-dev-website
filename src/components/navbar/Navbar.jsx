@@ -86,6 +86,7 @@ export const AdminMobileHeader = () => {
 
 export const Navbar = () => {
   const { navStyles } = useContext(MainContext);
+  const pdfLink = process.env.NEXT_PUBLIC_PDF_URL;
 
   return (
     <div className={navStyles.default.navStyle}>
@@ -98,6 +99,7 @@ export const Navbar = () => {
             name="Portfolio"
           ></NavBtn>
           {/* <NavBtn HideSearch={false} page="/blog" name="Blog"></NavBtn> */}
+          <NavBtn HideSearch={true} page={pdfLink} name="Resume"></NavBtn>
         </div>
         <motion.div className={navStyles.default.linksDiv}>
           <SocialLink
