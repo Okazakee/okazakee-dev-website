@@ -1,6 +1,8 @@
 Personal Web Platform
 =====================
 
+> **⚠️ Archived — superseded.** The current website lives in **[Okazakee/okazakee-ws](https://github.com/Okazakee/okazakee-ws)** (with its CMS panel in [Okazakee/okazakee-cms](https://github.com/Okazakee/okazakee-cms)). This repository is archived and no longer maintained.
+
 This is a serverless web platform that showcases my personal information, projects, and interests on the internet. The platform consists of several pages, including Biography, Portfolio, and Blog, along with a CMS panel for managing website content.
 
 Features
